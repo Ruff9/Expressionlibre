@@ -8,3 +8,13 @@ body h1 {
   margin-top: 50px;
   margin-left: 50px;
 }
+/*styles pour le formulaire mailchimp*/
+#mc-embedded-subscribe {
+  background-color: #008000 !important;
+  display: inline-block !important;
+  width: 50px !important;
+}
+#mce-EMAIL {
+  display: inline-block !important;
+  width: 500px !important;
+}
