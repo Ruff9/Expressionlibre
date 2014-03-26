@@ -7,5 +7,8 @@
         "ejs": "~0.8.3"
     },
     "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
-    "description": "Landing page JAM"
+    "description": "Landing page JAM",
+    "engine": {
+    	"node": "0.10.x"
+    }
 }
