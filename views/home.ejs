@@ -1,11 +1,18 @@
-<html>  
+<html>
+
 	<head>
 		<meta charset="utf-8" />
        	<title>JoueAvecMoi.fr</title>
        	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </head> 
-	<body>
+
+	<body <%onmousemove="positionSouris(event);"%>>
+
        <img src="/static/images/LogoJamBasic.png" alt="logo joue avec moi">
+
+       <div id="divPosition"
+		   style="width:240px; height:100px; padding:10px; margin-left:50px;">
+	   </div> 
        
        <!-- Begin MailChimp Signup Form -->
 
@@ -26,6 +33,20 @@
 			</div>
 
 		<!--End mc_embed_signup-->
+
+		<script type="text/javascript">
+
+			cible = document.getElementsByTagName('body')[0];
+			cible.addEventListener('mousemove', positionSouris, false);
+
+	    	function positionSouris(event) {
+			   var posX;
+			   var posY;
+			   posX = event.clientX;
+			   posY = event.clientY;
+			   document.getElementById('divPosition').innerHTML =
+			            'Coordonnées de la souris :<br/>X = ' + posX + '<br />Y = ' + posY;}
+		</script>
 
     </body>
 </html>
