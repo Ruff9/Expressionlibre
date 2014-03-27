@@ -6,7 +6,7 @@
        	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </head> 
 
-	<body onmousemove="positionSouris(event);deuxiemeCurseur(event)">
+	<body onmousemove="positionSouris(event);deplacerDeuxiemeCurseur(event)" onload="creerDeuxiemeCurseur(event)">
 
        <img src="/static/images/LogoJamBasic.png" alt="logo joue avec moi">
 
@@ -56,7 +56,14 @@
 			   return posX;
 			   return posY;}
 
-			function deuxiemeCurseur(event) {
+			function creerDeuxiemeCurseur(event) {
+			   var img = document.createElement("img");
+			   img.src = "/static/images/curseur.png";
+			   var target = document.getElementById('cloneCurseur');
+			   target.appendChild(img);
+			}
+
+			function deplacerDeuxiemeCurseur(event) {
 
 			   var posX;
 			   var posY;
@@ -65,11 +72,7 @@
 			   posY = event.clientY;
 			   posX2 = posX + 200;
 
-			   var img = document.createElement("img");
-			   img.src = "/static/images/curseur.png";
-
 			   var target = document.getElementById('cloneCurseur');
-			   target.appendChild(img);
 			   target.style.left = posX2;
 			   target.style.top = posY;
 
