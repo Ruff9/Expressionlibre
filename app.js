@@ -17,10 +17,6 @@ app.get('/', function(req, res) {
     res.render('home.ejs');
 });
 
-app.get('/compter/:nombre', function(req, res) {
-    res.render('page.ejs', {compteur: req.params.nombre});
-});
-
 app.use(function(req, res, next){
     res.setHeader('Content-Type', 'text/plain');
     res.send(404, 'Page introuvable !');

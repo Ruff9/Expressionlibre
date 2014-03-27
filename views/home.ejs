@@ -6,11 +6,17 @@
        	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </head> 
 
-	<body <%onmousemove="positionSouris(event);"%>>
+	<body onmousemove="positionSouris(event);deuxiemeCurseur(event)">
 
        <img src="/static/images/LogoJamBasic.png" alt="logo joue avec moi">
 
+       <div id="cloneCurseur" style="position:absolute; z-index:10; width:19px; height:24px"></div>
+
        <div id="divPosition"
+		   style="width:240px; height:100px; padding:10px; margin-left:50px;">
+	   </div> 
+
+	   <div id="divPosition2"
 		   style="width:240px; height:100px; padding:10px; margin-left:50px;">
 	   </div> 
        
@@ -40,12 +46,37 @@
 			cible.addEventListener('mousemove', positionSouris, false);
 
 	    	function positionSouris(event) {
+
 			   var posX;
 			   var posY;
 			   posX = event.clientX;
 			   posY = event.clientY;
 			   document.getElementById('divPosition').innerHTML =
-			            'Coordonnées de la souris :<br/>X = ' + posX + '<br />Y = ' + posY;}
+			            'Coordonnées de la souris :<br/>X = ' + posX + '<br />Y = ' + posY;
+			   return posX;
+			   return posY;}
+
+			function deuxiemeCurseur(event) {
+
+			   var posX;
+			   var posY;
+			   var posX2;
+			   posX = event.clientX;
+			   posY = event.clientY;
+			   posX2 = posX + 200;
+
+			   var img = document.createElement("img");
+			   img.src = "/static/images/curseur.png";
+
+			   var target = document.getElementById('cloneCurseur');
+			   target.appendChild(img);
+			   target.style.left = posX2;
+			   target.style.top = posY;
+
+			   document.getElementById('divPosition2').innerHTML =
+			            'Coordonnées du 2e curseur:<br/>X = ' + posX2 + '<br />Y = ' + posY;
+			   return posX2;
+			}
 		</script>
 
     </body>
