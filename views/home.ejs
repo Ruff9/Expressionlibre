@@ -8,12 +8,12 @@
 
 	<body onmousemove="positionSouris(event);deplacerDeuxiemeCurseur(event)" onload="creerDeuxiemeCurseur(event)">
 
-       <img src="/static/images/LogoJamBasic.png" alt="logo joue avec moi">
+       <img src="/static/images/LogoJamBasic.png" id="mainLogo" alt="logo joue avec moi">
 
        <div id="cloneCurseur" style="position:absolute; z-index:10; width:19px; height:24px"></div>
 
        <div id="divPosition"
-		   style="width:240px; height:100px; padding:10px; margin-left:50px;">
+		   style="width:240px; height:60px; padding:10px; margin-left:50px;">
 	   </div> 
 
 	   <div id="divPosition2"
@@ -54,14 +54,14 @@
 			   document.getElementById('divPosition').innerHTML =
 			            'Coordonnées de la souris :<br/>X = ' + posX + '<br />Y = ' + posY;
 			   return posX;
-			   return posY;}
+			   return posY;};
 
 			function creerDeuxiemeCurseur(event) {
 			   var img = document.createElement("img");
 			   img.src = "/static/images/curseur.png";
 			   var target = document.getElementById('cloneCurseur');
 			   target.appendChild(img);
-			}
+			};
 
 			function deplacerDeuxiemeCurseur(event) {
 
@@ -79,7 +79,8 @@
 			   document.getElementById('divPosition2').innerHTML =
 			            'Coordonnées du 2e curseur:<br/>X = ' + posX2 + '<br />Y = ' + posY;
 			   return posX2;
-			}
+			};
+
 		</script>
 
     </body>
