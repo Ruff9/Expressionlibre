@@ -54,13 +54,17 @@
 			   document.getElementById('divPosition').innerHTML =
 			            'Coordonnées de la souris :<br/>X = ' + posX + '<br />Y = ' + posY;
 			   return posX;
-			   return posY;};
+			   return posY;
+
+			};
 
 			function creerDeuxiemeCurseur(event) {
+
 			   var img = document.createElement("img");
 			   img.src = "/static/images/curseur.png";
 			   var target = document.getElementById('cloneCurseur');
 			   target.appendChild(img);
+			
 			};
 
 			function deplacerDeuxiemeCurseur(event) {
@@ -79,6 +83,7 @@
 			   document.getElementById('divPosition2').innerHTML =
 			            'Coordonnées du 2e curseur:<br/>X = ' + posX2 + '<br />Y = ' + posY;
 			   return posX2;
+			   
 			};
 
 		</script>
