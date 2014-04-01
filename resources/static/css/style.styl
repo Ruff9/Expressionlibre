@@ -7,11 +7,17 @@ body img
   margin-top 50px
   margin-left 50px
 
+#paper
+  z-index -1
+  position fixed
+  top 0
+  left 0
+
 #cursors .cursor
 	position:absolute
 	width:19px
 	height:24px
-	background:url('../img/pointer.png') no-repeat -4px 0
+	background:url("/static/images/curseur.png") no-repeat -4px 0
 
 /*styles pour le formulaire mailchimp*/
 
@@ -27,3 +33,4 @@ body img
 #mc_embed_signup
   margin-top 300px
   margin-left 350px
+  z-index 2
