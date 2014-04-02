@@ -1,8 +1,13 @@
-var io = require('socket.io').listen(app);
 var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
 var app = express();
+
+var server = app.listen(process.env.PORT || 3000, function(){
+	console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
+
+var io = require('socket.io').listen(server);
 
 app.use(stylus.middleware({
   src: __dirname + '/resources',
@@ -23,10 +28,6 @@ app.use(function(req, res, next){
     res.send(404, 'Page introuvable !');
 });
 
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
-
 // le code ci dessous provient de http://tutorialzine.com/2012/08/nodejs-drawing-game/
 
 // If the URL of the socket server is opened in a browser
@@ -38,16 +39,17 @@ function handler (request, response) {
 }
 
 // Delete this row if you want to see debug messages
-io.set('log level', 1);
+// io.set('log level', 1);
 
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
-
+	console.log("dans connection")
     // Start listening for mouse move events
     socket.on('mousemove', function (data) {
-
+    	console.log("dans mousemove")
         // This line sends the event (broadcasts it)
         // to everyone except the originating client.
         socket.broadcast.emit('moving', data);
+        console.log("juste après broadcast");
     });
 });
