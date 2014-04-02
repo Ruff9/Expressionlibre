@@ -1,5 +1,5 @@
 $(function(){
-    console.log("coucou fonction chargée")
+    
     if(!('getContext' in document.createElement('canvas'))){
         alert('Votre navigateur ne supporte pas la fonction canvas :( Pour résoudre le problème, vous pouvez le mettre à jour.');
         return false;
@@ -41,7 +41,7 @@ $(function(){
     var lastEmit = $.now();
 
     doc.on('mousemove',function(e){
-        if($.now() - lastEmit > 30){
+        if($.now() - lastEmit > 10){
             socket.emit('mousemove',{
                 'x': e.pageX,
                 'y': e.pageY,
