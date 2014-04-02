@@ -6,7 +6,7 @@ $(function(){
     }
 
     // The URL of your web server (the port is set in app.js)
-    var url = '192.168.1.43:3000';
+    var url = 'http://joueavecmoi.herokuapp.com/';
 
      var doc = $(document),
         win = $(window),
