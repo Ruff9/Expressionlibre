@@ -39,17 +39,28 @@ function handler (request, response) {
 }
 
 // Delete this row if you want to see debug messages
-// io.set('log level', 1);
+io.set('log level', 1);
 
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
-	console.log("dans connection")
     // Start listening for mouse move events
     socket.on('mousemove', function (data) {
-    	console.log("dans mousemove")
         // This line sends the event (broadcasts it)
         // to everyone except the originating client.
         socket.broadcast.emit('moving', data);
-        console.log("juste après broadcast");
+    });
+});
+
+// affichage du nombre de clients sur la home
+
+var count = 0;
+
+io.sockets.on('connection', function(client) {
+    count++;
+    client.broadcast.emit('message', {count: count});
+
+    client.on('disconnect', function(){
+        count--;
+        client.broadcast.emit('message', {count: count});
     });
 });
