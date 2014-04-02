@@ -1,5 +1,5 @@
 body {
-  background-image: url("/static/images/greenBackground.png");
+  background-image: url("/static/images/redBackground.png");
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -17,11 +17,11 @@ body img {
   position: absolute;
   width: 19px;
   height: 24px;
-  background: url("/static/images/curseur.png") no-repeat -4px 0;
+  background: url("/static/images/curseur.png") no-repeat;
 }
 /*styles pour le formulaire mailchimp*/
 #mc-embedded-subscribe {
-  background-color: #008000 !important;
+  background-color: #dc143c !important;
   display: inline-block !important;
   width: 50px !important;
 }

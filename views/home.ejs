@@ -24,7 +24,7 @@
 	<script>
 	  var socket = io.connect('192.168.1.43:3000');
 	  socket.on('message', function (data) {
-	    console.log("nombre de clients : "+data);
+	    console.log(data+" personnes connectées");
 	  });
 	</script>
 
