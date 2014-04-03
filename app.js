@@ -53,14 +53,23 @@ io.sockets.on('connection', function (socket) {
 
 // affichage du nombre de clients sur la home
 
-var count = 0;
+// var count = 0;
 
-io.sockets.on('connection', function(client) {
-    count++;
-    client.broadcast.emit('message', {count: count});
+// io.sockets.on('connection', function(client) {
+//     count++;
+//     client.broadcast.emit('message', {count: count});
 
-    client.on('disconnect', function(){
-        count--;
-        client.broadcast.emit('message', {count: count});
-    });
-});
+//     client.on('disconnect', function(){
+//         count--;
+//         client.broadcast.emit('message', {count: count});
+//     });
+// });
+
+// code pour home.ejs (ne marche pas)
+
+// 	<script>
+// 	  var socket = io.connect('192.168.1.43:3000');
+// 	  socket.on('message', function (data) {
+// 	    console.log(data+" personnes connectées");
+// 	  });
+// 	</script>
