@@ -3,10 +3,6 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
 }
-#logo {
-  margin-top: 50px;
-  margin-left: 50px;
-}
 #paper {
   z-index: -1;
   position: fixed;
@@ -19,6 +15,13 @@ body {
   height: 24px;
   background: url("/static/images/curseur.png") no-repeat;
 }
+#logo {
+  margin-top: 60px;
+  margin-left: 50px;
+}
+#ligne1 {
+  margin-left: 52px;
+}
 #texte1 {
   margin-top: 20px;
   margin-left: 75px;
@@ -27,18 +30,22 @@ body {
 #mc-embedded-subscribe {
   background-color: #dc143c !important;
   display: inline-block !important;
-  width: 50px !important;
+  width: 40px !important;
 }
 #mc_embed_signup .button {
   border-radius: 0px !important;
+  height: 35px;
+  margin-left: none !important;
 }
 #mce-EMAIL {
   display: inline-block !important;
-  width: 500px !important;
-  margin-right-value: none;
+  width: 350px !important;
+  margin-right: none !important;
 }
 #mc_embed_signup {
-  margin-top: 200px;
-  margin-left: 350px;
+  margin-top: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
   z-index: 2;
 }
