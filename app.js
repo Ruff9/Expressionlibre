@@ -9,6 +9,8 @@ var server = app.listen(process.env.PORT || 3000, function(){
 
 var io = require('socket.io').listen(server);
 
+app.locals.connectCounter = 0;
+
 app.use(stylus.middleware({
   src: __dirname + '/resources',
   dest: __dirname + '/public',
@@ -43,33 +45,17 @@ io.set('log level', 1);
 
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
+    connectCounter++;
     // Start listening for mouse move events
     socket.on('mousemove', function (data) {
         // This line sends the event (broadcasts it)
         // to everyone except the originating client.
         socket.broadcast.emit('moving', data);
     });
+    socket.broadcast.emit(connectCounter);
 });
 
-// affichage du nombre de clients sur la home
-
-// var count = 0;
-
-// io.sockets.on('connection', function(client) {
-//     count++;
-//     client.broadcast.emit('message', {count: count});
-
-//     client.on('disconnect', function(){
-//         count--;
-//         client.broadcast.emit('message', {count: count});
-//     });
-// });
-
-// code pour home.ejs (ne marche pas)
-
-// 	<script>
-// 	  var socket = io.connect('192.168.1.43:3000');
-// 	  socket.on('message', function (data) {
-// 	    console.log(data+" personnes connectées");
-// 	  });
-// 	</script>
+io.sockets.on('disconnect', function (socket) {
+  connectCounter--;
+  socket.broadcast.emit(connectCounter);
+});

@@ -1,21 +1,20 @@
 $(function(){
 
     if(!('getContext' in document.createElement('canvas'))){
-        alert('Désolé, votre navigateur ne supporte pas la fonction canvas :( Pour résoudre le problème, vous pouvez mettre à jour.');
+        alert('Désolé, votre navigateur ne supporte pas la fonction canvas :( Pour résoudre le problème, vous pouvez le mettre à jour.');
         return false;
     }
 
     // The URL of your web server (the port is set in app.js)
     var url = 'http://localhost:3000'||'http://calm-hamlet-6896.herokuapp.com/';
 
-     var doc = $(document),
+    var doc = $(document),
         win = $(window),
         canvas = $('#paper'),
         ctx = canvas[0].getContext('2d'),
         
     // Generate an unique ID
     var id = Math.round($.now()*Math.random());
-
     var clients = {};
     var cursors = {};
     var socket = io.connect(url);
