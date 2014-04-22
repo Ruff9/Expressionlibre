@@ -1,3 +1,5 @@
+// code JS côté client
+
 $(function(){
 
     if(!('getContext' in document.createElement('canvas'))){
@@ -6,7 +8,7 @@ $(function(){
     }
 
     // The URL of your web server (the port is set in app.js)
-    var url = 'http://localhost:3000'||'http://calm-hamlet-6896.herokuapp.com/';
+    var url = 'http://localhost:3000'||'http://joueavecmoi.herokuapp.com/';
 
     var doc = $(document),
         win = $(window),
@@ -18,6 +20,13 @@ $(function(){
     var clients = {};
     var cursors = {};
     var socket = io.connect(url);
+
+    // gestion du compteur de clients connectés 
+    socket.on ('compteur', function()) {
+        socket.emit('compteur');
+    };
+
+    gestion
 
     socket.on('moving', function (data) {
 

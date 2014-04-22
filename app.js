@@ -1,3 +1,5 @@
+// code JS côté serveur
+
 var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
@@ -47,19 +49,19 @@ function handler (request, response) {
 
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
-    console.log('dans connection');
+
     app.locals.connectCounter++;
+    io.socket.emit('compteur', app.locals.connectCounter);
 
     // Start listening for mouse move events
     socket.on('mousemove', function (data) {
         // This line sends the event (broadcasts it)
         // to everyone except the originating client.
-        socket.broadcast.emit('moving', data);
+        io.socket.emit('moving', data);
     });
-    socket.broadcast.emit(app.locals.connectCounter);
 });
 
 io.sockets.on('disconnect', function (socket) {
   app.locals.connectCounter--;
-  socket.broadcast.emit(app.locals.connectCounter);
+  io.socket.emit('compteur', app.locals.connectCounter);
 });
