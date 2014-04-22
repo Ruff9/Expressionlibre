@@ -16,9 +16,8 @@ app.use(stylus.middleware({
   force: true
 }));
 
-app.use(function(req, res, next) {
-  res.locals.connectCounter = 0;
-  next();
+app.locals({
+  connectCounter: 0
 });
 
 app.use('/static', express.static(__dirname + '/public/static'));
