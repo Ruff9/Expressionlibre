@@ -45,13 +45,15 @@ function handler (request, response) {
 }
 
 // Delete this row if you want to see debug messages
-// io.set('log level', 1);
+io.set('log level', 1);
 
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
 
-    app.locals.connectCounter++;
-    io.socket.emit('compteur', app.locals.connectCounter);
+    socket.on('compteur', function () {
+      app.locals.connectCounter++;
+      io.socket.emit('compteur', app.locals.connectCounter);
+    });  
 
     // Start listening for mouse move events
     socket.on('mousemove', function (data) {
@@ -62,6 +64,8 @@ io.sockets.on('connection', function (socket) {
 });
 
 io.sockets.on('disconnect', function (socket) {
-  app.locals.connectCounter--;
-  io.socket.emit('compteur', app.locals.connectCounter);
+  socket.on('compteur', function () {
+    app.locals.connectCounter--;
+    io.socket.emit('compteur', app.locals.connectCounter);
+  });  
 });

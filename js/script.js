@@ -22,7 +22,7 @@ $(function(){
     var socket = io.connect(url);
 
     // gestion du compteur de clients connectés 
-    socket.on ('compteur', function()) {
+    socket.on('compteur', function()) {
         socket.emit(app.locals.connectCounter);
     };
 
