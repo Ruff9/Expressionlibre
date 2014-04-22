@@ -9,14 +9,17 @@ var server = app.listen(process.env.PORT || 3000, function(){
 
 var io = require('socket.io').listen(server);
 
-app.locals.connectCounter = 0;
-
 app.use(stylus.middleware({
   src: __dirname + '/resources',
   dest: __dirname + '/public',
   debug: true,
   force: true
 }));
+
+app.use(function(req, res, next) {
+  res.locals.connectCounter = 0;
+  next();
+});
 
 app.use('/static', express.static(__dirname + '/public/static'));
 
