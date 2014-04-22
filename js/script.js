@@ -23,10 +23,10 @@ $(function(){
 
     // gestion du compteur de clients connectés 
     socket.on ('compteur', function()) {
-        socket.emit('compteur');
+        socket.emit(app.locals.connectCounter);
     };
 
-    gestion
+    // gestion du multi curseurs temps réel
 
     socket.on('moving', function (data) {
 
