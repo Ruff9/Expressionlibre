@@ -52,20 +52,20 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('compteur', function () {
       app.locals.connectCounter++;
-      io.socket.emit('compteur', app.locals.connectCounter);
+      socket.broadcast.emit('compteur', app.locals.connectCounter);
     });  
 
     // Start listening for mouse move events
     socket.on('mousemove', function (data) {
         // This line sends the event (broadcasts it)
         // to everyone except the originating client.
-        io.socket.emit('moving', data);
+        socket.broadcast.emit('moving', data);
     });
 });
 
 io.sockets.on('disconnect', function (socket) {
   socket.on('compteur', function () {
     app.locals.connectCounter--;
-    io.socket.emit('compteur', app.locals.connectCounter);
+    socket.broadcast.emit('compteur', app.locals.connectCounter);
   });  
 });
