@@ -18,30 +18,27 @@ app.use(stylus.middleware({
   force: true
 }));
 
-app.locals({
-  connectCounter: 0
-});
+app.locals.connectCounter = 0;
 
 app.use('/static', express.static(__dirname + '/public/static'));
 
 app.get('/', function(req, res) {
-    res.setHeader('Content-Type', 'text/html');
-    res.render('home.ejs');
+  res.setHeader('Content-Type', 'text/html');
+  res.render('home.ejs');
 });
 
 app.use(function(req, res, next){
-    res.setHeader('Content-Type', 'text/plain');
-    res.send(404, 'Page introuvable !');
+  res.setHeader('Content-Type', 'text/plain');
+  res.send(404, 'Page introuvable !');
 });
 
 // le code ci dessous provient de http://tutorialzine.com/2012/08/nodejs-drawing-game/
 
 // If the URL of the socket server is opened in a browser
 function handler (request, response) {
-
-    request.addListener('end', function () {
-        fileServer.serve(request, response); // this will return the correct file
-    });
+  request.addListener('end', function () {
+    fileServer.serve(request, response); // this will return the correct file
+  });
 }
 
 // Delete this row if you want to see debug messages
@@ -50,17 +47,18 @@ io.set('log level', 1);
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
 
-    socket.on('compteur', function () {
-      app.locals.connectCounter++;
-      socket.broadcast.emit('compteur', app.locals.connectCounter);
-    });  
+  socket.on('compteur', function () {
+    app.locals.connectCounter++;
+    socket.broadcast.emit('compteur', app.locals.connectCounter);
+  });  
 
-    // Start listening for mouse move events
-    socket.on('mousemove', function (data) {
-        // This line sends the event (broadcasts it)
-        // to everyone except the originating client.
-        socket.broadcast.emit('moving', data);
-    });
+  // Start listening for mouse move events
+  socket.on('mousemove', function (data) {
+      // This line sends the event (broadcasts it)
+      // to everyone except the originating client.
+      socket.broadcast.emit('moving', data);
+  });
+
 });
 
 io.sockets.on('disconnect', function (socket) {

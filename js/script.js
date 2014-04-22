@@ -23,7 +23,7 @@ $(function(){
 
     // gestion du compteur de clients connectés 
     socket.on('compteur', function()) {
-        socket.emit(app.locals.connectCounter);
+        socket.broadcast.emit(app.locals.connectCounter);
     };
 
     // gestion du multi curseurs temps réel
@@ -53,7 +53,6 @@ $(function(){
             socket.emit('mousemove',{
                 'x': e.pageX,
                 'y': e.pageY,
-                'drawing': drawing,
                 'id': id
             });
             lastEmit = $.now();
