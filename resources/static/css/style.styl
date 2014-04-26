@@ -1,13 +1,34 @@
 body
-  background-image:url("/static/images/redBackground.jpg")
-  background-repeat:no-repeat
-  background-size: 100%
+  width 100%
+  margin 0
+
+h1
+  display none
+
+h2
+  font-size 1.1em
+
+#zone_de_jeu
+  float left
+  background-color #F6F1E2
+  width 75%
+  height 100%
 
 #paper
-  z-index -1
-  position fixed
-  top 0
+  width 75%
+  height 100%
+  position absolute
+
+#sidebar
   left 0
+  background-color grey
+  height 100%
+  float left
+  width 25%
+
+#compteur
+  float right
+  margin-right 5%
 
 #cursors .cursor
 	position:absolute
@@ -15,42 +36,26 @@ body
 	height:24px
 	background:url("/static/images/curseur.png") no-repeat
 
-#logo
-  margin-top 60px
-  margin-left 50px
-
-#ligne1
-  margin-left 52px
-
-#compteur
-  margin-left 52px
-
-#texte1
-  margin-top 20px
-  margin-left 75px
-
 /*styles pour le formulaire mailchimp*/
 
 #mc-embedded-subscribe
   background-color crimson !important
-  display inline-block !important
-  width 40px !important
+  width 80% !important
+  margin-left 10% !important
 
 #mc_embed_signup .button
   border-radius:0px !important
   height 38px !important
-  margin-left: none !important
   margin-top: 1px !important
 
+#mc-embedded-subscribe-form
+  padding 0 0 0 0 !important
 
 #mce-EMAIL 
   display inline-block !important
-  width 350px !important
-  margin-right: none !important
+  width 80% !important
+  margin-left 10% !important
 
 #mc_embed_signup
   margin-top 250px
-  margin-left auto
-  margin-right auto
-  width 500px
-  z-index 2
+  width 100%
