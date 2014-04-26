@@ -29,10 +29,6 @@ $(function(){
 
     // écriture sur le mur
 
-    $('#zone_de_jeu').click(function(){
-            alert("clic bien reçu");
-        });
-
     socket.on('clic', function (data) {
 
         position_message[data.id] = cursor[data.id]; //cursor pas défini ?
