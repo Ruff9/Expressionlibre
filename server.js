@@ -47,9 +47,6 @@ io.set('log level', 1);
 app.locals.connectCounter = clients.length;
 app.locals.foo = "foobar";
 
-console.log(app.locals.foo);
-
-
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
 
@@ -65,10 +62,7 @@ io.sockets.on('connection', function (socket) {
 
   // diffusion des messages
   socket.on('message', function (data) {
-    console.log('dans le serveur dans');
     io.sockets.emit('contenu_message', data);
   });
 
 });
-
-// saisie de texte

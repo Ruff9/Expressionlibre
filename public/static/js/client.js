@@ -11,7 +11,7 @@ $(function(){
         canvas = $('#paper'),
         ctx = canvas[0].getContext('2d');
         
-    // Generate an unique ID
+    // génère une id unique
     var id = Math.round($.now()*Math.random());
     var clients = {};
     var cursors = {};
@@ -38,7 +38,6 @@ $(function(){
            
         });
 
-
             $("#saisie_texte").submit(function(e){
                 e.preventDefault()
                 socket.emit('message', {
@@ -51,7 +50,6 @@ $(function(){
 
     // affichage des messages
     socket.on('contenu_message', function (data) {
-        console.log('message reçu');
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
             'left' : data.posX,
@@ -68,13 +66,13 @@ $(function(){
             cursors[data.id] = $('<div class="cursor">').appendTo('#cursors');
         }
 
-        // Move the mouse pointer
+        // déplacement du curseur
         cursors[data.id].css({
             'left' : data.x,
             'top' : data.y
         });
 
-        // Saving the current client state
+        // sauvegarde de l'état actuel du client
         clients[data.id] = data;
         clients[data.id].updated = $.now();
     });
