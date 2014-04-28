@@ -42,18 +42,18 @@ function handler (request, response) {
 };
 
 // Delete this row if you want to see debug messages
-// io.set('log level', 1);
+io.set('log level', 1);
 
 app.locals.connectCounter = clients.length;
 app.locals.foo = "foobar";
 
 console.log(app.locals.foo);
-console.log(app.locals.connectCounter);
+
 
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
 
-  console.log(app.locals.foo);
+  console.log(app.locals.connectCounter);
   io.sockets.emit('compteur', app.locals.connectCounter);
   
   // Start listening for mouse move events
@@ -63,8 +63,9 @@ io.sockets.on('connection', function (socket) {
       socket.broadcast.emit('moving', data);
   });
 
-  socket.on('clic', function (data) {
-    socket.broadcast.emit('clic_position', data);
+  // diffusion des messages
+  socket.on('message', function (data) {
+    socket.broadcast.emit('contenu_message', data);
   });
 
 });

@@ -4,11 +4,6 @@ $(function(){
         alert('Votre navigateur ne supporte pas la fonction canvas :( Pour résoudre le problème, vous pouvez le mettre à jour.');
         return false;
     };
-
-    $("#zone_de_jeu").click(function(e){
-            alert( "clic effectué X:" + e.pageX + " ,Y: "+ e.pageY );
-        });
-
     var url = 'http://localhost:3000'||'http://joueavecmoi.herokuapp.com/';
 
     var doc = $(document),
@@ -26,26 +21,45 @@ $(function(){
 
     // gestion du compteur de clients connectés?
 
-    socket.on('compteur', function () {
-        socket.emit(app.locals.connectCounter);
-    });
+    // socket.on('compteur', function () {
+    //     socket.emit(app.locals.connectCounter);
+    // });
 
     // écriture sur le mur
 
-    socket.on('clic_position', function (data) {
+    $("#zone_de_jeu").click(function(e){
+            position_message = [e.pageX, e.pageY];
+            $("#saisie_texte").css({
+                'left' : position_message[0],
+                'top' : position_message[1], 
+                'display' : 'block',
+            });
+            $('#champ_saisie').focus();
+           
+            $("#saisie_texte").submit(function(){
+                socket.emit('message', {
+                    'contenu': $('#champ_saisie').val(),
+                    'posX': position_message[0],
+                    'posY': position_message[1], 
+                    'id': id
+                });
+            });
+        });
 
-        
-        // console.log("clic !");
-        // position_message[data.id] = cursor[data.id]; //cursor pas défini ?
-        // message[data.id] = $('<div class="message">').appendTo('#messages');
+
+    // affichage des messages
+
+    socket.on('contenu_message', function (data) {
+        messages[data.id] = $('<div class="message">').appendTo('#messages');
+        messages[data.id].css({
+            'left' : data.posX,
+            'top' : data.posY
+        });
     });
-
 
     // gestion du multi curseurs temps réel
 
     socket.on('moving', function (data) {
-
-        
 
         if(! (data.id in clients)){
             // nouvel utilisateur => création d'un curseur

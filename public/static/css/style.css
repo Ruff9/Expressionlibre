@@ -26,9 +26,15 @@ h2 {
   float: left;
   width: 25%;
 }
+#saisie_texte {
+  position: absolute;
+}
 #compteur {
   float: right;
   margin-right: 5%;
+}
+#messages .message {
+  position: absolute;
 }
 #cursors .cursor {
   position: absolute;
