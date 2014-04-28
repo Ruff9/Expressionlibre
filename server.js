@@ -60,7 +60,7 @@ io.sockets.on('connection', function (socket) {
       socket.broadcast.emit('moving', data);
   });
 
-  // diffusion des messages
+  // création et renvoi des messages
   socket.on('message', function (data) {
     io.sockets.emit('contenu_message', data);
   });

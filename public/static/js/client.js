@@ -19,6 +19,9 @@ $(function(){
     var position_message = {};
     var messages = {};
 
+    var nb_messages_max = 200;
+    var pas_opacite = 1 - nb_messages_max;
+
     // gestion du compteur de clients connectés?
 
     // socket.on('compteur', function () {
@@ -28,32 +31,49 @@ $(function(){
     // écriture sur le mur
 
     $("#zone_de_jeu").click(function(e){
+
+        if ($('#champ_saisie').val() == ''){
             position_message = [e.pageX, e.pageY];
-            $("#saisie_texte").css({
-                'left' : position_message[0],
-                'top' : position_message[1], 
-                'display' : 'block',
-            });
-            $('#champ_saisie').focus();
-           
+        };
+
+        $("#saisie_texte").css({
+            'left' : position_message[0],
+            'top' : position_message[1], 
+            'display' : 'block'
         });
 
-            $("#saisie_texte").submit(function(e){
-                e.preventDefault()
-                socket.emit('message', {
-                    'contenu': $('#champ_saisie').val(),
-                    'posX': position_message[0],
-                    'posY': position_message[1], 
-                    'id': id
-                });
-            });
+        $('#champ_saisie').focus();
+    });
+
+    $("#saisie_texte").submit(function(e){
+        e.preventDefault()
+        socket.emit('message', {
+            'contenu': $('#champ_saisie').val(),
+            'posX': position_message[0],
+            'posY': position_message[1],
+            'id': id
+        });
+
+        $(this).find('#champ_saisie').val('');
+
+        $("#saisie_texte").css({
+            'display' : 'none'
+        });
+    });
 
     // affichage des messages
     socket.on('contenu_message', function (data) {
+        
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
             'left' : data.posX,
             'top' : data.posY,
+        });
+        console.log($(".message"));
+        $(".message").each(function () {
+            op = $(this).css("opacity");
+            newop = op - pas_opacite;
+            $(this).css("opacity", newop);
         });
     });
 
