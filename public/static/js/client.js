@@ -3,14 +3,18 @@ $(function(){
     if(!('getContext' in document.createElement('canvas'))){
         alert('Votre navigateur ne supporte pas la fonction canvas :( Pour résoudre le problème, vous pouvez le mettre à jour.');
         return false;
-    }
+    };
+
+    $("#zone_de_jeu").click(function(e){
+            alert( "clic effectué X:" + e.pageX + " ,Y: "+ e.pageY );
+        });
 
     var url = 'http://localhost:3000'||'http://joueavecmoi.herokuapp.com/';
 
     var doc = $(document),
         win = $(window),
         canvas = $('#paper'),
-        ctx = canvas[0].getContext('2d'),
+        ctx = canvas[0].getContext('2d');
         
     // Generate an unique ID
     var id = Math.round($.now()*Math.random());
@@ -26,13 +30,14 @@ $(function(){
         socket.emit(app.locals.connectCounter);
     });
 
-
     // écriture sur le mur
 
-    socket.on('clic', function (data) {
+    socket.on('clic_position', function (data) {
 
-        position_message[data.id] = cursor[data.id]; //cursor pas défini ?
-        message[data.id] = $('<div class="message">').appendTo('#messages');
+        
+        // console.log("clic !");
+        // position_message[data.id] = cursor[data.id]; //cursor pas défini ?
+        // message[data.id] = $('<div class="message">').appendTo('#messages');
     });
 
 
@@ -40,8 +45,10 @@ $(function(){
 
     socket.on('moving', function (data) {
 
+        
+
         if(! (data.id in clients)){
-            // a new user has come online. create a cursor for them
+            // nouvel utilisateur => création d'un curseur
             cursors[data.id] = $('<div class="cursor">').appendTo('#cursors');
         }
 

@@ -39,7 +39,7 @@ function handler (request, response) {
   request.addListener('end', function () {
     fileServer.serve(request, response); // this will return the correct file
   });
-}
+};
 
 // Delete this row if you want to see debug messages
 // io.set('log level', 1);
@@ -49,7 +49,6 @@ app.locals.foo = "foobar";
 
 console.log(app.locals.foo);
 console.log(app.locals.connectCounter);
-
 
 // Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
@@ -64,10 +63,10 @@ io.sockets.on('connection', function (socket) {
       socket.broadcast.emit('moving', data);
   });
 
+  socket.on('clic', function (data) {
+    socket.broadcast.emit('clic_position', data);
+  });
+
 });
 
 // saisie de texte
-io.sockets.on('clic', function (data) {
-  
-
-});
