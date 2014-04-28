@@ -10,6 +10,12 @@ var server = app.listen(process.env.PORT || 3000, function(){
 var io = require('socket.io').listen(server);
 var clients = io.sockets.clients;
 
+// hack pour faire tourner socket.io sur Heroku (?)
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+
 app.use(stylus.middleware({
   src: __dirname + '/resources',
   dest: __dirname + '/public',
@@ -33,7 +39,7 @@ app.use(function(req, res, next){
   res.setHeader('Content-Type', 'text/plain');
   res.send(404, 'Page introuvable !');
 });
-http://stackoverflow.com/questions/4659430/jquery-opacity-cross-browser
+
 // If the URL of the socket server is opened in a browser
 function handler (request, response) {
   request.addListener('end', function () {

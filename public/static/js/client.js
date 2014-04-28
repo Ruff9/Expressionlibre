@@ -4,7 +4,9 @@ $(function(){
         alert('Votre navigateur ne supporte pas la fonction canvas :( Pour résoudre le problème, vous pouvez le mettre à jour.');
         return false;
     };
-    var url = 'http://localhost:3000'||'http://joueavecmoi.herokuapp.com/';
+
+    // WTF l edouble pipe ne fonctionne pas, seulement la première valeur est prise en compte
+    var url = 'http://joueavecmoi.herokuapp.com/'||'http://localhost:3000';
 
     var doc = $(document),
         win = $(window),
