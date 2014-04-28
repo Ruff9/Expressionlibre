@@ -33,7 +33,7 @@ app.use(function(req, res, next){
   res.setHeader('Content-Type', 'text/plain');
   res.send(404, 'Page introuvable !');
 });
-
+http://stackoverflow.com/questions/4659430/jquery-opacity-cross-browser
 // If the URL of the socket server is opened in a browser
 function handler (request, response) {
   request.addListener('end', function () {
