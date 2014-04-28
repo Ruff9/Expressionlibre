@@ -5,7 +5,7 @@ $(function(){
         return false;
     };
 
-    // WTF l edouble pipe ne fonctionne pas, seulement la première valeur est prise en compte
+    // WTF le double pipe ne fonctionne pas, seulement la première valeur est prise en compte
     var url = 'http://joueavecmoi.herokuapp.com/'||'http://localhost:3000';
 
     var doc = $(document),
@@ -22,7 +22,7 @@ $(function(){
     var messages = {};
 
     var nb_messages_max = 200;
-    var pas_opacite = 1 - nb_messages_max;
+    var pas_opacite = 1/nb_messages_max;
 
     // gestion du compteur de clients connectés?
 
