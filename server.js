@@ -65,7 +65,8 @@ io.sockets.on('connection', function (socket) {
 
   // diffusion des messages
   socket.on('message', function (data) {
-    socket.broadcast.emit('contenu_message', data);
+    console.log('dans le serveur dans');
+    io.sockets.emit('contenu_message', data);
   });
 
 });

@@ -36,7 +36,11 @@ $(function(){
             });
             $('#champ_saisie').focus();
            
-            $("#saisie_texte").submit(function(){
+        });
+
+
+            $("#saisie_texte").submit(function(e){
+                e.preventDefault()
                 socket.emit('message', {
                     'contenu': $('#champ_saisie').val(),
                     'posX': position_message[0],
@@ -44,16 +48,14 @@ $(function(){
                     'id': id
                 });
             });
-        });
-
 
     // affichage des messages
-
     socket.on('contenu_message', function (data) {
-        messages[data.id] = $('<div class="message">').appendTo('#messages');
+        console.log('message reçu');
+        messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
             'left' : data.posX,
-            'top' : data.posY
+            'top' : data.posY,
         });
     });
 

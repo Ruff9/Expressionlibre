@@ -35,13 +35,12 @@
 		<div id="messages">
 			<!-- les messages sont créés ici -->
 		</div>
-
-		<div id="saisie_texte" style="display:none;">
-			<form>
-				<input type="text" id="champ_saisie" name="contenu">
-				<input type="submit" value="OK">
-			</form>
-		</div>
+		
+		<form id="saisie_texte" style="display:none;">
+			<input type="text" id="champ_saisie" name="contenu">
+			<input type="submit" value="OK">
+		</form>
+	
 	</div>
 
 	<script src="/socket.io/socket.io.js"></script>
