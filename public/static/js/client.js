@@ -69,10 +69,13 @@ $(function(){
             'left' : data.posX,
             'top' : data.posY,
         });
-        console.log($(".message"));
+        
         $(".message").each(function () {
             op = $(this).css("opacity");
             newop = op - pas_opacite;
+            if (newop == 0){
+                $(this).remove();
+            };
             $(this).css("opacity", newop);
         });
     });
