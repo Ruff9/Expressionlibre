@@ -6,7 +6,7 @@ $(function(){
     };
 
     // WTF le double pipe ne fonctionne pas, seulement la première valeur est prise en compte
-    var url = 'http://localhost:3000'||'http://joueavecmoi.herokuapp.com/';
+    var url = 'http://joueavecmoi.herokuapp.com/'||'http://localhost:3000';
 
     var doc = $(document),
         win = $(window),

@@ -64,8 +64,10 @@ app.locals.foo = "foobar";
 // console.log(app.locals.foo);
 
 io.sockets.on('connection', function (socket) {
+
   var max_messages = 200
   var initial = client.get('compteur')
+  
   for(i = initial; i < (max_messages + initial); i++) {
     var next_key = (i % max_messages)
     client.hgetall('message:' + next_key, function (err, message){
