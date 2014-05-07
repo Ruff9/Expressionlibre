@@ -2,8 +2,15 @@ var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
 var app = express();
-var redis = require('redis');
-var client = redis.createClient();
+
+if (process.env.REDISTOGO_URL) {
+    var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+    var redis = require("redis").createClient(rtg.port, rtg.hostname);
+    redis.auth(rtg.auth.split(":")[1]);
+} else {
+  var redis = require('redis');
+  var client = redis.createClient();
+  }
 
 client.on("error", function (err) {
         console.log("Error " + err);
@@ -67,7 +74,7 @@ io.sockets.on('connection', function (socket) {
 
   var max_messages = 200
   var initial = client.get('compteur')
-  
+
   for(i = initial; i < (max_messages + initial); i++) {
     var next_key = (i % max_messages)
     client.hgetall('message:' + next_key, function (err, message){
