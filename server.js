@@ -2,13 +2,22 @@ var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
 var app = express();
+var redis = require('redis');
+var client = redis.createClient();
+
+client.on("error", function (err) {
+        console.log("Error " + err);
+    });
 
 var server = app.listen(process.env.PORT || 3000, function(){
-	console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
 var io = require('socket.io').listen(server);
 var clients = io.sockets.clients;
+
+// attention : "client" est utilisé pour redis, et "clients" pour socket.IO. 
+// à refactorer pour plus de lisibilité
 
 // hack pour faire tourner socket.io sur Heroku (?)
 io.configure(function () { 
@@ -52,23 +61,44 @@ io.set('log level', 1);
 
 app.locals.connectCounter = clients.length;
 app.locals.foo = "foobar";
+// console.log(app.locals.foo);
 
-// Listen for incoming connections from clients
 io.sockets.on('connection', function (socket) {
-
-  console.log(app.locals.connectCounter);
-  io.sockets.emit('compteur', app.locals.connectCounter);
+  var max_messages = 200
+  var initial = client.get('compteur')
+  for(i = initial; i < (max_messages + initial); i++) {
+    var next_key = (i % max_messages)
+    client.hgetall('message:' + next_key, function (err, message){
+      if(message) {
+        socket.emit('affiche_message', message)
+      }
+    })
+  }
   
-  // Start listening for mouse move events
   socket.on('mousemove', function (data) {
-      // This line sends the event (broadcasts it)
-      // to everyone except the originating client.
       socket.broadcast.emit('moving', data);
   });
 
   // création et renvoi des messages
+  var compteur = 0;
+
   socket.on('message', function (data) {
-    io.sockets.emit('contenu_message', data);
+    
+    compteur += 1;
+
+    client.hset("message:"+compteur, "contenu", data.contenu);
+    client.hset("message:"+compteur, "posX", data.posX);
+    client.hset("message:"+compteur, "posY", data.posY);
+     
+    client.hget("message:"+compteur, "contenu", redis.print);
+    client.set('compteur', compteur)
+
+    if (compteur >= max_messages) {
+      compteur = 0;
+    };
+
+    io.sockets.emit('affiche_message', data);
+  
   });
 
 });

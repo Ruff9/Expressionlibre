@@ -5,7 +5,8 @@
         "express": "~3.2.1",
         "stylus": "0.42.x",
         "ejs": "~0.8.3",
-        "socket.io": "0.9.16"
+        "socket.io": "0.9.16",
+        "redis": "0.10.1"
     },
     "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
     "description": "Landing page JAM",

@@ -6,15 +6,16 @@ $(function(){
     };
 
     // WTF le double pipe ne fonctionne pas, seulement la première valeur est prise en compte
-    var url = 'http://joueavecmoi.herokuapp.com/'||'http://localhost:3000';
+    var url = 'http://localhost:3000'||'http://joueavecmoi.herokuapp.com/';
 
     var doc = $(document),
         win = $(window),
         canvas = $('#paper'),
         ctx = canvas[0].getContext('2d');
         
-    // génère une id unique
+    // génère une id unique pour les curseurs
     var id = Math.round($.now()*Math.random());
+
     var clients = {};
     var cursors = {};
     var socket = io.connect(url);
@@ -48,12 +49,11 @@ $(function(){
     });
 
     $("#saisie_texte").submit(function(e){
-        e.preventDefault()
+        e.preventDefault();
         socket.emit('message', {
             'contenu': $('#champ_saisie').val(),
             'posX': position_message[0],
-            'posY': position_message[1],
-            'id': id
+            'posY': position_message[1]
         });
 
         $(this).find('#champ_saisie').val('');
@@ -63,9 +63,7 @@ $(function(){
         });
     });
 
-    // affichage des messages
-    socket.on('contenu_message', function (data) {
-        
+    socket.on('affiche_message', function (data) {
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
             'left' : data.posX,
@@ -81,8 +79,6 @@ $(function(){
             $(this).css("opacity", newop);
         });
     });
-
-    // gestion du multi curseurs temps réel
 
     socket.on('moving', function (data) {
 
