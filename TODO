@@ -1,10 +1,16 @@
 TODO
 
+Pb base Redis dans Redis to go?
+
 gérer l'espace d'écriture
 
-bloquer le code html dans les messages
+gestion des url dans client.js
+
+bloquer le code html/js dans les messages
 
 bug compteur : un refresh augmente le compteur de 1
 
 gérer mailchimp : adresse mail perso donnée à tout le monde...
 					nom de la liste : beta testeurs => premiers arrivés
+
+nom de domaine joueavecmoi.fr : appeler OVH
