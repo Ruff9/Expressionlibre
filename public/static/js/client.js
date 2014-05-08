@@ -6,7 +6,8 @@ $(function(){
     };
 
     // A refactorer : le double pipe ne fonctionne pas, seulement la première valeur est prise en compte
-    var url = 'http://joueavecmoi.herokuapp.com/'||'http://localhost:3000';
+    // var url = 'http://joueavecmoi.herokuapp.com/'||'http://localhost:3000';
+    var url = 'http://localhost:3000'||'http://joueavecmoi.herokuapp.com/';
 
     var doc = $(document),
         win = $(window),
@@ -23,12 +24,6 @@ $(function(){
 
     var nb_messages_max = 200;
     var pas_opacite = 1/nb_messages_max;
-
-    // gestion du compteur de clients connectés?
-
-    // socket.on('compteur', function () {
-    //     socket.emit(app.locals.connectCounter);
-    // });
 
     $("#zone_de_jeu").click(function(e){
 

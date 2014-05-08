@@ -22,7 +22,7 @@ var server = app.listen(process.env.PORT || 3000, function(){
 });
 
 var io = require('socket.io').listen(server);
-var clients = io.sockets.clients;
+var clients = io.sockets.clients();
 
 // attention : "client" est utilisé pour redis, et "clients" pour socket.IO. 
 // à refactorer pour plus de lisibilité
@@ -67,11 +67,12 @@ function handler (request, response) {
 // Commenter la ligne suivante pour obtenir des logs de debug
 io.set('log level', 1);
 
-app.locals.connectCounter = clients.length;
-app.locals.foo = "foobar";
-// console.log(app.locals.foo);
+app.locals.connectCounter = 0;
 
 io.sockets.on('connection', function (socket) {
+
+  app.locals.connectCounter = Object.keys(io.sockets.manager.connected).length;
+  console.log(app.locals.connectCounter);
 
   var max_messages = 200
   var initial = client.get('compteur')
@@ -111,4 +112,8 @@ io.sockets.on('connection', function (socket) {
   
   });
 
+});
+
+io.sockets.on('disconnect', function () {
+    app.locals.connectCounter = Object.keys(io.sockets.manager.connected).length;
 });

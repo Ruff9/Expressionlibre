@@ -4,7 +4,7 @@ gérer l'espace d'écriture
 
 bloquer le code html dans les messages
 
-Compteur de clients en temps réel
+bug compteur : un refresh augmente le compteur de 1
 
 gérer mailchimp : adresse mail perso donnée à tout le monde...
 					nom de la liste : beta testeurs => premiers arrivés

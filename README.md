@@ -2,7 +2,7 @@ Mur d'expression libre en temps-réel réalisé avec NodeJS, Redis, Express, Sty
 
 ## Tutos et inspirations
 
-Ceci est la première application que j'ai développé avec ces technologies. J'ai appris à les utiliser grâce aux ressources suivantes.
+Ceci est la première application que j'ai développé avec ces outils. J'ai appris à les utiliser grâce aux ressources suivantes.
 
 [Les bases de NodeJS](http://fr.openclassrooms.com/informatique/cours/des-applications-ultra-rapides-avec-node-js)
 
