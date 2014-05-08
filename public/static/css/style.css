@@ -71,7 +71,7 @@ p {
 #texte_about {
   margin: 50px;
 }
-#lien_retour {
+.lien_about {
   text-align: center;
   font-family: 'Oxygen', sans-serif;
 }

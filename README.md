@@ -1,6 +1,4 @@
-Cette application est le résultat d'expéri
-
-Ce site utilise NodeJS, Redis, Express, Stylus et Socket.IO. 
+Mur d'expression libre en temps-réel réalisé avec NodeJS, Redis, Express, Stylus et Socket.IO. 
 
 ## Tutos et inspirations
 
