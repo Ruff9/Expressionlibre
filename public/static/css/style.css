@@ -2,11 +2,28 @@ body {
   width: 100%;
   margin: 0;
 }
+@font-face {
+  font-family: 'Oxygen', sans-serif;
+}
+#conteneur_logo {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
 h1 {
   display: none;
 }
 h2 {
   font-size: 1.1em;
+  font-family: 'Oxygen', sans-serif;
+}
+p {
+  font-family: 'Oxygen', sans-serif;
+}
+.message {
+  font-family: 'Oxygen', sans-serif;
 }
 #zone_de_jeu {
   float: left;
