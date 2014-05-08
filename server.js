@@ -64,7 +64,7 @@ function handler (request, response) {
   });
 };
 
-// Delete this row if you want to see debug messages
+// Commenter la ligne suivante pour obtenir des logs de debug
 io.set('log level', 1);
 
 app.locals.connectCounter = clients.length;

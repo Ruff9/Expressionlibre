@@ -52,6 +52,9 @@ p
   padding 10px
   box-sizing border-box
 
+#about
+  background-color #F6F1E2
+
 #saisie_texte
   position absolute
 
@@ -69,13 +72,16 @@ p
 	background:url("/static/images/curseur.png") no-repeat
 
 #texte_about
-  margin 50px
+  margin-top 50px
+  margin-right 50px
+  margin-left 50px
+  margin-bottom 30px
 
 .lien_about
   text-align center
   font-family: 'Oxygen', sans-serif
 
-/*styles pour le formulaire mailchimp*/
+/*styles pour le formulaire mailchimp principal*/
 
 #mc-embedded-subscribe
   background-color crimson !important
@@ -91,10 +97,22 @@ p
   padding 0 0 0 0 !important
 
 #mce-EMAIL 
-  display inline-block !important
   width 80% !important
   margin-left 10% !important
 
 #mc_embed_signup
   margin-top 200px
   width 100%
+
+/*styles pour le formulaire mailchimp page about*/
+
+#mc_embed_signup2
+  text-align center
+  margin-top 30px
+
+#mce-EMAIL2
+  display inline-block !important
+  width 30%
+
+#mc-embedded-subscribe2
+  display inline-block !important

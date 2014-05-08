@@ -5,7 +5,7 @@ $(function(){
         return false;
     };
 
-    // WTF le double pipe ne fonctionne pas, seulement la première valeur est prise en compte
+    // A refactorer : le double pipe ne fonctionne pas, seulement la première valeur est prise en compte
     var url = 'http://joueavecmoi.herokuapp.com/'||'http://localhost:3000';
 
     var doc = $(document),
@@ -13,7 +13,6 @@ $(function(){
         canvas = $('#paper'),
         ctx = canvas[0].getContext('2d');
         
-    // génère une id unique pour les curseurs
     var id = Math.round($.now()*Math.random());
 
     var clients = {};
@@ -30,8 +29,6 @@ $(function(){
     // socket.on('compteur', function () {
     //     socket.emit(app.locals.connectCounter);
     // });
-
-    // écriture sur le mur
 
     $("#zone_de_jeu").click(function(e){
 
@@ -83,17 +80,15 @@ $(function(){
     socket.on('moving', function (data) {
 
         if(! (data.id in clients)){
-            // nouvel utilisateur => création d'un curseur
+    
             cursors[data.id] = $('<div class="cursor">').appendTo('#cursors');
         }
 
-        // déplacement du curseur
         cursors[data.id].css({
             'left' : data.x,
             'top' : data.y
         });
 
-        // sauvegarde de l'état actuel du client
         clients[data.id] = data;
         clients[data.id].updated = $.now();
     });
@@ -111,14 +106,12 @@ $(function(){
         }
     });
 
-    // Remove inactive clients after 10 seconds of inactivity
+    // supprime le client après 10secondes d'inactivité
+
     setInterval(function(){
 
         for(ident in clients){
             if($.now() - clients[ident].updated > 10000){
-
-                // Last update was more than 10 seconds ago.
-                // This user has probably closed the page
 
                 cursors[ident].remove();
                 delete clients[ident];
