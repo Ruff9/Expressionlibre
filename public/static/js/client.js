@@ -22,7 +22,7 @@ $(function(){
     var position_message = {};
     var messages = {};
 
-    var nb_messages_max = 200;
+    var nb_messages_max = 150;
     var pas_opacite = 1/nb_messages_max;
 
     $("#zone_de_jeu").click(function(e){

@@ -74,7 +74,7 @@ io.sockets.on('connection', function (socket) {
   app.locals.connectCounter = Object.keys(io.sockets.manager.connected).length;
   console.log(app.locals.connectCounter);
 
-  var max_messages = 200
+  var max_messages = 150
   var initial = client.get('compteur')
 
   for(i = initial; i < (max_messages + initial); i++) {
@@ -112,8 +112,8 @@ io.sockets.on('connection', function (socket) {
   
   });
 
-});
-
-io.sockets.on('disconnect', function () {
+  sockets.on('disconnect', function () {
     app.locals.connectCounter = Object.keys(io.sockets.manager.connected).length;
+  });
+
 });
