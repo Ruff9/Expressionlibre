@@ -71,7 +71,7 @@ app.locals.connectCounter = 0;
 
 io.sockets.on('connection', function (socket) {
 
-  app.locals.connectCounter = Object.keys(io.sockets.manager.connected).length;
+  app.locals.connectCounter += 1;
   console.log(app.locals.connectCounter);
 
   var max_messages = 150
@@ -112,8 +112,8 @@ io.sockets.on('connection', function (socket) {
   
   });
 
-  socket.on('disconnect', function () {
-    app.locals.connectCounter = Object.keys(io.sockets.manager.connected).length;
+  socket.on('disconnect', function (data) {
+    app.locals.connectCounter -= 1;
   });
 
 });
