@@ -112,7 +112,7 @@ io.sockets.on('connection', function (socket) {
   
   });
 
-  sockets.on('disconnect', function () {
+  socket.on('disconnect', function () {
     app.locals.connectCounter = Object.keys(io.sockets.manager.connected).length;
   });
 
