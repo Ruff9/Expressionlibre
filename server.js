@@ -24,8 +24,7 @@ var server = app.listen(process.env.PORT || 3000, function(){
 var io = require('socket.io').listen(server);
 var clients = io.sockets.clients();
 
-// attention : "client" est utilisé pour redis, et "clients" pour socket.IO. 
-// à refactorer pour plus de lisibilité
+// "client" est utilisé pour redis, et "clients" pour socket.IO. 
 
 // hack pour faire tourner socket.io sur Heroku (?)
 io.configure(function () { 
@@ -40,10 +39,26 @@ app.use(stylus.middleware({
   force: true
 }));
 
+app.use(function(req, res, next){
+  var ua = req.headers['user-agent'];
+  client.zadd('online', Date.now(), ua, next);
+});
+
+app.use(function(req, res, next){
+  var min = 60 * 1000;
+  var ago = Date.now() - min;
+  client.zrevrangebyscore('online', '+inf', ago, function(err, users){
+    if (err) return next(err);
+    req.online = users;
+    next();
+  });
+});
+
 app.use('/static', express.static(__dirname + '/public/static'));
 
 app.get('/', function(req, res) {
   res.setHeader('Content-Type', 'text/html');
+  app.locals.=req.online.length;
   res.render('home.ejs');
 });
 
@@ -57,10 +72,9 @@ app.use(function(req, res, next){
   res.send(404, 'Page introuvable !');
 });
 
-// If the URL of the socket server is opened in a browser
 function handler (request, response) {
   request.addListener('end', function () {
-    fileServer.serve(request, response); // this will return the correct file
+    fileServer.serve(request, response);
   });
 };
 
@@ -72,7 +86,7 @@ app.locals.connectCounter = 0;
 io.sockets.on('connection', function (socket) {
 
   app.locals.connectCounter += 1;
-  console.log(app.locals.connectCounter);
+  socket.emit('compteurSocket', app.locals.connectCounter);
 
   var max_messages = 150
   var initial = client.get('compteur')
@@ -114,6 +128,7 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('disconnect', function (data) {
     app.locals.connectCounter -= 1;
+    socket.emit('compteurSocket', app.locals.connectCounter);
   });
 
 });

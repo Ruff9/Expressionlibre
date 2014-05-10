@@ -55,6 +55,10 @@ $(function(){
         });
     });
 
+    socket.on('compteurSocket', function (data) {
+        document.getElementById("compteur").innerHTML = data;
+    });
+
     socket.on('affiche_message', function (data) {
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({

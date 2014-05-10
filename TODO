@@ -1,16 +1,20 @@
 TODO
 
+compteur 
+
+cheker bug saisie mac firefox cf alice
+	=> pb box sizing sur vielle version mozilla
+
 se renseigner persistence donnée s Redis
 
 gérer l'espace d'écriture
 
 gestion des url dans client.js
 
-bloquer le code html/js dans les messages
+bloquer le code html(?)/js dans les messages
 
-bug compteur : un refresh augmente le compteur de 1
+positionnement champ texte par rapport au clic
 
-gérer mailchimp : adresse mail perso donnée à tout le monde...
-					nom de la liste : beta testeurs => premiers arrivés
-
-nom de domaine joueavecmoi.fr : appeler OVH
+design : fond
+		police (?)
+		Logo

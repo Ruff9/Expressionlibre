@@ -2,8 +2,6 @@ Mur d'expression libre en temps-réel réalisé avec NodeJS, Redis, Express, Sty
 
 ## Tutos et inspirations
 
-Ceci est la première application que j'ai développé avec ces outils. J'ai appris à les utiliser grâce aux ressources suivantes.
-
 [Les bases de NodeJS](http://fr.openclassrooms.com/informatique/cours/des-applications-ultra-rapides-avec-node-js)
 
 [Tuto chat temp-réel avec NodeJS et Socket.IO](http://youtu.be/8jkkd2Ohte8)
