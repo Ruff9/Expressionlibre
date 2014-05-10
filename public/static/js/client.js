@@ -55,9 +55,9 @@ $(function(){
         });
     });
 
-    socket.on('compteurSocket', function (data) {
-        doc.getElementById("compteurVal").innerHTML = data;
-    });
+    // socket.on('compteurSocket', function (data) {
+    //     doc.getElementById("compteurVal").innerHTML = data;
+    // });
 
     socket.on('affiche_message', function (data) {
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');

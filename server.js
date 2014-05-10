@@ -65,12 +65,12 @@ function handler (request, response) {
 // Commenter la ligne suivante pour obtenir des logs de debug
 io.set('log level', 1);
 
-var connectCounter = 0;
+app.locals.connectCounter = 0;
 
 io.sockets.on('connection', function (socket) {
 
-  connectCounter ++;
-  socket.emit('compteurSocket', connectCounter);
+  app.locals.connectCounter ++;
+  // socket.emit('compteurSocket', app.locals.connectCounter);
 
   var max_messages = 150
   var initial = client.get('compteur')
@@ -111,8 +111,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function () {
-    connectCounter --;
-    socket.emit('compteurSocket', connectCounter);
+    app.locals.connectCounter ++;
   });
 
 });
