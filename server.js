@@ -39,26 +39,25 @@ app.use(stylus.middleware({
   force: true
 }));
 
-app.use(function(req, res, next){
-  var ua = req.headers['user-agent'];
-  client.zadd('online', Date.now(), ua, next);
-});
+// app.use(function(req, res, next){
+//   var ua = req.headers['user-agent'];
+//   client.zadd('online', Date.now(), ua, next);
+// });
 
-app.use(function(req, res, next){
-  var min = 60 * 1000;
-  var ago = Date.now() - min;
-  client.zrevrangebyscore('online', '+inf', ago, function(err, users){
-    if (err) return next(err);
-    req.online = users;
-    next();
-  });
-});
+// app.use(function(req, res, next){
+//   var min = 60 * 1000;
+//   var ago = Date.now() - min;
+//   client.zrevrangebyscore('online', '+inf', ago, function(err, users){
+//     if (err) return next(err);
+//     req.online = users;
+//     next();
+//   });
+// });
 
 app.use('/static', express.static(__dirname + '/public/static'));
 
 app.get('/', function(req, res) {
   res.setHeader('Content-Type', 'text/html');
-  app.locals.=req.online.length;
   res.render('home.ejs');
 });
 
