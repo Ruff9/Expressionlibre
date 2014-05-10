@@ -56,7 +56,7 @@ $(function(){
     });
 
     socket.on('compteurSocket', function (data) {
-        document.getElementById("compteur").innerHTML = data;
+        document.getElementById("compteurVal").innerHTML = data;
     });
 
     socket.on('affiche_message', function (data) {
