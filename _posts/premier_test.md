@@ -1,10 +1,9 @@
 {{{
   "title": "Premier test",
-  "tags": ["blog", "fun"],
   "category": "javascript",
   "date": "11-5-2014"
 }}}
 
-#Gros titre
-
-Un contenu super intéressant. Oui oui. 
+Un contenu super intéressant. Oui oui.
+<!--more-->
+Et ça ne devrait pas apparatre sur l'index. 

@@ -32,12 +32,12 @@ var poet = Poet(app, {
   postsPerPage: 5,
   metaFormat: 'json',
   routes: {
-    '/blog/posts/:post': 'post',
-    '/blog/pagination/:page': 'page',
-    '/blog/tags/:tag': 'tag',
-    '/blog/categories/:category': 'category'
+    '/blog/:post': 'blog/post',
+    '/blog/pagination/:page': 'blog/page'
   }
-}).init();
+});
+
+poet.watch().init();
 
 // "client" est utilisé pour redis, et "clients" pour socket.IO. 
 
@@ -68,7 +68,7 @@ app.get('/about', function(req, res) {
 
 app.get('/blog', function(req, res) {
   res.setHeader('Content-Type', 'text/html');
-  res.render('index');
+  res.render('blog/index');
 });
 
 app.use(function(req, res, next){
