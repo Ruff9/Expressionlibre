@@ -2,6 +2,7 @@ var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
 var app = express();
+var Poet = require('poet');
 
 if (process.env.REDISTOGO_URL) {
     var rtg   = require("url").parse(process.env.REDISTOGO_URL);
@@ -24,6 +25,20 @@ var server = app.listen(process.env.PORT || 3000, function(){
 var io = require('socket.io').listen(server);
 var clients = io.sockets.clients();
 
+app.set('view engine', 'ejs');
+
+var poet = Poet(app, {
+  posts: './_posts/',
+  postsPerPage: 5,
+  metaFormat: 'json',
+  routes: {
+    '/blog/posts/:post': 'post',
+    '/blog/pagination/:page': 'page',
+    '/blog/tags/:tag': 'tag',
+    '/blog/categories/:category': 'category'
+  }
+}).init();
+
 // "client" est utilisé pour redis, et "clients" pour socket.IO. 
 
 // hack pour faire tourner socket.io sur Heroku (?)
@@ -43,12 +58,17 @@ app.use('/static', express.static(__dirname + '/public/static'));
 
 app.get('/', function(req, res) {
   res.setHeader('Content-Type', 'text/html');
-  res.render('home.ejs');
+  res.render('home');
 });
 
 app.get('/about', function(req, res) {
   res.setHeader('Content-Type', 'text/html');
-  res.render('about.ejs');
+  res.render('about');
+});
+
+app.get('/blog', function(req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  res.render('index');
 });
 
 app.use(function(req, res, next){

@@ -1,0 +1,18 @@
+<html>  
+<head>
+	<meta charset="utf-8" />
+	<title>JoueAvecMoi.fr</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+
+<% var posts = getPosts(0,5) %>
+<% var page = 1 %>
+<% posts.forEach(function(post){ %>
+  <% include postSnippet.ejs %>
+<% }) %>
+
+<% include pagination.ejs %>
+
+</body>
+</html>
