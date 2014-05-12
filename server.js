@@ -32,7 +32,7 @@ var server = app.listen(process.env.PORT || 3000, function(){
 
 var io = require('socket.io').listen(server);
 
-io.set('close timeout', 1);
+io.set('close timeout', 10);
 // Commenter la ligne suivante pour obtenir des logs de debug
 io.set('log level', 1);
 

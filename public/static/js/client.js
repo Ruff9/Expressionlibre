@@ -6,8 +6,8 @@ $(function(){
     };
 
     // var url = app.locals.url;
-    // var url = 'http://localhost:3000';
-    var url = 'http://joueavecmoi.herokuapp.com/';
+    var url = 'http://localhost:3000';
+    // var url = 'http://joueavecmoi.herokuapp.com/';
 
     var doc = $(document),
         win = $(window),
