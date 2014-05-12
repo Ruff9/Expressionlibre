@@ -9,7 +9,7 @@ body {
   width: 100px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: 50px;
   margin-bottom: 30px;
 }
 h1 {
@@ -26,18 +26,17 @@ h2 {
 p {
   font-family: 'Oxygen', sans-serif;
 }
-.texte_sidebar {
-  margin-left: 10px;
+#sidebar p {
+  color: #fff;
 }
 .message {
   font-family: 'Oxygen', sans-serif;
 }
 #zone_de_jeu {
   float: left;
-  background-color: #f6f1e2;
+  background: url("/static/images/texture.png") repeat;
   width: 75%;
   height: 100%;
-  box-sizing: border-box;
 }
 #paper {
   width: 75%;
@@ -46,12 +45,11 @@ p {
 }
 #sidebar {
   left: 0;
-  background-color: #808080;
+  background-color: #303334;
   height: 100%;
   float: left;
-  width: 25%;
-  padding: 10px;
-  box-sizing: border-box;
+  width: 23%;
+  padding: 0 1% 0 1%;
 }
 #about {
   background-color: #f6f1e2;
@@ -84,7 +82,7 @@ p {
   font-family: 'Oxygen', sans-serif;
 }
 .lien_about a {
-  color: #000;
+  color: #808080;
 }
 .lien_retour_about {
   text-align: center;
