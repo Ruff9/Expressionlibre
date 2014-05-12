@@ -15,16 +15,26 @@ if (process.env.REDISTOGO_URL) {
   }
 
 client.on("error", function (err) {
-        console.log("Error " + err);
-    });
+    console.log("Error " + err);
+});
 
 var server = app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
+// Todo gestion des url selon l'environnement
+
+// if (process.env.NODE_ENV){
+//   app.locals.url = 'http://localhost:3000';
+// } else {
+//   app.locals.url = 'http://joueavecmoi.herokuapp.com/';
+// };
+
 var io = require('socket.io').listen(server);
 
 io.set('close timeout', 1);
+// Commenter la ligne suivante pour obtenir des logs de debug
+io.set('log level', 1);
 
 var clients = io.sockets.clients();
 
@@ -84,9 +94,6 @@ function handler (request, response) {
     fileServer.serve(request, response);
   });
 };
-
-// Commenter la ligne suivante pour obtenir des logs de debug
-io.set('log level', 1);
 
 var connectCounter = 0;
 

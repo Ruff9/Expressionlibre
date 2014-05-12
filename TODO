@@ -1,8 +1,7 @@
 TODO
 
-compteur de merde >_<
-
 compteur des messages publiés
+	=> utiliser redis
 
 PB chargement des messages, opacité random
 
@@ -10,6 +9,7 @@ cheker bug saisie mac firefox cf alice
 	=> pb box sizing sur vielle version mozilla
 
 se renseigner persistence donnée s Redis
+	=> options particulières à mettre en place
 
 gérer l'espace d'écriture
 
