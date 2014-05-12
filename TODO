@@ -1,6 +1,10 @@
 TODO
 
-compteur 
+compteur de merde >_<
+
+compteur des messages publiés
+
+PB chargement des messages, opacité random
 
 cheker bug saisie mac firefox cf alice
 	=> pb box sizing sur vielle version mozilla
@@ -18,3 +22,8 @@ positionnement champ texte par rapport au clic
 design : fond
 		police (?)
 		Logo
+
+Différencier les utilisateurs :
+	!= couleurs de curseur
+	!= couleurs de texte
+	!= polices

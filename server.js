@@ -23,6 +23,9 @@ var server = app.listen(process.env.PORT || 3000, function(){
 });
 
 var io = require('socket.io').listen(server);
+
+io.set('close timeout', 1);
+
 var clients = io.sockets.clients();
 
 app.set('view engine', 'ejs');
@@ -85,12 +88,16 @@ function handler (request, response) {
 // Commenter la ligne suivante pour obtenir des logs de debug
 io.set('log level', 1);
 
-app.locals.connectCounter = 0;
+var connectCounter = 0;
 
 io.sockets.on('connection', function (socket) {
 
-  app.locals.connectCounter ++;
-  // socket.emit('compteurSocket', app.locals.connectCounter);
+  connectCounter ++;
+  io.sockets.emit('compteurSocket', connectCounter);
+  
+  setInterval(function() {
+      io.sockets.emit('compteurSocket', connectCounter);
+    }, 1200);
 
   var max_messages = 150
   var initial = client.get('compteur')
@@ -131,7 +138,8 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function () {
-    app.locals.connectCounter ++;
+    connectCounter --;
+    io.sockets.emit('compteurSocket', connectCounter);
   });
 
 });
