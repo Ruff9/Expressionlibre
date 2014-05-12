@@ -7,7 +7,8 @@
         "ejs": "~0.8.3",
         "socket.io": "0.9.16",
         "redis": "0.10.1",
-        "poet": "1.0.0-rc4"
+        "poet": "1.0.0-rc4",
+        "docpad-plugin-contactify": "2.0.11"
     },
     "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
     "description": "Landing page JAM",
