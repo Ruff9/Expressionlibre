@@ -6,8 +6,8 @@ $(function(){
     };
 
     // var url = app.locals.url;
-    // var url = 'http://localhost:3000';
-    var url = 'http://joueavecmoi.herokuapp.com/';
+    var url = 'http://localhost:3000';
+    // var url = 'http://joueavecmoi.herokuapp.com/';
 
     var doc = $(document),
         win = $(window),
@@ -33,7 +33,7 @@ $(function(){
 
         $("#saisie_texte").css({
             'left' : position_message[0],
-            'top' : position_message[1], 
+            'top' : position_message[1] - 15, 
             'display' : 'block'
         });
 
@@ -45,7 +45,7 @@ $(function(){
         socket.emit('message', {
             'contenu': $('#champ_saisie').val(),
             'posX': position_message[0],
-            'posY': position_message[1]
+            'posY': position_message[1] - 10
         });
 
         $(this).find('#champ_saisie').val('');
@@ -63,7 +63,7 @@ $(function(){
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
             'left' : data.posX,
-            'top' : data.posY,
+            'top' : data.posY 
         });
         
         $(".message").each(function () {
