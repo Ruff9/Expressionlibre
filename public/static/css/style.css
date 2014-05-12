@@ -6,7 +6,7 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 #conteneur_logo {
-  width: 100px;
+  width: 150px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
@@ -22,6 +22,7 @@ h2 {
   font-family: 'Oxygen', sans-serif;
   text-align: center;
   margin-bottom: 100px;
+  color: #fff;
 }
 p {
   font-family: 'Oxygen', sans-serif;
@@ -52,7 +53,7 @@ p {
   padding: 0 1% 0 1%;
 }
 #about {
-  background-color: #f6f1e2;
+  background: url("/static/images/texture.png") repeat;
 }
 #saisie_texte {
   position: absolute;
@@ -107,7 +108,7 @@ p {
   margin-left: 10% !important;
 }
 #mc_embed_signup {
-  margin-top: 100px;
+  margin-top: 90px;
   width: 100%;
 }
 /*styles pour le formulaire mailchimp page about*/
