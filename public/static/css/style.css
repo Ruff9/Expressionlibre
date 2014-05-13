@@ -107,9 +107,9 @@ p {
 }
 /*styles pour le formulaire mailchimp principal*/
 #mc-embedded-subscribe {
+  display: inline-block !important;
   background-color: #dc143c !important;
-  width: 80% !important;
-  margin-left: 10% !important;
+  width: 10% !important;
 }
 #mc_embed_signup .button {
   border-radius: 0px !important;
@@ -120,8 +120,8 @@ p {
   padding: 0 0 0 0 !important;
 }
 #mce-EMAIL {
-  width: 80% !important;
-  margin-left: 10% !important;
+  display: inline-block !important;
+  width: 60% !important;
 }
 #mc_embed_signup {
   margin-top: 90px;

@@ -97,7 +97,6 @@ app.get('/feedback', function(req, res) {
 app.post('/feedback', function(req, res) {
 
   var mailOpts, smtpTrans;
-  console.dir(req.body);
 
   smtpTrans = nodemailer.createTransport('SMTP', {
     service: 'Yahoo',
