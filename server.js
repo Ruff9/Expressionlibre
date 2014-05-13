@@ -16,10 +16,11 @@ if (process.env.REDISTOGO_URL) {
   var client = redis.createClient();
   }
 
-var statsmix = require('metrics-statsmix');
-var statsmixClient = new statsmix.Client();
-var MessageCounter = 0;
-statsmixClient.addMetric('Messages', MessageCounter, { track : true });
+// TODO gestion metrics avec statsmix
+// var statsmix = require('metrics-statsmix');
+// var statsmixClient = new statsmix.Client();
+// var MessageCounter = 0;
+// statsmixClient.addMetric('Messages', MessageCounter, { track : true });
 
 app.configure(function () {
   
@@ -178,7 +179,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('message', function (data) {
     
     compteur += 1;
-    MessageCounter +=1;
+    // MessageCounter +=1;
 
     client.hset("message:"+compteur, "contenu", data.contenu);
     client.hset("message:"+compteur, "posX", data.posX);
