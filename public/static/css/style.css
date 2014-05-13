@@ -117,6 +117,7 @@ p {
   display: inline-block !important;
   background-color: #dc143c !important;
   width: 10% !important;
+  height: 30px !important;
 }
 #mc_embed_signup .button {
   border-radius: 0px !important;
@@ -127,6 +128,7 @@ p {
 #mce-EMAIL {
   display: inline-block !important;
   width: 60% !important;
+  height: 30px;
 }
 #mc_embed_signup {
   margin-top: 90px;
