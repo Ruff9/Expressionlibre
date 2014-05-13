@@ -90,6 +90,21 @@ p {
   text-align: center;
   font-family: 'Oxygen', sans-serif;
 }
+#feedback {
+  background: url("/static/images/texture.png") repeat;
+  text-align: center;
+  font-family: 'Oxygen', sans-serif;
+}
+#emailFeedback {
+  width: 30%;
+}
+#messageFeedback {
+  width: 30%;
+  height: 25%;
+}
+#lienFeedback {
+  margin-left: 20px;
+}
 /*styles pour le formulaire mailchimp principal*/
 #mc-embedded-subscribe {
   background-color: #dc143c !important;

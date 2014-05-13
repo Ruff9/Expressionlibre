@@ -2,7 +2,10 @@ var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
 var app = express();
+var bodyParser = require('body-parser');
 var Poet = require('poet');
+var nodemailer = require('nodemailer');
+var config = require('./config');
 
 if (process.env.REDISTOGO_URL) {
     var rtg   = require("url").parse(process.env.REDISTOGO_URL);
@@ -13,6 +16,22 @@ if (process.env.REDISTOGO_URL) {
   var redis = require('redis');
   var client = redis.createClient();
   }
+
+app.configure(function () {
+  
+  app.use(bodyParser());
+
+  app.use(stylus.middleware({
+    src: __dirname + '/resources',
+    dest: __dirname + '/public',
+    debug: true,
+    force: true
+  }));
+
+  app.use('/static', express.static(__dirname + '/public/static'));
+
+});
+
 
 client.on("error", function (err) {
     console.log("Error " + err);
@@ -60,14 +79,6 @@ io.configure(function () {
   io.set("polling duration", 10); 
 });
 
-app.use(stylus.middleware({
-  src: __dirname + '/resources',
-  dest: __dirname + '/public',
-  debug: true,
-  force: true
-}));
-
-app.use('/static', express.static(__dirname + '/public/static'));
 
 app.get('/', function(req, res) {
   res.setHeader('Content-Type', 'text/html');
@@ -77,6 +88,42 @@ app.get('/', function(req, res) {
 app.get('/about', function(req, res) {
   res.setHeader('Content-Type', 'text/html');
   res.render('about');
+});
+
+app.get('/feedback', function(req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  res.render('feedback');
+});
+
+app.post('/feedback', function(req, res) {
+
+  var mailOpts, smtpTrans;
+  console.dir(req.body);
+
+  smtpTrans = nodemailer.createTransport('SMTP', {
+    service: 'Yahoo',
+    auth: {
+      user: "remy.maucourt@yahoo.fr",
+      pass: config.mdp
+    }
+  });
+
+  mailOpts = {
+    from: req.body.emailFeedback, //grab form data from the request body object
+    to: 'remy.maucourt@yahoo.fr',
+    subject: 'Feedback JAM Landing',
+    text: req.body.messageFeedback
+  };
+
+  smtpTrans.sendMail(mailOpts, function (error, response) {
+      //Email not sent
+      if (error) {
+        res.render('feedback', { msg: 'Erreur: message non envoyé', err: true, page: 'feedback' })
+      }
+      //Yay!! Email sent
+      else { res.render('home'); };
+    });  
+
 });
 
 app.get('/blog', function(req, res) {

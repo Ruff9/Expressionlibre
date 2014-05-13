@@ -1,1 +1,3 @@
-/docpad.js
+/config.js
+/views/mailchimpForm.ejs
+/views/mailchimpForm2.ejs

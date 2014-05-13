@@ -1,18 +1,19 @@
 {
-    "name": "landingJam",
-    "version": "0.1.0",
-    "dependencies": {
-        "express": "~3.2.1",
-        "stylus": "0.42.x",
-        "ejs": "~0.8.3",
-        "socket.io": "0.9.16",
-        "redis": "0.10.1",
-        "poet": "1.0.0-rc4",
-        "docpad-plugin-contactify": "2.0.11"
-    },
-    "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
-    "description": "Landing page JAM",
-    "engine": {
-    	"node": "0.10.x"
-    }
+  "name": "landingJam",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "~3.2.1",
+    "stylus": "0.42.x",
+    "ejs": "~0.8.3",
+    "socket.io": "0.9.16",
+    "redis": "0.10.1",
+    "poet": "1.0.0-rc4",
+    "body-parser": "1.2.0",
+    "nodemailer": "0.6.4"
+  },
+  "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
+  "description": "Landing page JAM",
+  "engine": {
+    "node": "0.10.x"
+  }
 }
