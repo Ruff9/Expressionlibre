@@ -1,15 +1,12 @@
 TODO
 
-Lien vres facebook twitter
-	=> tout en bas, sous à propos
+MEP système de metrics
+	=> StatsMix
 
 compteur des messages publiés
 	=> utiliser redis
 
 PB chargement des messages, opacité random
-
-cheker bug saisie mac firefox cf alice
-	=> pb box sizing sur vielle version mozilla
 
 se renseigner persistence donnée s Redis
 	=> options particulières à mettre en place
