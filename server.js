@@ -5,7 +5,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var Poet = require('poet');
 var nodemailer = require('nodemailer');
-var config = require('./config.js');
 
 if (process.env.REDISTOGO_URL) {
     var rtg   = require("url").parse(process.env.REDISTOGO_URL);
@@ -104,7 +103,7 @@ app.post('/feedback', function(req, res) {
     service: 'Yahoo',
     auth: {
       user: "remy.maucourt@yahoo.fr",
-      pass: process.env.MDP || config.mdp 
+      pass: process.env.MDP || require('./config.js').mdp
     }
   });
 
