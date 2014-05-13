@@ -5,7 +5,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var Poet = require('poet');
 var nodemailer = require('nodemailer');
-var config = require('./config');
+var config = require('./config.js');
 
 if (process.env.REDISTOGO_URL) {
     var rtg   = require("url").parse(process.env.REDISTOGO_URL);
