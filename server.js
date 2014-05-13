@@ -104,7 +104,7 @@ app.post('/feedback', function(req, res) {
     service: 'Yahoo',
     auth: {
       user: "remy.maucourt@yahoo.fr",
-      pass: config.mdp
+      pass: config.mdp || process.env.MDP
     }
   });
 
