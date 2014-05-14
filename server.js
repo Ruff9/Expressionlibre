@@ -166,7 +166,6 @@ io.sockets.on('connection', function (socket) {
     
     client.hgetall('message:' + next_key, function (err, message){
       if(message) {
-        // console.log(message);
         socket.emit('affiche_message', message)
       }
     })
@@ -175,8 +174,6 @@ io.sockets.on('connection', function (socket) {
   socket.on('mousemove', function (data) {
       socket.broadcast.emit('moving', data);
   });
-
-  // création et renvoi des messages
   
   socket.on('message', function (data) {
     
@@ -192,7 +189,6 @@ io.sockets.on('connection', function (socket) {
       client.hset("message:"+compteur, "posY", data.posY);
       client.hset("message:"+compteur, "id", compteur);
 
-      
       client.set('compteur', compteur)
      
       if (compteur >= max_messages) {
