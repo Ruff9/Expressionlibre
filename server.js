@@ -178,7 +178,6 @@ io.sockets.on('connection', function (socket) {
 
   // création et renvoi des messages
   
-
   socket.on('message', function (data) {
     
     client.get('compteur', function(err, compteur) {
