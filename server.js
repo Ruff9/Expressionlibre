@@ -161,9 +161,11 @@ io.sockets.on('connection', function (socket) {
   var initial = client.get('compteur') + 1; 
 
   for(i = initial; i < (max_messages + initial); i++) {
-    var next_key = (i % max_messages)
+    var next_key = (i % max_messages);
+    
     client.hgetall('message:' + next_key, function (err, message){
       if(message) {
+        console.log(message);
         socket.emit('affiche_message', message)
       }
     })
@@ -184,6 +186,7 @@ io.sockets.on('connection', function (socket) {
     client.hset("message:"+compteur, "contenu", data.contenu);
     client.hset("message:"+compteur, "posX", data.posX);
     client.hset("message:"+compteur, "posY", data.posY);
+    client.hset("message:"+compteur, "id", compteur);
      
     if (compteur >= max_messages) {
       compteur = 0;
