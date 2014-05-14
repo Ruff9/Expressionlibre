@@ -1,23 +1,15 @@
 TODO
 
-les messages ne s'effacent pas dans l'ordre
-
 MEP système de metrics
 	=> StatsMix
 
 compteur des messages publiés
 	=> utiliser redis
 
-PB chargement des messages, opacité random
-
-se renseigner persistence donnée s Redis
-	=> options particulières à mettre en place
-
 gérer l'espace d'écriture
+	Julien :"C'est un mur, et l'écran n'est qu'une vue sur ce mur"
 
 gestion des url dans client.js
-
-bloquer le code html(?)/js dans les messages
 
 design : fond
 		police (?)
@@ -37,6 +29,5 @@ background-attachment:fixed;
 
 "mais qui controle la souris?"
 
-le remote clic "latence de la souris" est énorme ??
+le remote clic / "latence de la souris" est énorme ??
 
-C'est un mur, et l'écran n'est qu'une vue sur ce mur

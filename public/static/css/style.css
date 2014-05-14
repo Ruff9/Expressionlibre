@@ -38,6 +38,7 @@ p {
 #zone_de_jeu {
   float: left;
   background: url("/static/images/texture.png") repeat;
+  background-attachment: fixed;
   width: 75%;
   height: 100%;
 }
