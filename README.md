@@ -1,8 +1,6 @@
 Mur d'expression libre en temps-réel réalisé avec NodeJS, Redis, Express, Stylus et Socket.IO. 
 
-## Tutos et inspirations
-
-[Les bases de NodeJS](http://fr.openclassrooms.com/informatique/cours/des-applications-ultra-rapides-avec-node-js)
+## Inspirations
 
 [Tuto chat temp-réel avec NodeJS et Socket.IO](http://youtu.be/8jkkd2Ohte8)
 

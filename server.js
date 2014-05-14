@@ -158,7 +158,7 @@ io.sockets.on('connection', function (socket) {
     }, 1200);
 
   var max_messages = 150
-  var initial = client.get('compteur')
+  var initial = client.get('compteur') + 1; 
 
   for(i = initial; i < (max_messages + initial); i++) {
     var next_key = (i % max_messages)
@@ -174,7 +174,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   // création et renvoi des messages
-  var compteur = 0;
+  var compteur = initial;
 
   socket.on('message', function (data) {
     
@@ -185,12 +185,11 @@ io.sockets.on('connection', function (socket) {
     client.hset("message:"+compteur, "posX", data.posX);
     client.hset("message:"+compteur, "posY", data.posY);
      
-    client.hget("message:"+compteur, "contenu", redis.print);
-    client.set('compteur', compteur)
-
     if (compteur >= max_messages) {
       compteur = 0;
     };
+
+    client.set('compteur', compteur)
 
     io.sockets.emit('affiche_message', data);
   
