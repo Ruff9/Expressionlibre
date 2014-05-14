@@ -25,6 +25,10 @@ $(function(){
     var nb_messages_max = 150;
     var pas_opacite = 1/nb_messages_max;
 
+    function encodeHTML(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+    }
+
     $("#zone_de_jeu").click(function(e){
 
         if ($('#champ_saisie').val() == ''){
@@ -43,7 +47,7 @@ $(function(){
     $("#saisie_texte").submit(function(e){
         e.preventDefault();
         socket.emit('message', {
-            'contenu': $('#champ_saisie').val(),
+            'contenu': encodeHTML($('#champ_saisie').val()),
             'posX': position_message[0],
             'posY': position_message[1] - 10
         });
