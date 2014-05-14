@@ -147,6 +147,7 @@ function handler (request, response) {
 };
 
 var connectCounter = 0;
+client.set('compteur', 0)
 
 io.sockets.on('connection', function (socket) {
 
@@ -165,7 +166,7 @@ io.sockets.on('connection', function (socket) {
     
     client.hgetall('message:' + next_key, function (err, message){
       if(message) {
-        console.log(message);
+        // console.log(message);
         socket.emit('affiche_message', message)
       }
     })
@@ -176,26 +177,32 @@ io.sockets.on('connection', function (socket) {
   });
 
   // création et renvoi des messages
-  var compteur = initial;
+  
 
   socket.on('message', function (data) {
     
-    compteur += 1;
-    // MessageCounter +=1;
-
-    client.hset("message:"+compteur, "contenu", data.contenu);
-    client.hset("message:"+compteur, "posX", data.posX);
-    client.hset("message:"+compteur, "posY", data.posY);
-    client.hset("message:"+compteur, "id", compteur);
+    client.get('compteur', function(err, compteur) {
      
-    if (compteur >= max_messages) {
-      compteur = 0;
-    };
+      compteur = parseInt(compteur)  
+      compteur += 1;
 
-    client.set('compteur', compteur)
+      // MessageCounter +=1;
 
-    io.sockets.emit('affiche_message', data);
+      client.hset("message:"+compteur, "contenu", data.contenu);
+      client.hset("message:"+compteur, "posX", data.posX);
+      client.hset("message:"+compteur, "posY", data.posY);
+      client.hset("message:"+compteur, "id", compteur);
+
+      
+      client.set('compteur', compteur)
+     
+      if (compteur >= max_messages) {
+        compteur = 0;
+      };
+
+      io.sockets.emit('affiche_message', data);
   
+    });
   });
 
   socket.on('disconnect', function () {
