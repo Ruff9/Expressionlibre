@@ -6,11 +6,12 @@ $(function(){
     };
 
     // var url = app.locals.url;
-    // var url = 'http://localhost:3000';
-    var url = 'http://joueavecmoi.herokuapp.com/';
+    var url = 'http://localhost:3000';
+    // var url = 'http://joueavecmoi.herokuapp.com/';
 
     var doc = $(document),
         win = $(window),
+        sidebar_width = win.width()/4,
         canvas = $('#paper'),
         ctx = canvas[0].getContext('2d');
         
@@ -66,8 +67,14 @@ $(function(){
     socket.on('affiche_message', function (data) {
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
-            'left' : data.posX,
-            'top' : data.posY 
+            'left': function() {
+                if (data.posX > sidebar_width){
+                    return data.posX;
+                } else {
+                    return data.posX + sidebar_width;
+                };
+            },
+            'top': data.posY 
         });
         
         $(".message").each(function () {
