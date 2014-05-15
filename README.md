@@ -1,4 +1,6 @@
-Mur d'expression libre en temps-réel réalisé avec NodeJS, Redis, Express, Stylus et Socket.IO. 
+Mur d'expression libre en temps-réel. Diffusion en temps réel de l'image des curseurs des clients. 
+
+Application réalisés avec NodeJS, Redis, Express, Stylus et Socket.IO. 
 
 ## Inspirations
 

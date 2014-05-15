@@ -6,17 +6,11 @@ body
   font-family 'Oxygen', sans-serif
   font-family: 'Courgette', cursive
 
-#conteneur_logo
-  width 150px
-  margin-left auto
-  margin-right auto
-  margin-top 50px
-  margin-bottom 30px
-
 h1
   text-align center
   font-family 'Oxygen', sans-serif
   margin-top 50px
+  color white
 
 h2
   font-size 1.1em
@@ -30,36 +24,36 @@ p
 
 #sidebar p
   color white
+  text-align center
 
 .message
   font-family 'Oxygen', sans-serif
   font-size 1em
-  z-index 1
 
 #zone_de_jeu
   float left
   background url("/static/images/texture.png") repeat
-  width 75%
+  width 85%
   height 100%
-  z-index 1
 
 #paper
-  width 75%
+  width 85%
   height 100%
   position absolute
-  z-index 1
 
 #sidebar
   left 0
   background-color #303334
   height 100%
   float left
-  width 23%
+  width 13%
   padding 0 1% 0 1%
-  z-index 2
 
 #about
  background url("/static/images/texture.png") repeat
+
+#about h1
+  color black
 
 #saisie_texte
   position absolute
@@ -101,6 +95,9 @@ p
   text-align center
   font-family: 'Oxygen', sans-serif
 
+#feedback h1
+  color black
+
 #emailFeedback
   width 30%
 
@@ -120,12 +117,12 @@ p
 /*styles pour le formulaire mailchimp principal*/
 
 #mc-embedded-subscribe
-  display inline-block !important
-  background-color crimson !important
-  width 10% !important
+  background-color grey !important
   height 30px !important
 
 #mc_embed_signup .button
+  display inline-block !important
+  text-align center
   border-radius:0px !important
 
 #mc-embedded-subscribe-form
@@ -133,11 +130,10 @@ p
 
 #mce-EMAIL 
   display inline-block !important
-  width 60% !important
+  width 100% !important
   height 30px
 
 #mc_embed_signup
-  margin-top 90px
   width 100%
 
 /*styles pour le formulaire mailchimp page about*/

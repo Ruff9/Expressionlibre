@@ -162,6 +162,7 @@ io.sockets.on('connection', function (socket) {
   var initial = client.get('compteur') + 1; 
 
   for(i = initial; i < (max_messages + initial); i++) {
+    // WTF ???
     var next_key = (i % max_messages);
     
     client.hgetall('message:' + next_key, function (err, message){
