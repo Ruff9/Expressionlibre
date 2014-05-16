@@ -183,7 +183,7 @@ io.sockets.on('connection', function (socket) {
       var compteur = parseInt(compteur, 10) || 0
       console.log(compteur)
       compteur += 1;
-       console.log(compteur)
+      console.log(compteur)
       // MessageCounter +=1;
 
       client.hset("message:"+compteur, "contenu", data.contenu);
