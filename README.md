@@ -1,6 +1,8 @@
-Mur d'expression libre en temps-réel. Diffusion en temps réel de l'image des curseurs des clients. 
+#Expression libre
 
-Application réalisés avec NodeJS, Redis, Express, Stylus et Socket.IO. 
+Mur modifiable en temps-réel. Diffusion en temps réel de l'image des curseurs des clients. 
+
+Application réalisée avec NodeJS, Redis, Express, Stylus et Socket.IO. 
 
 ## Inspirations
 
