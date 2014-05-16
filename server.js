@@ -115,7 +115,7 @@ app.post('/feedback', function(req, res) {
   mailOpts = {
     from: req.body.emailFeedback, //grab form data from the request body object
     to: 'remy.maucourt@yahoo.fr',
-    subject: 'Feedback JAM Landing',
+    subject: 'Feedback Expression libre',
     text: req.body.messageFeedback
   };
 
