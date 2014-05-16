@@ -2,13 +2,15 @@
 
 Mur modifiable en temps-réel. Diffusion en temps réel de l'image des curseurs des clients. 
 
-Application réalisée avec NodeJS, Redis, Express, Stylus et Socket.IO. 
+Application réalisée avec NodeJS, Redis, Express, Stylus et Socket.IO.
+
+Déployée sur [Joueavecmoi.fr](http://www.joueavecmoi.fr)
 
 ## Inspirations
 
-[Tuto chat temp-réel avec NodeJS et Socket.IO](http://youtu.be/8jkkd2Ohte8)
+[Chat temp-réel avec NodeJS et Socket.IO](http://youtu.be/8jkkd2Ohte8)
 
-[Tuto jeu de dessin multi-users temps-réel](http://tutorialzine.com/2012/08/nodejs-drawing-game/)
+[Jeu de dessin multi-users temps-réel](http://tutorialzine.com/2012/08/nodejs-drawing-game/)
 
 ["Do not touch", expérimentation multi-curseurs](http://youtu.be/eRYD5ZFO9UE)
 
