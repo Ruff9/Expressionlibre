@@ -120,8 +120,8 @@ p {
   height: 30px !important;
 }
 #mc_embed_signup .button {
-  display: inline-block !important;
-  text-align: center;
+  margin-right: auto !important;
+  margin-left: auto !important;
   border-radius: 0px !important;
 }
 #mc-embedded-subscribe-form {

@@ -11,7 +11,7 @@ $(function(){
 
     var doc = $(document),
         win = $(window),
-        sidebar_width = win.width()/4,
+        sidebar_width = win.width()*0.15,
         canvas = $('#paper'),
         ctx = canvas[0].getContext('2d');
         
