@@ -1,6 +1,6 @@
 {
-  "name": "landingJam",
-  "version": "0.1.0",
+  "name": "Expression Libre",
+  "version": "0.2.0",
   "dependencies": {
     "express": "~3.2.1",
     "stylus": "0.42.x",
@@ -13,7 +13,7 @@
     "metrics-statsmix": "0.0.2"
   },
   "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
-  "description": "Landing page JAM",
+  "description": "Expression Libre",
   "engine": {
     "node": "0.10.x"
   }

@@ -4,7 +4,7 @@ Mur modifiable en temps-réel. Diffusion en temps réel de l'image des curseurs 
 
 Application réalisée avec NodeJS, Redis, Express, Stylus et Socket.IO.
 
-Déployée sur [Joueavecmoi.fr](http://www.joueavecmoi.fr)
+Déployée sur [Expressionlib.re](http://expressionlib.re)
 
 ## Inspirations
 

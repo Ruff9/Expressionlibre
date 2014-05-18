@@ -6,8 +6,8 @@ $(function(){
     };
 
     // var url = app.locals.url;
-    // var url = 'http://localhost:3000';
-    var url = 'http://expressionlibre.herokuapp.com/';
+    var url = 'http://localhost:3000';
+    // var url = 'http://expressionlibre.herokuapp.com/';
 
     var doc = $(document),
         win = $(window),
@@ -23,7 +23,7 @@ $(function(){
     var position_message = {};
     var messages = {};
 
-    var nb_messages_max = 150;
+    var nb_messages_max = 10;
     var pas_opacite = 1/nb_messages_max;
 
     function encodeHTML(s) {
