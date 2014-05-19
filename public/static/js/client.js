@@ -8,6 +8,8 @@ $(function(){
     // var url = app.locals.url;
     var url = 'http://localhost:3000';
     // var url = 'http://expressionlibre.herokuapp.com/';
+    
+    var socket = io.connect(url);
 
     var doc = $(document),
         win = $(window),
@@ -19,10 +21,8 @@ $(function(){
 
     var clients = {};
     var cursors = {};
-    var socket = io.connect(url);
     var position_message = {};
     var messages = {};
-
     var nb_messages_max = 10;
     var pas_opacite = 1/nb_messages_max;
 

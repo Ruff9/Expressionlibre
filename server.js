@@ -2,6 +2,7 @@ var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
+var redis = require("redis");
 var Poet = require('poet');
 var nodemailer = require('nodemailer');
 
@@ -28,19 +29,17 @@ var server = app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
-// TODO gestion metrics avec statsmix
+// Todo gestion metrics avec statsmix
 // var statsmix = require('metrics-statsmix');
 // var statsmixClient = new statsmix.Client();
 // var MessageCounter = 0;
 // statsmixClient.addMetric('Messages', MessageCounter, { track : true });
 
 if (process.env.REDISTOGO_URL) {
-    var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-    var redis = require("redis");
-    var client = redis.createClient(rtg.port, rtg.hostname);
-    client.auth(rtg.auth.split(":")[1]);
+  var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+  var client = redis.createClient(rtg.port, rtg.hostname);
+  client.auth(rtg.auth.split(":")[1]);
 } else {
-  var redis = require('redis');
   var client = redis.createClient();
 }
 
@@ -49,7 +48,6 @@ client.on("error", function (err) {
 });
 
 // Todo gestion des url selon l'environnement
-
 // if (process.env.NODE_ENV){
 //   app.locals.url = 'http://localhost:3000';
 // } else {
@@ -58,17 +56,15 @@ client.on("error", function (err) {
 
 var io = require('socket.io').listen(server);
 
-io.set('close timeout', 10);
-// Commenter la ligne suivante pour obtenir des logs de debug
-io.set('log level', 1);
+io.configure(function () { 
+  io.set('close timeout', 10);
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10);
+  // Commenter ligne suivante pour logs de debug
+  io.set('log level', 1);
+});
 
 var clients = io.sockets.clients();
-
-// hack pour faire tourner socket.io sur Heroku (?)
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
 
 var poet = Poet(app, {
   posts: './_posts/',
@@ -97,12 +93,12 @@ app.get('/about', function(req, res) {
   render_page('about', res)
 });
 
-app.get('/feedback', function(req, res) {
-  render_page('feedback', res)
-});
-
 app.get('/blog', function(req, res) {
   render_page('blog/index', res)
+});
+
+app.get('/feedback', function(req, res) {
+  render_page('feedback', res)
 });
 
 app.post('/feedback', function(req, res) {
@@ -152,10 +148,10 @@ io.sockets.on('connection', function (socket) {
 
   setInterval(function() {
     io.sockets.emit('compteurSocket', connectCounter);
-  }, 1200);
+  }, 2000);
 
   var max_messages = 10
-  var initial = client.get('compteur') + 1; 
+  var initial = client.get('compteur') + 1
 
   for(i = initial; i < (max_messages + initial); i++) {
     var next_key = (i % max_messages) + 1;
@@ -170,8 +166,8 @@ io.sockets.on('connection', function (socket) {
   }
   
   socket.on('mousemove', function (data) {
-    socket.broadcast.emit('moving', data);
-  });
+    socket.broadcast.emit('moving', data)
+  })
   
   socket.on('message', function (data) {
     
@@ -194,13 +190,13 @@ io.sockets.on('connection', function (socket) {
         compteur = 0;
       };
 
-      io.sockets.emit('affiche_message', data);
+      io.sockets.emit('affiche_message', data)
   
-    });
-  });
+    })
+  })
 
   socket.on('disconnect', function () {
     io.sockets.emit('compteurSocket', connectCounter--);
-  });
+  })
 
-});
+})
