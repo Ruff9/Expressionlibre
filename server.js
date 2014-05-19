@@ -14,7 +14,7 @@ if (process.env.REDISTOGO_URL) {
 } else {
   var redis = require('redis');
   var client = redis.createClient();
-  }
+}
 
 // TODO gestion metrics avec statsmix
 // var statsmix = require('metrics-statsmix');
@@ -85,23 +85,24 @@ io.configure(function () {
 });
 
 
+render_page = function(page, response) {
+  response.setHeader('Content-Type', 'text/html')
+  response.render(page)
+}
+
 app.get('/', function(req, res) {
-  res.setHeader('Content-Type', 'text/html');
-  res.render('home');
+  render_page('home', res)
 });
 
 app.get('/about', function(req, res) {
-  res.setHeader('Content-Type', 'text/html');
-  res.render('about');
+  render_page('about', res)
 });
 
 app.get('/feedback', function(req, res) {
-  res.setHeader('Content-Type', 'text/html');
-  res.render('feedback');
+  render_page('feedback', res)
 });
 
 app.post('/feedback', function(req, res) {
-
   var mailOpts, smtpTrans;
 
   smtpTrans = nodemailer.createTransport('SMTP', {
@@ -151,8 +152,14 @@ client.set('compteur', 0)
 
 io.sockets.on('connection', function (socket) {
 
-  connectCounter ++;
-  io.sockets.emit('compteurSocket', connectCounter);
+  emit_message = function(error, message) {
+    if(message) {
+      socket.emit('affiche_message', message)
+    }
+  }
+
+  io.sockets.emit('compteurSocket', connectCounter++);
+
   
   setInterval(function() {
       io.sockets.emit('compteurSocket', connectCounter);
@@ -165,11 +172,7 @@ io.sockets.on('connection', function (socket) {
     // WTF ???
     var next_key = (i % max_messages);
     
-    client.hgetall('message:' + next_key, function (err, message){
-      if(message) {
-        socket.emit('affiche_message', message)
-      }
-    })
+    client.hgetall('message:' + next_key, emit_message)
   }
   
   socket.on('mousemove', function (data) {
@@ -203,8 +206,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function () {
-    connectCounter --;
-    io.sockets.emit('compteurSocket', connectCounter);
+    io.sockets.emit('compteurSocket', connectCounter--);
   });
 
 });

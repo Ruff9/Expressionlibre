@@ -1,5 +1,5 @@
 {
-  "name": "Expression Libre",
+  "name": "Expression-Libre",
   "version": "0.2.0",
   "dependencies": {
     "express": "~3.2.1",
@@ -16,5 +16,9 @@
   "description": "Expression Libre",
   "engine": {
     "node": "0.10.x"
+  },
+  "devDependencies": {
+    "should": ">= 3.3.1",
+    "socket.io-client": ">= 0.9.16"
   }
 }
