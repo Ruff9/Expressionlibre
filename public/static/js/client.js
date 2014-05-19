@@ -64,6 +64,31 @@ $(function(){
         $("#compteurVal").text(data);
     });
 
+    // enorme duplication des deux socket.on à suivre
+
+    socket.on('affiche_base_message', function (data) {
+        messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
+        messages[data.id].css({
+            'left': function() {
+                if (data.posX > sidebar_width){
+                    return data.posX;
+                } else {
+                    return data.posX + sidebar_width;
+                };
+            },
+            'top': data.posY 
+        });
+        
+        $(".message").each(function () {
+            op = $(this).css("opacity");
+            newop = op - pas_opacite;
+            if (newop == 0){
+                $(this).remove();
+            };
+            $(this).css("opacity", newop);
+        });
+    });
+
     socket.on('affiche_message', function (data) {
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({

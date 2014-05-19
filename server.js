@@ -84,7 +84,6 @@ io.configure(function () {
   io.set("polling duration", 10); 
 });
 
-
 render_page = function(page, response) {
   response.setHeader('Content-Type', 'text/html')
   response.render(page)
@@ -100,6 +99,10 @@ app.get('/about', function(req, res) {
 
 app.get('/feedback', function(req, res) {
   render_page('feedback', res)
+});
+
+app.get('/blog', function(req, res) {
+  render_page('blog/index', res)
 });
 
 app.post('/feedback', function(req, res) {
@@ -131,11 +134,6 @@ app.post('/feedback', function(req, res) {
 
 });
 
-app.get('/blog', function(req, res) {
-  res.setHeader('Content-Type', 'text/html');
-  res.render('blog/index');
-});
-
 app.use(function(req, res, next){
   res.setHeader('Content-Type', 'text/plain');
   res.send(404, 'Page introuvable !');
@@ -152,15 +150,8 @@ client.set('compteur', 0)
 
 io.sockets.on('connection', function (socket) {
 
-  emit_message = function(error, message) {
-    if(message) {
-      socket.emit('affiche_message', message)
-    }
-  }
-
   io.sockets.emit('compteurSocket', connectCounter++);
 
-  
   setInterval(function() {
       io.sockets.emit('compteurSocket', connectCounter);
     }, 1200);
@@ -169,10 +160,15 @@ io.sockets.on('connection', function (socket) {
   var initial = client.get('compteur') + 1; 
 
   for(i = initial; i < (max_messages + initial); i++) {
-    // WTF ???
-    var next_key = (i % max_messages);
+    var next_key = (i % max_messages) + 1;
+    console.log("i: " + i + '  // next_key: ' + next_key)
     
-    client.hgetall('message:' + next_key, emit_message)
+    client.hgetall('message:' + next_key, function(error, message) {
+      console.log("yaf message : " + message)
+      if(message) {
+        socket.emit('affiche_base_message', message)
+      }
+    })
   }
   
   socket.on('mousemove', function (data) {
@@ -180,8 +176,9 @@ io.sockets.on('connection', function (socket) {
   });
   
   socket.on('message', function (data) {
-    
+    console.log('yaf on message')
     client.get('compteur', function(err, compteur) {
+      console.log('yaf on message.. compteur')
      
       var compteur = parseInt(compteur, 10) || 0
       console.log(compteur)
@@ -206,6 +203,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function () {
+    console.log("disconnect")
     io.sockets.emit('compteurSocket', connectCounter--);
   });
 
