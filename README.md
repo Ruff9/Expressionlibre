@@ -1,10 +1,10 @@
 #Expression libre
 
-Mur modifiable en temps-réel. Diffusion en temps réel de l'image des curseurs des clients. 
+Mur modifiable en temps-réel. Diffusion en temps réel de l'image des curseurs des clients.
 
-Application réalisée avec NodeJS, Redis, Express, Stylus et Socket.IO.
+Application réalisée avec NodeJS, Redis, Express et Socket.IO.
 
-Déployée sur [Expressionlib.re](http://expressionlib.re)
+Déployée sur [Expressionlib.re](http://expressionlib.re).
 
 ## Inspirations
 
