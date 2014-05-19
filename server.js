@@ -1,26 +1,11 @@
 var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
-var app = express();
 var bodyParser = require('body-parser');
 var Poet = require('poet');
 var nodemailer = require('nodemailer');
 
-if (process.env.REDISTOGO_URL) {
-    var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-    var redis = require("redis");
-    var client = redis.createClient(rtg.port, rtg.hostname);
-    client.auth(rtg.auth.split(":")[1]);
-} else {
-  var redis = require('redis');
-  var client = redis.createClient();
-}
-
-// TODO gestion metrics avec statsmix
-// var statsmix = require('metrics-statsmix');
-// var statsmixClient = new statsmix.Client();
-// var MessageCounter = 0;
-// statsmixClient.addMetric('Messages', MessageCounter, { track : true });
+var app = express();
 
 app.configure(function () {
   
@@ -37,13 +22,30 @@ app.configure(function () {
 
 });
 
-
-client.on("error", function (err) {
-    console.log("Error " + err);
-});
+app.set('view engine', 'ejs');
 
 var server = app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
+
+// TODO gestion metrics avec statsmix
+// var statsmix = require('metrics-statsmix');
+// var statsmixClient = new statsmix.Client();
+// var MessageCounter = 0;
+// statsmixClient.addMetric('Messages', MessageCounter, { track : true });
+
+if (process.env.REDISTOGO_URL) {
+    var rtg   = require("url").parse(process.env.REDISTOGO_URL);
+    var redis = require("redis");
+    var client = redis.createClient(rtg.port, rtg.hostname);
+    client.auth(rtg.auth.split(":")[1]);
+} else {
+  var redis = require('redis');
+  var client = redis.createClient();
+}
+
+client.on("error", function (err) {
+    console.log("Error " + err);
 });
 
 // Todo gestion des url selon l'environnement
@@ -62,7 +64,11 @@ io.set('log level', 1);
 
 var clients = io.sockets.clients();
 
-app.set('view engine', 'ejs');
+// hack pour faire tourner socket.io sur Heroku (?)
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 
 var poet = Poet(app, {
   posts: './_posts/',
@@ -77,12 +83,6 @@ var poet = Poet(app, {
 poet.watch().init();
 
 // "client" est utilisé pour redis, et "clients" pour socket.IO. 
-
-// hack pour faire tourner socket.io sur Heroku (?)
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
 
 render_page = function(page, response) {
   response.setHeader('Content-Type', 'text/html')
@@ -117,18 +117,16 @@ app.post('/feedback', function(req, res) {
   });
 
   mailOpts = {
-    from: req.body.emailFeedback, //grab form data from the request body object
+    from: req.body.emailFeedback,
     to: 'remy.maucourt@yahoo.fr',
     subject: 'Feedback Expression libre',
     text: req.body.messageFeedback
   };
 
   smtpTrans.sendMail(mailOpts, function (error, response) {
-      //Email not sent
       if (error) {
         res.render('feedback', { msg: 'Erreur: message non envoyé', err: true, page: 'feedback' })
       }
-      //Yay!! Email sent
       else { res.render('home'); };
     });  
 
@@ -153,8 +151,8 @@ io.sockets.on('connection', function (socket) {
   io.sockets.emit('compteurSocket', connectCounter++);
 
   setInterval(function() {
-      io.sockets.emit('compteurSocket', connectCounter);
-    }, 1200);
+    io.sockets.emit('compteurSocket', connectCounter);
+  }, 1200);
 
   var max_messages = 10
   var initial = client.get('compteur') + 1; 
@@ -172,13 +170,12 @@ io.sockets.on('connection', function (socket) {
   }
   
   socket.on('mousemove', function (data) {
-      socket.broadcast.emit('moving', data);
+    socket.broadcast.emit('moving', data);
   });
   
   socket.on('message', function (data) {
-    console.log('yaf on message')
+    
     client.get('compteur', function(err, compteur) {
-      console.log('yaf on message.. compteur')
      
       var compteur = parseInt(compteur, 10) || 0
       console.log(compteur)
@@ -203,7 +200,6 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function () {
-    console.log("disconnect")
     io.sockets.emit('compteurSocket', connectCounter--);
   });
 

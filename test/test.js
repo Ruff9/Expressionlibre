@@ -1,8 +1,6 @@
 var should = require('should')
 var io = require('socket.io-client')
-
 var socketURL = 'http://localhost:3000'
-
 var options = {
   transports: ['websocket'],
   'force new connection': true
@@ -19,7 +17,7 @@ describe("Server",function(){
     });
   });
 
-  it('Should emit message after user type it', function(done){  
+  it('Should broadcast message after user type it', function(done){  
     var client = io.connect(socketURL, options);
     client.on('connect', function(data){
       client.emit('message', {'contenu': 'foo'})
@@ -31,7 +29,7 @@ describe("Server",function(){
     })
   })
 
-  it('Should emit message when page loads', function(done){
+  it('Should broadcast message after another user type it', function(done){
     var client1 = io.connect(socketURL, options);
     client1.emit('message', {'contenu': 'foo'})
 
