@@ -150,15 +150,15 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('compteurSocket', connectCounter);
   }, 2000);
 
-  var max_messages = 10
+  var max_messages = 150
   var initial = client.get('compteur') + 1
 
   for(i = initial; i < (max_messages + initial); i++) {
     var next_key = (i % max_messages) + 1;
-    console.log("i: " + i + '  // next_key: ' + next_key)
+    // console.log("i: " + i + '  // next_key: ' + next_key)
     
     client.hgetall('message:' + next_key, function(error, message) {
-      console.log("yaf message : " + message)
+      // console.log("yaf message : " + message)
       if(message) {
         socket.emit('affiche_base_message', message)
       }
