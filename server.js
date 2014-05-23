@@ -23,6 +23,10 @@ app.configure(function () {
 
 });
 
+app.configure('test', function(){
+  process.env.PORT = 3002;
+});
+
 app.set('view engine', 'ejs');
 
 var server = app.listen(process.env.PORT || 3000, function(){
@@ -141,29 +145,37 @@ function handler (request, response) {
 
 var connectCounter = 0;
 client.set('compteur', 0)
+// client.set('compteur', client.get('compteur'|| 0))
 
 io.sockets.on('connection', function (socket) {
 
-  io.sockets.emit('compteurSocket', connectCounter++);
+  connectCounter += 1
+  io.sockets.emit('compteurSocket', connectCounter);
 
   setInterval(function() {
     io.sockets.emit('compteurSocket', connectCounter);
   }, 2000);
 
-  var max_messages = 150
-  var initial = client.get('compteur') + 1
+  var max_messages = 10
 
-  for(i = initial; i < (max_messages + initial); i++) {
-    var next_key = (i % max_messages) + 1;
-    // console.log("i: " + i + '  // next_key: ' + next_key)
+  client.get('compteur', function(error, compteur) {
+
+    var initial = compteur + 1
+    // console.log("compteur: " + compteur)
+
+    for(i = initial; i < (max_messages + initial); i++) {
+      var next_key = (i % max_messages) + 1;
+      // console.log("i: " + i + '  // next_key: ' + next_key)
+      
+      client.hgetall('message:' + next_key, function(error, message) {
+        // console.log("message : " + message)
+        if(message) {
+          socket.emit('affiche_base_message', message)
+        }
+      });
     
-    client.hgetall('message:' + next_key, function(error, message) {
-      // console.log("yaf message : " + message)
-      if(message) {
-        socket.emit('affiche_base_message', message)
-      }
-    })
-  }
+    }
+  });
   
   socket.on('mousemove', function (data) {
     socket.broadcast.emit('moving', data)
@@ -174,9 +186,9 @@ io.sockets.on('connection', function (socket) {
     client.get('compteur', function(err, compteur) {
      
       var compteur = parseInt(compteur, 10) || 0
-      console.log(compteur)
+      
       compteur += 1;
-      console.log(compteur)
+      // console.log("compteur: " + compteur)
       // MessageCounter +=1;
 
       client.hset("message:"+compteur, "contenu", data.contenu);

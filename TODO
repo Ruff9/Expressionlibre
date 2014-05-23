@@ -6,6 +6,12 @@ Réflexion version mobile
 MEP système de metrics
 	=> StatsMix
 
+Présentation
+	ajout du fun
+	fermer sur un appel à utiliser l'app
+	=> obj recherche d'utilisateurs
+	assumer les différentes formes du projet ?
+
 compteur des messages publiés
 	=> utiliser redis
 
@@ -29,8 +35,13 @@ discution community management
 
 Création de room thématiques
 
+possibilité d'exporter des jpg
+"partir dans l'art collectif"
 
 notes retours utilisateurs
+
+possibilité de classer/ranger les messages
+(utilisation pour brainstorming)
 
 à quand les shortcodes?
 

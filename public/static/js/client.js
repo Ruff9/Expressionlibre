@@ -6,8 +6,8 @@ $(function(){
     };
 
     // var url = app.locals.url;
-    // var url = 'http://localhost:3000';
-    var url = 'http://expressionlibre.herokuapp.com/';
+    var url = 'http://localhost:3000';
+    // var url = 'http://expressionlibre.herokuapp.com/';
     
     var socket = io.connect(url);
 
@@ -23,7 +23,7 @@ $(function(){
     var cursors = {};
     var position_message = {};
     var messages = {};
-    var nb_messages_max = 150;
+    var nb_messages_max = 10;
     var pas_opacite = 1/nb_messages_max;
 
     function encodeHTML(s) {
@@ -65,7 +65,7 @@ $(function(){
     });
 
     // enorme duplication des deux socket.on à suivre
-
+    // todo baisser l'opacité avant de charger le nouveau message
     socket.on('affiche_base_message', function (data) {
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
