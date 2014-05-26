@@ -25,6 +25,11 @@ p
 #sidebar p
   color white
   text-align center
+  z-index 1
+
+#boutons_home
+  text-align center
+  margin-bottom 10px
 
 .message
   font-family 'Oxygen', sans-serif
@@ -33,20 +38,22 @@ p
 #zone_de_jeu
   float left
   background url("/static/images/texture.png") repeat
-  width 85%
+  width 100%
   height 100%
+  z-index -1
 
 #paper
-  width 85%
+  width 100%
   height 100%
   position absolute
 
 #sidebar
+  position fixed
   left 0
   background url("/static/images/texture_dark.png") repeat
-  height 100%
+  height 50%
   float left
-  width 13%
+  width 48%
   padding 0 1% 0 1%
 
 #about

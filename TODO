@@ -1,7 +1,8 @@
 TODO
 
 Réflexion version mobile
-	comment obtenir une mise en place rapide? 
+	comment obtenir une mise en place rapide?
+	=> MEDIA QUERIES
 
 MEP système de metrics
 	=> StatsMix
@@ -27,7 +28,7 @@ design : fond
 partage facebook : gérer une image d'aperçu
 
 Différencier les utilisateurs :
-	!= couleurs de curseur
+	!= couleurs de curseur <= celui là
 	!= couleurs de texte
 	!= polices
 
@@ -35,8 +36,12 @@ discution community management
 
 Création de room thématiques
 
+Kenny 
+
 possibilité d'exporter des jpg
 "partir dans l'art collectif"
+
+----------------------------------------------
 
 notes retours utilisateurs
 
@@ -54,6 +59,8 @@ background-attachment:fixed;
 
 le remote clic / "latence de la souris" est énorme ??
 
+-------------------------------------------------
+
 Tony
 
 gros modal général escamotable
@@ -69,3 +76,8 @@ appel action => utilisation (et pas mail)
 
 
 appel à contribution dessins / illustration 
+ => animation
+
+boucle Jquery?
+
+possibilité de changer la taille => slider sous la zone de texte => position taille moyenne par défaut 

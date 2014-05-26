@@ -21,19 +21,18 @@
 
 	<div id="sidebar">
 
-		<h1>Expression</br>Libre</h1>
+		<h1>Expression Libre</h1>
 
-		</br>
 		<p class="texte_sidebar">Cliquez</p>
 
 		<p class="texte_sidebar">Exprimez-vous</p>
 		</br>
 
-		<p class="texte_sidebar">Restez informés :</p>
-
-		<%- include mailchimpForm.ejs %>
-
-		<p class="lien_about"><a href="/about">A propos</a><a href="/feedback" id="lienFeedback">Feedback</a></p>
+		<div id="boutons_home">
+			<button class="lien_about" href="/about">En savoir +</button>
+			
+			<a href="/feedback" id="lienFeedback">Feedback</a>
+		</div>
 
 		<div id="social">
 			<div class="fb-share-button" data-href="http://expressionlib.re" data-type="button"></div>
@@ -58,7 +57,7 @@
 		</div>
 		
 		<form id="saisie_texte" style="display:none;">
-			<input type="text" id="champ_saisie" placeholder="" maxlength="30">
+			<input type="text" id="champ_saisie" placeholder="" maxlength="40">
 			<input type="submit" value="OK">
 		</form>
 	
