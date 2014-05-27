@@ -83,7 +83,9 @@ a.boutonFeedback {
   background: url("/static/images/texture.png") repeat;
 }
 #about h1 {
+  text-align: center;
   color: #000;
+  margin-top: 50px;
 }
 #saisie_texte {
   position: absolute;
