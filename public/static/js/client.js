@@ -35,6 +35,15 @@ $(function(){
 
         if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0){
 
+            $('#sidebar').animate({width:"20%", height:"10%"}, 400, function(){
+                $('.texte_sidebar').hide();
+                $('#social').hide();
+                $('.lien_about').hide();
+                $('#logo').css({
+                    'margin-top' : '10px'
+                });
+            });
+
             if ($('#champ_saisie').val() == ''){
                 position_message = [e.pageX, e.pageY];
             };
