@@ -13,7 +13,6 @@ $(function(){
 
     var doc = $(document),
         win = $(window),
-        sidebar_width = win.width()*0.15,
         canvas = $('#paper'),
         ctx = canvas[0].getContext('2d');
         
@@ -23,7 +22,7 @@ $(function(){
     var cursors = {};
     var position_message = {};
     var messages = {};
-    var nb_messages_max = 150;
+    var nb_messages_max = 10;
     var pas_opacite = 1/nb_messages_max;
 
     function encodeHTML(s) {
@@ -32,18 +31,24 @@ $(function(){
 
     $("#zone_de_jeu").click(function(e){
 
-        if ($('#champ_saisie').val() == ''){
-            position_message = [e.pageX, e.pageY];
-        };
+        var sidebar = $('#sidebar');
 
-        $("#saisie_texte").css({
-            'left' : position_message[0],
-            'top' : position_message[1] - 15, 
-            'display' : 'block'
-        });
+        if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0){
 
-        $('#champ_saisie').focus();
+            if ($('#champ_saisie').val() == ''){
+                position_message = [e.pageX, e.pageY];
+            };
+
+            $("#saisie_texte").css({
+                'left' : position_message[0],
+                'top' : position_message[1] - 15, 
+                'display' : 'block'
+            });
+
+            $('#champ_saisie').focus();
+        }
     });
+
 
     $("#saisie_texte").submit(function(e){
         e.preventDefault();
@@ -69,13 +74,7 @@ $(function(){
     socket.on('affiche_base_message', function (data) {
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
-            'left': function() {
-                if (data.posX > sidebar_width){
-                    return data.posX;
-                } else {
-                    return data.posX + sidebar_width;
-                };
-            },
+            'left': data.posX,
             'top': data.posY 
         });
         
@@ -92,13 +91,7 @@ $(function(){
     socket.on('affiche_message', function (data) {
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
-            'left': function() {
-                if (data.posX > sidebar_width){
-                    return data.posX;
-                } else {
-                    return data.posX + sidebar_width;
-                };
-            },
+            'left': data.posX,
             'top': data.posY 
         });
         

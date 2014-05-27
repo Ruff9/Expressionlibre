@@ -25,7 +25,6 @@ p {
 #sidebar p {
   color: #fff;
   text-align: center;
-  z-index: 1;
 }
 #boutons_home {
   text-align: center;
@@ -55,6 +54,7 @@ p {
   float: left;
   width: 48%;
   padding: 0 1% 0 1%;
+  z-index: 1;
 }
 #about {
   background: url("/static/images/texture.png") repeat;
