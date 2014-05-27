@@ -29,6 +29,19 @@ $(function(){
         return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
     }
 
+    $("#sidebar").click(function(e){
+
+            $('#sidebar').animate({width:"38%", height:"50%"}, 400, function(){
+                $('.texte_sidebar').show();
+                $('#social').show();
+                $('.lien_about').show();
+                $('#logo').css({
+                    'margin-top' : '50px'
+                });
+            });
+        
+    })
+
     $("#zone_de_jeu").click(function(e){
 
         var sidebar = $('#sidebar');
@@ -56,6 +69,7 @@ $(function(){
 
             $('#champ_saisie').focus();
         }
+
     });
 
 
