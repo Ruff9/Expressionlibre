@@ -9,6 +9,7 @@ body {
 p {
   font-family: 'Oxygen', sans-serif;
 }
+/* sidebar */
 #sidebar {
   position: fixed;
   margin-top: 2%;
@@ -30,8 +31,20 @@ p {
   margin-top: 15px;
   color: #fff;
 }
-#saisie_texte {
-  position: absolute;
+#social {
+  text-align: center;
+  margin-top: 20px;
+}
+#boutonTwitter {
+  margin-left: 20px;
+}
+/* zone d'expression */
+#zone_de_jeu {
+  float: left;
+  background: url("/static/images/texture.png") repeat;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 #compteur {
   width: 110px;
@@ -44,8 +57,13 @@ p {
   padding-left: 10px;
   z-index: 10;
 }
+#saisie_texte {
+  position: absolute;
+}
 #messages .message {
   position: absolute;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1em;
   z-index: 1;
 }
 #cursors .cursor {
@@ -54,49 +72,7 @@ p {
   height: 24px;
   background: url("/static/images/curseur.png") no-repeat;
 }
-#zone_de_jeu {
-  float: left;
-  background: url("/static/images/texture.png") repeat;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-#paper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-.lien_about {
-  width: 40%;
-  margin: auto;
-  font-family: 'Oxygen', sans-serif;
-  margin-bottom: 10px;
-  background-color: #c0c0c0;
-  padding: 5px 10px 5px 10px;
-}
-a.boutonAbout {
-  font-family: 'Oxygen', sans-serif;
-  text-decoration: none;
-  color: #000;
-  padding: 0px 5px 0px 5px;
-}
-#lienFeedback {
-  position: fixed;
-  bottom: 0;
-  right: 2%;
-  z-index: 10;
-  background-color: #c0c0c0;
-  padding: 5px 10px 5px 10px;
-}
-a.boutonFeedback {
-  font-family: 'Oxygen', sans-serif;
-  text-decoration: none;
-  color: #000;
-}
-.message {
-  font-family: 'Oxygen', sans-serif;
-  font-size: 1em;
-}
+/* page about */
 #about {
   background: url("/static/images/texture.png") repeat;
 }
@@ -114,6 +90,33 @@ a.boutonFeedback {
   text-align: center;
   font-family: 'Oxygen', sans-serif;
 }
+.lien_about {
+  width: 40%;
+  margin: auto;
+  font-family: 'Oxygen', sans-serif;
+  margin-bottom: 10px;
+  background-color: #c0c0c0;
+  padding: 5px 10px 5px 10px;
+}
+a.boutonAbout {
+  font-family: 'Oxygen', sans-serif;
+  text-decoration: none;
+  color: #000;
+  padding: 0px 5px 0px 5px;
+}
+/*formulaire mailchimp page about*/
+#mc_embed_signup2 {
+  text-align: center;
+  margin-top: 30px;
+}
+#mce-EMAIL2 {
+  display: inline-block !important;
+  width: 40%;
+}
+#mc-embedded-subscribe2 {
+  display: inline-block !important;
+}
+/* page feedback */
 #feedback {
   background: url("/static/images/texture.png") repeat;
   text-align: center;
@@ -130,22 +133,16 @@ a.boutonFeedback {
   width: 30%;
   height: 25%;
 }
-#social {
-  text-align: center;
-  margin-top: 20px;
+#lienFeedback {
+  position: fixed;
+  bottom: 0;
+  right: 2%;
+  z-index: 10;
+  background-color: #c0c0c0;
+  padding: 5px 10px 5px 10px;
 }
-#boutonTwitter {
-  margin-left: 20px;
-}
-/*styles pour le formulaire mailchimp page about*/
-#mc_embed_signup2 {
-  text-align: center;
-  margin-top: 30px;
-}
-#mce-EMAIL2 {
-  display: inline-block !important;
-  width: 40%;
-}
-#mc-embedded-subscribe2 {
-  display: inline-block !important;
+a.boutonFeedback {
+  font-family: 'Oxygen', sans-serif;
+  text-decoration: none;
+  color: #000;
 }

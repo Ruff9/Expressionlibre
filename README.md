@@ -1,18 +1,20 @@
 #Expression libre
 
-Mur modifiable en temps-réel. Diffusion en temps réel de l'image des curseurs des clients.
+Mur modifiable en temps-réel. Streaming de l'image des curseurs des clients.
 
 Application réalisée avec NodeJS, Redis, Express et Socket.IO.
 
-Déployée sur [Expressionlib.re](http://expressionlib.re).
+Déployée sur [Expressionlib.re](http://expressionlib.re)
 
 ## Inspirations
 
-[Chat temp-réel avec NodeJS et Socket.IO](http://youtu.be/8jkkd2Ohte8)
+["Do not touch", expérimentation multi-curseurs](http://youtu.be/eRYD5ZFO9UE)
+
+[Poligrafia, cadavre exquis anonyme](www.poligrafia.im)
 
 [Jeu de dessin multi-users temps-réel](http://tutorialzine.com/2012/08/nodejs-drawing-game/)
 
-["Do not touch", expérimentation multi-curseurs](http://youtu.be/eRYD5ZFO9UE)
+[Chat temp-réel avec NodeJS et Socket.IO](http://youtu.be/8jkkd2Ohte8)
 
 ##Licence
 
