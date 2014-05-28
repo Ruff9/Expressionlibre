@@ -31,7 +31,7 @@ $(function(){
 
     $("#sidebar").click(function(e){
 
-            $('#sidebar').animate({height:"50%"}, 400, function(){
+            $('#sidebar').animate({height:"270px"}, 400, function(){
                 $('.texte_sidebar').show();
                 $('#social').show();
                 $('.lien_about').show();
