@@ -31,13 +31,10 @@ $(function(){
 
     $("#sidebar").click(function(e){
 
-            $('#sidebar').animate({width:"38%", height:"50%"}, 400, function(){
+            $('#sidebar').animate({height:"50%"}, 400, function(){
                 $('.texte_sidebar').show();
                 $('#social').show();
                 $('.lien_about').show();
-                $('#logo').css({
-                    'margin-top' : '50px'
-                });
             });
         
     })
@@ -52,9 +49,6 @@ $(function(){
                 $('.texte_sidebar').hide();
                 $('#social').hide();
                 $('.lien_about').hide();
-                $('#logo').css({
-                    'margin-top' : '10px'
-                });
             });
 
             if ($('#champ_saisie').val() == ''){

@@ -144,7 +144,6 @@ function handler (request, response) {
 };
 
 var connectCounter = 0;
-// client.set('compteur', 0)
 client.set('compteur', client.get('compteur') || 0 )
 
 io.sockets.on('connection', function (socket) {
