@@ -10,7 +10,7 @@ Déployée sur [Expressionlib.re](http://expressionlib.re)
 
 ["Do not touch", expérimentation multi-curseurs](http://youtu.be/eRYD5ZFO9UE)
 
-[Poligrafia, cadavre exquis anonyme](www.poligrafia.im)
+[Poligrafia, cadavre exquis anonyme](http://www.poligrafia.im)
 
 [Jeu de dessin multi-users temps-réel](http://tutorialzine.com/2012/08/nodejs-drawing-game/)
 
