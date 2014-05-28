@@ -6,8 +6,8 @@ $(function(){
     };
 
     // var url = app.locals.url;
-    // var url = 'http://localhost:3000';
-    var url = 'http://expressionlibre.herokuapp.com/';
+    var url = 'http://localhost:3000';
+    // var url = 'http://expressionlibre.herokuapp.com/';
     
     var socket = io.connect(url);
 
@@ -95,11 +95,6 @@ $(function(){
     // enorme duplication des deux socket.on à suivre
     // todo baisser l'opacité avant de charger le nouveau message
     socket.on('affiche_base_message', function (data) {
-        messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
-        messages[data.id].css({
-            'left': data.posX,
-            'top': data.posY 
-        });
         
         $(".message").each(function () {
             op = $(this).css("opacity");
@@ -108,15 +103,16 @@ $(function(){
                 $(this).remove();
             };
             $(this).css("opacity", newop);
+        });
+        
+        messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
+        messages[data.id].css({
+            'left': data.posX,
+            'top': data.posY 
         });
     });
 
     socket.on('affiche_message', function (data) {
-        messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
-        messages[data.id].css({
-            'left': data.posX,
-            'top': data.posY 
-        });
         
         $(".message").each(function () {
             op = $(this).css("opacity");
@@ -125,6 +121,12 @@ $(function(){
                 $(this).remove();
             };
             $(this).css("opacity", newop);
+        });
+        
+        messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
+        messages[data.id].css({
+            'left': data.posX,
+            'top': data.posY 
         });
     });
 

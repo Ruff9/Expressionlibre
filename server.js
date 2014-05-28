@@ -144,8 +144,8 @@ function handler (request, response) {
 };
 
 var connectCounter = 0;
-client.set('compteur', 0)
-// client.set('compteur', client.get('compteur'|| 0))
+// client.set('compteur', 0)
+client.set('compteur', client.get('compteur') || 0 )
 
 io.sockets.on('connection', function (socket) {
 
@@ -158,24 +158,22 @@ io.sockets.on('connection', function (socket) {
 
   var max_messages = 150
 
-  client.get('compteur', function(error, compteur) {
+  var initial = client.get('compteur') + 1
+  // console.log("compteur: " + compteur)
 
-    var initial = compteur + 1
-    // console.log("compteur: " + compteur)
-
-    for(i = initial; i < (max_messages + initial); i++) {
-      var next_key = (i % max_messages) + 1;
-      // console.log("i: " + i + '  // next_key: ' + next_key)
-      
-      client.hgetall('message:' + next_key, function(error, message) {
-        // console.log("message : " + message)
-        if(message) {
-          socket.emit('affiche_base_message', message)
-        }
-      });
+  for(i = initial; i < (max_messages + initial); i++) {
+    var next_key = (i % max_messages) + 1;
+    // console.log("i: " + i + '  // next_key: ' + next_key)
     
-    }
-  });
+    client.hgetall('message:' + next_key, function(error, message) {
+      // console.log("message : " + message)
+      if(message) {
+        socket.emit('affiche_base_message', message)
+      }
+    });
+  
+  }
+  
   
   socket.on('mousemove', function (data) {
     socket.broadcast.emit('moving', data)
