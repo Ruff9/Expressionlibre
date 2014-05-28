@@ -1,10 +1,5 @@
 $(function(){
 
-    if(!('getContext' in document.createElement('canvas'))){
-        alert('Votre navigateur ne supporte pas la fonction canvas :( Pour résoudre le problème, vous pouvez le mettre à jour.');
-        return false;
-    };
-
     // var url = app.locals.url;
     // var url = 'http://localhost:3000';
     var url = 'http://expressionlibre.herokuapp.com/';
@@ -12,9 +7,7 @@ $(function(){
     var socket = io.connect(url);
 
     var doc = $(document),
-        win = $(window),
-        canvas = $('#paper'),
-        ctx = canvas[0].getContext('2d');
+        win = $(window);
         
     var id = Math.round($.now()*Math.random());
 
@@ -65,7 +58,6 @@ $(function(){
         }
 
     });
-
 
     $("#saisie_texte").submit(function(e){
         e.preventDefault();
