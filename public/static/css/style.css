@@ -45,6 +45,11 @@ p {
   margin-top: 15px;
   color: #fff;
 }
+@media all and (max-device-width: 480px) {
+  #logo {
+    font-size: 2em;
+  }
+}
 #social {
   text-align: center;
   margin-top: 20px;
