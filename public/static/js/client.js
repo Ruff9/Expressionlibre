@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    console.log("ready")
     document.getElementById("windowSetter").focus();
 });
 
