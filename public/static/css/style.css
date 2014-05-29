@@ -21,6 +21,12 @@ p {
   padding: 0 1% 0 1%;
   z-index: 10;
 }
+@media all and (max-device-width: 480px) {
+  #sidebar {
+    width: 96%;
+    margin-right: 2%;
+  }
+}
 #sidebar p {
   color: #fff;
   text-align: center;
@@ -57,6 +63,21 @@ p {
   padding-left: 10px;
   z-index: 10;
 }
+@media all and (max-device-width: 480px) {
+  #compteur {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 31px;
+    margin-top: 0;
+  }
+}
+@media all and (max-device-width: 480px) {
+  #compteur p {
+    margin: auto;
+    padding-top: 4px;
+  }
+}
 #saisie_texte {
   position: absolute;
 }
@@ -64,7 +85,6 @@ p {
   position: absolute;
   font-family: 'Oxygen', sans-serif;
   font-size: 1em;
-  z-index: 1;
 }
 #cursors .cursor {
   position: absolute;
@@ -142,8 +162,15 @@ a.boutonAbout {
   background-color: #c0c0c0;
   padding: 5px 10px 5px 10px;
 }
+@media all and (max-device-width: 480px) {
+  #lienFeedback {
+    position: fixed;
+    right: 0;
+  }
+}
 a.boutonFeedback {
   font-family: 'Oxygen', sans-serif;
   text-decoration: none;
   color: #000;
 }
+/* styles pour mobiles */

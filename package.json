@@ -1,6 +1,13 @@
 {
   "name": "Expression-Libre",
+  "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
+  "description": "Expression Libre",
   "version": "0.3.0",
+
+  "engine": {
+    "node": "0.10.x"
+  },
+
   "dependencies": {
     "express": "~3.2.1",
     "stylus": "0.42.x",
@@ -12,11 +19,7 @@
     "nodemailer": "0.6.4",
     "metrics-statsmix": "0.0.2"
   },
-  "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
-  "description": "Expression Libre",
-  "engine": {
-    "node": "0.10.x"
-  },
+
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-uglify": "~0.4.0",

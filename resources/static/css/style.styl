@@ -22,6 +22,10 @@ p
   padding 0 1% 0 1%
   z-index 10
 
+  @media all and (max-device-width: 480px)
+    width 100%
+    margin-right 2%
+
 #sidebar p
   color white
   text-align center
@@ -59,6 +63,18 @@ p
   padding-left 10px
   z-index 10
 
+  @media all and (max-device-width: 480px)
+    position fixed
+    bottom 0
+    left 0
+    height 31px
+    margin-top 0
+
+#compteur p
+  @media all and (max-device-width: 480px)
+    margin auto
+    padding-top 4px
+
 #saisie_texte
   position absolute
 
@@ -66,7 +82,6 @@ p
   position absolute
   font-family 'Oxygen', sans-serif
   font-size 1em
-  z-index 1
 
 #cursors .cursor
   position absolute
@@ -147,7 +162,16 @@ a.boutonAbout
   background-color silver
   padding 5px 10px 5px 10px
 
+  @media all and (max-device-width: 480px)
+    position fixed 
+    right 0
+
 a.boutonFeedback
   font-family 'Oxygen', sans-serif
   text-decoration none
   color black
+
+/* styles pour mobiles */
+
+
+  
