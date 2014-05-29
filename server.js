@@ -52,11 +52,12 @@ client.on("error", function (err) {
 });
 
 // Todo gestion des url selon l'environnement
-// if (process.env.NODE_ENV){
+// if (process.env.NODE_ENV == 'development'){
 //   app.locals.url = 'http://localhost:3000';
 // } else {
 //   app.locals.url = 'http://joueavecmoi.herokuapp.com/';
 // };
+
 
 var io = require('socket.io').listen(server);
 
@@ -144,7 +145,9 @@ function handler (request, response) {
 };
 
 var connectCounter = 0;
-client.set('compteur', client.get('compteur') || 0 )
+var compteur =  0;
+client.set('compteur', 0);
+// console.log("compteurinitial: " + compteur)
 
 io.sockets.on('connection', function (socket) {
 
@@ -155,23 +158,30 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('compteurSocket', connectCounter);
   }, 2000);
 
-  var max_messages = 150
+  var max_messages = 10
 
-  var initial = client.get('compteur') + 1
-  // console.log("compteur: " + compteur)
+  client.get('compteur', function(err, compteur){
+         
+    // console.log("compteurConnection: " + compteur)
+      
+      var initial = parseInt(compteur, 10) 
 
-  for(i = initial; i < (max_messages + initial); i++) {
-    var next_key = (i % max_messages) + 1;
-    // console.log("i: " + i + '  // next_key: ' + next_key)
-    
-    client.hgetall('message:' + next_key, function(error, message) {
-      // console.log("message : " + message)
-      if(message) {
-        socket.emit('affiche_base_message', message)
-      }
-    });
+      for(i = initial; i < (max_messages + initial); i++) {
+        var next_key = (i % max_messages) + 1;
+        // console.log("i: " + i + '  // next_key: ' + next_key)
+        
+        client.hgetall('message:' + next_key, function(error, message) {
+          // console.log("message : " + message)
+          if(message) {
+            socket.emit('affiche_base_message', message)
+          }
+        });
+          
+    }
+  });
+
   
-  }
+
   
   socket.on('mousemove', function (data) {
     socket.broadcast.emit('moving', data)
@@ -183,20 +193,21 @@ io.sockets.on('connection', function (socket) {
      
       var compteur = parseInt(compteur, 10) || 0
       
-      compteur += 1;
-      // console.log("compteur: " + compteur)
       // MessageCounter +=1;
+      
+      if (compteur >= max_messages) {
+        client.set('compteur', 0)
+        compteur = 0
+      };
+
+      compteur += 1;
+      client.set('compteur', compteur)
+      // console.log("clé message" + compteur)
 
       client.hset("message:"+compteur, "contenu", data.contenu);
       client.hset("message:"+compteur, "posX", data.posX);
       client.hset("message:"+compteur, "posY", data.posY);
-      client.hset("message:"+compteur, "id", compteur);
-
-      client.set('compteur', compteur)
-     
-      if (compteur >= max_messages) {
-        compteur = 0;
-      };
+      client.hset("message:"+compteur, "id", compteur);     
 
       io.sockets.emit('affiche_message', data)
   
