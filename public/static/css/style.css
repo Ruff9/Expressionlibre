@@ -24,8 +24,15 @@ p {
 @media all and (max-device-width: 480px) {
   #sidebar {
     width: 100%;
-    margin-right: 2%;
+    margin-top: 0;
+    margin-left: 0;
     padding: 0;
+    height: 200px;
+  }
+}
+@media all and (max-device-width: 480px) {
+  #sidebar br {
+    display: none;
   }
 }
 #sidebar p {
@@ -133,6 +140,11 @@ a.boutonAbout {
 #mce-EMAIL2 {
   display: inline-block !important;
   width: 40%;
+}
+@media all and (max-device-width: 480px) {
+  #mce-EMAIL2 {
+    width: 60%;
+  }
 }
 #mc-embedded-subscribe2 {
   display: inline-block !important;
