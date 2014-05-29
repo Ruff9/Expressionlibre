@@ -23,8 +23,9 @@ p {
 }
 @media all and (max-device-width: 480px) {
   #sidebar {
-    width: 96%;
+    width: 100%;
     margin-right: 2%;
+    padding: 0;
   }
 }
 #sidebar p {
@@ -150,9 +151,19 @@ a.boutonAbout {
   width: 30%;
   margin-top: 3%;
 }
+@media all and (max-device-width: 480px) {
+  #emailFeedback {
+    width: 90%;
+  }
+}
 #messageFeedback {
   width: 30%;
   height: 25%;
+}
+@media all and (max-device-width: 480px) {
+  #messageFeedback {
+    width: 90%;
+  }
 }
 #lienFeedback {
   position: fixed;
