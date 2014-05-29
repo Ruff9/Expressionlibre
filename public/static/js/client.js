@@ -1,6 +1,8 @@
 $(document).ready(function(){
-    console.log("ready")
-    document.getElementById("windowSetter").focus();
+    console.log("ready");
+    var tt = document.getElementById("windowSetter");
+    console.log(tt);
+    tt.focus();
 });
 
 $(function(){
