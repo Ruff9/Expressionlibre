@@ -1,5 +1,8 @@
-$(function(){
+$(document).ready(function(){
+    document.getElementById("windowSetter").focus();
+});
 
+$(function(){
 
     var socket = io.connect();
 
