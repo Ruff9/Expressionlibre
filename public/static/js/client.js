@@ -16,8 +16,8 @@ $(function(){
 
     var clients = {};
     var cursors = {};
-    var position_message = {};
     var messages = {};
+    var position_message = {};
     var nb_messages_max = 105;
     var pas_opacite = 1/nb_messages_max;
 

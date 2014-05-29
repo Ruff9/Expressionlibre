@@ -51,14 +51,6 @@ client.on("error", function (err) {
     console.log("Error " + err);
 });
 
-// Todo gestion des url selon l'environnement
-// if (process.env.NODE_ENV == 'development'){
-//   app.locals.url = 'http://localhost:3000';
-// } else {
-//   app.locals.url = 'http://joueavecmoi.herokuapp.com/';
-// };
-
-
 var io = require('socket.io').listen(server);
 
 io.configure(function () { 
@@ -179,9 +171,6 @@ io.sockets.on('connection', function (socket) {
           
     }
   });
-
-  
-
   
   socket.on('mousemove', function (data) {
     socket.broadcast.emit('moving', data)
