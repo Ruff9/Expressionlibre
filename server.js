@@ -137,9 +137,14 @@ function handler (request, response) {
 };
 
 var connectCounter = 0;
-var compteur =  0;
-client.set('compteur', 0);
-// console.log("compteurinitial: " + compteur)
+
+client.get('compteur', function(err, compteur) {
+     
+  var compteur = parseInt(compteur, 10) || 0
+  client.set('compteur', compteur);
+  // console.log("compteurinitial: " + compteur)
+
+});
 
 io.sockets.on('connection', function (socket) {
 
