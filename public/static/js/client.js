@@ -1,8 +1,10 @@
 $(document).ready(function(){
-    console.log("ready");
-    var tt = document.getElementById("windowSetter");
-    console.log(tt);
-    tt.focus();
+
+    $('html, body').animate({
+        scrollTop: $('#windowSetter').offset().top,
+        scrollLeft: $('#windowSetter').offset().left
+    }, 2000);
+
 });
 
 $(function(){

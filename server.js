@@ -164,10 +164,10 @@ io.sockets.on('connection', function (socket) {
       var initial = parseInt(compteur, 10) 
 
       for(i = initial; i < (max_messages + initial); i++) {
-        var next_key = (i % max_messages) + 1;
-        // console.log("i: " + i + '  // next_key: ' + next_key)
+        var key = (i % max_messages) + 1;
+        // console.log("i: " + i + '  // key: ' + key)
         
-        client.hgetall('message:' + next_key, function(error, message) {
+        client.hgetall('message:' + key, function(error, message) {
           // console.log("message : " + message)
           if(message) {
             socket.emit('affiche_base_message', message)
