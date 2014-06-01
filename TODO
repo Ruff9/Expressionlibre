@@ -1,7 +1,5 @@
 TODO
 
-affichage du champ de saisie différent selon les zones
-
 scroll visible au chargement...
 
 Réflexion version mobile
@@ -12,10 +10,6 @@ MEP système de metrics
 	=> StatsMix
 
 Présentation
-	ajout du fun
-	fermer sur un appel à utiliser l'app
-	=> obj recherche d'utilisateurs
-	assumer les différentes formes du projet ?
 
 compteur des messages publiés
 	=> utiliser redis
