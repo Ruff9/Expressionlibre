@@ -20,7 +20,7 @@ $(function(){
     var cursors = {};
     var messages = {};
     var position_message = {};
-    var nb_messages_max = 105;
+    var nb_messages_max = 150;
     var pas_opacite = 1/nb_messages_max;
 
     function encodeHTML(s) {
@@ -29,11 +29,11 @@ $(function(){
 
     $("#sidebar").click(function(e){
 
-            $('#sidebar').animate({height:"270px"}, 400, function(){
-                $('.texte_sidebar').show();
-                $('#social').show();
-                $('.lien_about').show();
-            });
+        $('#sidebar').animate({height:"270px"}, 400, function(){
+            $('.texte_sidebar').show();
+            $('#social').show();
+            $('.lien_about').show();
+        });
         
     })
 
@@ -99,7 +99,8 @@ $(function(){
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
             'left': data.posX,
-            'top': data.posY 
+            'top': data.posY,
+            'width': '560px'
         });
     });
 
@@ -117,7 +118,8 @@ $(function(){
         messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
         messages[data.id].css({
             'left': data.posX,
-            'top': data.posY 
+            'top': data.posY,
+            'width': '560px'
         });
     });
 

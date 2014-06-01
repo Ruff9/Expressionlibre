@@ -1,9 +1,8 @@
 TODO
 
-Bugs à régler
-
 affichage du champ de saisie différent selon les zones
 
+scroll visible au chargement...
 
 Réflexion version mobile
 	comment obtenir une mise en place rapide?
@@ -23,8 +22,6 @@ compteur des messages publiés
 
 gérer l'espace d'écriture
 	Julien :"C'est un mur, et l'écran n'est qu'une vue sur ce mur"
-
-gestion des url dans client.js
 
 design : fond
 		police (?)
