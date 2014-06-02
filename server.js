@@ -155,7 +155,7 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('compteurSocket', connectCounter);
   }, 2000);
 
-  var max_messages = 250
+  var max_messages = 1000
 
   client.get('compteur', function(err, compteur){
          
