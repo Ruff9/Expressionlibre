@@ -1,5 +1,24 @@
-$(document).ready(function(){
+$(function(){
 
+  var socket = io.connect();
+
+  var doc = $(document),
+  win = $(window);
+
+  var id = Math.round($.now()*Math.random());
+
+  var clients = {};
+  var cursors = {};
+  var messages = {};
+  var position_message = {};
+  var nb_messages_max = 1000;
+  var pas_opacite = 1/nb_messages_max;
+
+  function encodeHTML(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  }
+
+  // scroll initial 
   $('html, body').animate({
     scrollTop: $('#windowSetter').offset().top,
     scrollLeft: $('#windowSetter').offset().left
@@ -20,28 +39,6 @@ $(document).ready(function(){
       }
     });
   });
-  
-});
-
-$(function(){
-
-  var socket = io.connect();
-
-  var doc = $(document),
-  win = $(window);
-
-  var id = Math.round($.now()*Math.random());
-
-  var clients = {};
-  var cursors = {};
-  var messages = {};
-  var position_message = {};
-  var nb_messages_max = 1000;
-  var pas_opacite = 1/nb_messages_max;
-
-  function encodeHTML(s) {
-    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-  }
 
   $("#sidebar").click(function(e){
 
