@@ -82,8 +82,15 @@ render_page = function(page, response) {
   response.render(page)
 }
 
+function is_mobile(req) {
+    var ua = req.header('user-agent');
+    if (/mobile/i.test(ua)) return true;
+    else return false;
+};
+
 app.get('/', function(req, res) {
-  render_page('home', res)
+  if (is_mobile(req) render_page ('mobile_warning', res);
+  else render_page('home', res);
 });
 
 app.get('/about', function(req, res) {
