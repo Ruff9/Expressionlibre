@@ -93,6 +93,10 @@ app.get('/', function(req, res) {
   else render_page('home', res);
 });
 
+app.get('/home', function(req, res) {
+  render_page('home', res);
+});
+
 app.get('/about', function(req, res) {
   render_page('about', res)
 });
