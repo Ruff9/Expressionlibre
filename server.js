@@ -89,7 +89,7 @@ function is_mobile(req) {
 };
 
 app.get('/', function(req, res) {
-  if (is_mobile(req) render_page ('mobile_warning', res);
+  if (is_mobile(req)) render_page ('mobile_warning', res);
   else render_page('home', res);
 });
 
