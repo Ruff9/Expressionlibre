@@ -5,17 +5,6 @@ $(function(){
   var doc = $(document),
   win = $(window);
 
-  var fenetre = {
-    width: win.width(),
-    height: win.height(),
-    posY: parseInt(win.scrollTop()),
-    posX: parseInt(win.scrollLeft()),
-    posYmax: parseInt($("body").height()) - win.height(),
-    posXmax: parseInt($("body").css("width")) - win.width()
-  };
-
-  console.log(fenetre);
-  
   var id = Math.round($.now()*Math.random());
 
   var clients = {};
@@ -25,15 +14,36 @@ $(function(){
   var nb_messages_max = 1000;
   var pas_opacite = 1/nb_messages_max;
 
-  if (fenetre != undefined) {
-    console.log(fenetre);
-    $(window).scroll(function(fenetre){
-        if (fenetre.posX > fenetre.posXmax) {
-          $(window).offset().left = fenetre.posXmax;
-        } else if (fenetre.posY > fenetre.posYmax){
-          $(window).offset().top = fenetre.posYmax;
-        }
-      });
+  // empeche l'user de sortir de la zone de jeu
+  $(window).scroll(function(){
+    var fenetre = {
+      width: win.width(),
+      height: win.height(),
+      posiY: parseInt(win.scrollTop()),
+      posiX: parseInt(win.scrollLeft()),
+      posiYmax: parseInt($("body").height()) - win.height(),
+      posiXmax: parseInt($("body").width()) - win.width()
+    };
+
+    if (fenetre.posiX > fenetre.posiXmax) {
+      $(window).mouseup(function(){
+          $('html, body').animate ({
+            scrollLeft: fenetre.posiXmax
+          })
+        }) 
+
+    } else if (fenetre.posiY > fenetre.posiYmax){
+      $(window).mouseup(function(){
+        $('html, body').animate ({
+          scrollTop: fenetre.posiYmax
+        })
+      })
+    }   
+  });
+
+  // empeche l'injection de JS
+  function encodeHTML(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   }
 
   // scroll initial 
@@ -41,12 +51,6 @@ $(function(){
     scrollTop: $('#windowSetter').offset().top,
     scrollLeft: $('#windowSetter').offset().left
   }, 2000);
-
-  // empeche l'injection de JS
-  function encodeHTML(s) {
-    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-  }
-
 
   $(window).keydown(function(event)
   {
@@ -123,7 +127,6 @@ $(function(){
     // enorme duplication des deux socket.on à suivre
     // todo baisser l'opacité avant de charger le nouveau message
     socket.on('affiche_base_message', function (data) {
-
       $(".message").each(function () {
         op = $(this).css("opacity");
         newop = op - pas_opacite;
@@ -135,8 +138,8 @@ $(function(){
 
       messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
       messages[data.id].css({
-        'left': data.posX,
-        'top': data.posY,
+        'left': data.posX + "px",
+        'top': data.posY + "px",
         'width': '560px'
       });
     });
