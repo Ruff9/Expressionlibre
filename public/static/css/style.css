@@ -225,12 +225,14 @@ a.boutonFeedback {
   background: url("/static/images/texture_dark.png") repeat;
   height: 100%;
 }
-#mobileWarning #logo {
-  width: 90%;
+#mobileWarning h1 {
   margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
 }
 #mobileWarning p {
   width: 90%;
   color: #fff;
   text-align: center;
+  margin: auto;
 }
