@@ -1,6 +1,7 @@
 body {
   width: 2500px;
   height: 4500px;
+  background: url("/static/images/texture.png") repeat;
   margin: 0;
 }
 @font-face {

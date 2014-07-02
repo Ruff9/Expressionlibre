@@ -14,33 +14,6 @@ $(function(){
   var nb_messages_max = 1000;
   var pas_opacite = 1/nb_messages_max;
 
-  // empeche l'user de sortir de la zone de jeu
-  $(window).scroll(function(){
-    var fenetre = {
-      width: win.width(),
-      height: win.height(),
-      posiY: parseInt(win.scrollTop()),
-      posiX: parseInt(win.scrollLeft()),
-      posiYmax: parseInt($("body").height()) - win.height(),
-      posiXmax: parseInt($("body").width()) - win.width()
-    };
-
-    if (fenetre.posiX > fenetre.posiXmax) {
-      $(window).mouseup(function(){
-          $('html, body').animate ({
-            scrollLeft: fenetre.posiXmax
-          })
-        }) 
-
-    } else if (fenetre.posiY > fenetre.posiYmax){
-      $(window).mouseup(function(){
-        $('html, body').animate ({
-          scrollTop: fenetre.posiYmax
-        })
-      })
-    }   
-  });
-
   // empeche l'injection de JS
   function encodeHTML(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
