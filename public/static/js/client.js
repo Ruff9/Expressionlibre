@@ -25,6 +25,7 @@ $(function(){
     scrollLeft: $('#windowSetter').offset().left
   }, 2000);
 
+
   $(window).keydown(function(event)
   {
     if((event.keyCode == 107 && event.ctrlKey == true) || (event.keyCode == 109 && event.ctrlKey == true))
@@ -97,87 +98,76 @@ $(function(){
     $("#compteurVal").text(data);
   });
 
-    // enorme duplication des deux socket.on à suivre
-    // todo baisser l'opacité avant de charger le nouveau message
-    socket.on('affiche_base_message', function (data) {
-      $(".message").each(function () {
-        op = $(this).css("opacity");
-        newop = op - pas_opacite;
-        if (newop == 0){
-          $(this).remove();
-        };
-        $(this).css("opacity", newop);
-      });
+  var AfficheMessage = function (data) {
 
-      messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
-      messages[data.id].css({
-        'left': data.posX + "px",
-        'top': data.posY + "px",
-        'width': '560px'
-      });
+    $(".message").each(function () {
+      op = $(this).css("opacity");
+      newop = op - pas_opacite;
+      if (newop == 0){
+        $(this).remove();
+      };
+      $(this).css("opacity", newop);
     });
 
-    socket.on('affiche_message', function (data) {
-
-      $(".message").each(function () {
-        op = $(this).css("opacity");
-        newop = op - pas_opacite;
-        if (newop == 0){
-          $(this).remove();
-        };
-        $(this).css("opacity", newop);
-      });
-
-      messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
-      messages[data.id].css({
-        'left': data.posX,
-        'top': data.posY,
-        'width': '560px'
-      });
+    messages[data.id] = $('<div class="message">'+ data.contenu +'</div>').appendTo('#messages');
+    
+    messages[data.id].css({
+      'left': data.posX + "px",
+      'top': data.posY + "px",
+      'width': '560px'
     });
 
-    socket.on('moving', function (data) {
+  };
 
-      if(! (data.id in clients)){
-
-        cursors[data.id] = $('<div class="cursor">').appendTo('#cursors');
-      }
-
-      cursors[data.id].css({
-        'left' : data.x,
-        'top' : data.y
-      });
-
-      clients[data.id] = data;
-      clients[data.id].updated = $.now();
-    });
-
-    var lastEmit = $.now();
-
-    doc.on('mousemove',function(e){
-      if($.now() - lastEmit > 30){
-        socket.emit('mousemove',{
-          'x': e.pageX,
-          'y': e.pageY,
-          'id': id
-        });
-        lastEmit = $.now();
-      }
-    });
-
-    // supprime le client après 10 secondes d'inactivité
-
-    setInterval(function(){
-
-      for(ident in clients){
-        if($.now() - clients[ident].updated > 10000){
-
-          cursors[ident].remove();
-          delete clients[ident];
-          delete cursors[ident];
-        }
-      }
-
-    },10000);
-
+  socket.on('affiche_base_message', function (data) {
+    AfficheMessage(data);
   });
+
+  socket.on('affiche_message', function (data) {
+    AfficheMessage(data);
+  });
+
+  socket.on('moving', function (data) {
+
+    if(! (data.id in clients)){
+      cursors[data.id] = $('<div class="cursor">').appendTo('#cursors');
+    }
+
+    cursors[data.id].css({
+      'left' : data.x,
+      'top' : data.y
+    });
+
+    clients[data.id] = data;
+    clients[data.id].updated = $.now();
+  });
+
+  var lastEmit = $.now();
+
+  doc.on('mousemove',function(e){
+    if($.now() - lastEmit > 30){
+      socket.emit('mousemove',{
+        'x': e.pageX,
+        'y': e.pageY,
+        'id': id
+      });
+      lastEmit = $.now();
+    }
+  });
+
+  // supprime le client après 10 secondes d'inactivité
+
+  setInterval(function(){
+
+    for(ident in clients){
+      if($.now() - clients[ident].updated > 10000){
+
+        cursors[ident].remove();
+        delete clients[ident];
+        delete cursors[ident];
+      }
+    }
+
+  },10000);
+
+});
