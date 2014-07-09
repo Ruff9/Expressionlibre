@@ -23,15 +23,6 @@ $(function(){
   win.scrollTop($('#windowSetter').offset().top)
   win.scrollLeft($('#windowSetter').offset().left)
 
-  $(window).keydown(function(event) {
-    if((event.keyCode == 107 && event.ctrlKey == true) || (event.keyCode == 109 && event.ctrlKey == true))
-    { event.preventDefault(); }
-
-    $(window).bind('mousewheel DOMMouseScroll', function(event){ 
-      if(event.ctrlKey == true){ event.preventDefault(); }
-    });
-  });
-
   $("#sidebar").click(function(e){
 
     $('#sidebar').animate({height:"270px"}, 400, function(){
