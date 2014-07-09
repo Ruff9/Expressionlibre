@@ -19,11 +19,9 @@ $(function(){
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   }
 
-  // scroll initial 
-  $('html, body').animate({
-    scrollTop: $('#windowSetter').offset().top,
-    scrollLeft: $('#windowSetter').offset().left
-  }, 2000);
+  // positionnement initial 
+  win.scrollTop($('#windowSetter').offset().top)
+  win.scrollLeft($('#windowSetter').offset().left)
 
   $(window).keydown(function(event) {
     if((event.keyCode == 107 && event.ctrlKey == true) || (event.keyCode == 109 && event.ctrlKey == true))
@@ -111,6 +109,7 @@ $(function(){
   };
 
   socket.on('affiche_base_message', function (data) {
+    console.log("affiche_base_message")
     AfficheMessage(data);
   });
 

@@ -1,21 +1,46 @@
 TODO
 
+-------------------------
+
+DEBUG
+
+"Un script sur cette page est peut etre occupé ou ne répond plus.
+Script : http://code.jquery.com/jquery-1.8.0.js: 787"
+
+ou "jquery-1.8.0.js: 98"
+
+=> plante qd connection lente
+
+chargement multiple des messsages?
+	tentative socket.once => echec
+	removeListener ?
+
+Intégrer le code jquery dans l'app => possibilité de débugger
+
+en localhost : rechargement multiple des messages ( pas toujours ? )
+ dans la console serveur: warn: "client not handshaken client should reconnect"
+
+tester Pusher ?
+
+-------------------------
+
 scroll visible au chargement...
 
 Réflexion version mobile
 	comment obtenir une mise en place rapide?
 	=> MEDIA QUERIES
 
+	A RETRAVAILLER
+
 MEP système de metrics
 	=> StatsMix
-
-Présentation
 
 compteur des messages publiés
 	=> utiliser redis
 
 gérer l'espace d'écriture
 	Julien :"C'est un mur, et l'écran n'est qu'une vue sur ce mur"
+	2600 * 3000 px ?
 
 design : fond
 		police (?)
@@ -65,13 +90,10 @@ gros modal général escamotable
  => plus d'info, plus aéré
  => logo reste, possibilité de rouvrir
 
-masquer la colonne 
-
 texte about en modal
 
 appel action => utilisation (et pas mail)
 	Exprimez VOUS
-
 
 appel à contribution dessins / illustration 
  => animation

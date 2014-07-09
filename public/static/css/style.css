@@ -27,6 +27,7 @@ p {
   width: 280px;
   padding: 0 1% 0 1%;
   z-index: 10;
+/* texture sidebar : Twinkle Twinkle from Subtle Patterns */
 }
 @media all and (max-device-width: 480px) {
   #sidebar {
@@ -79,6 +80,7 @@ p {
   overflow: hidden;
   background: url("/static/images/texture.png") repeat;
   z-index: 1;
+/* texture principale : Halftone from Subtle Patterns */
 }
 #compteur {
   width: 110px;

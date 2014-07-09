@@ -2,7 +2,7 @@ var express = require('express');
 var stylus = require('stylus');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
-var redis = require("redis");
+var redis = require('redis');
 var Poet = require('poet');
 var nodemailer = require('nodemailer');
 
@@ -83,10 +83,12 @@ render_page = function(page, response) {
 }
 
 function is_mobile(req) {
-    var ua = req.header('user-agent');
-    if (/mobile/i.test(ua)) return true;
-    else return false;
+  var ua = req.header('user-agent');
+  if (/mobile/i.test(ua)) return true;
+  else return false;
 };
+
+// Pas la meilleure méthode, todo : faire la meme chose en css pur 
 
 app.get('/', function(req, res) {
   if (is_mobile(req)) render_page ('mobile_warning', res);
@@ -171,20 +173,19 @@ io.sockets.on('connection', function (socket) {
   client.get('compteur', function(err, compteur){
          
     // console.log("compteurConnection: " + compteur)
+    console.log("diffusion message initiaux");
       
-      var initial = parseInt(compteur, 10) 
+    var initial = parseInt(compteur, 10) 
 
-      for(i = initial; i < (max_messages + initial); i++) {
-        var key = (i % max_messages) + 1;
-        // console.log("i: " + i + '  // key: ' + key)
-        
-        client.hgetall('message:' + key, function(error, message) {
-          // console.log("message : " + message)
-          if(message) {
-            socket.emit('affiche_base_message', message)
-          }
-        });
-          
+    for(i = initial; i < (max_messages + initial); i++) {
+      var key = (i % max_messages) + 1;
+      // console.log("i: " + i + '  // key: ' + key)      
+      client.hgetall('message:' + key, function(error, message) {
+        // console.log("message : " + message)
+        if(message) {
+          socket.emit('affiche_base_message', message)
+        }
+      });          
     }
   });
   
