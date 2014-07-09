@@ -24,8 +24,6 @@ tester Pusher ?
 
 -------------------------
 
-scroll visible au chargement...
-
 Réflexion version mobile
 	comment obtenir une mise en place rapide?
 	=> MEDIA QUERIES
@@ -40,7 +38,6 @@ compteur des messages publiés
 
 gérer l'espace d'écriture
 	Julien :"C'est un mur, et l'écran n'est qu'une vue sur ce mur"
-	2600 * 3000 px ?
 
 design : fond
 		police (?)

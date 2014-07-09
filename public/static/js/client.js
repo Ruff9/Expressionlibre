@@ -11,7 +11,7 @@ $(function(){
   var cursors = {};
   var messages = {};
   var position_message = {};
-  var nb_messages_max = 1000;
+  var nb_messages_max = 400;
   var pas_opacite = 1/nb_messages_max;
 
   // empeche l'injection de JS
