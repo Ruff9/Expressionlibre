@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html>
 <head>
@@ -17,14 +15,24 @@
 
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=503041236463802&version=v2.0";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=503041236463802&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<script>
+		!function(d,s,id){
+			var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+			if(!d.getElementById(id)){
+				js=d.createElement(s);
+				js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+				fjs.parentNode.insertBefore(js,fjs);}
+		}
+		(document, 'script', 'twitter-wjs');
+	</script>
 
 	<div id="sidebar">
 
@@ -36,13 +44,16 @@
 		</br>
 
 		<div class="lien_about" >
-			<a href="/about" class="boutonAbout">En savoir plus</a>		
+			<a href="#?w=500" rel="about" class="boutonAbout poplight">En savoir plus</a>		
 		</div>
 
 		<div id="social">
 			<div class="fb-share-button" data-href="http://expressionlib.re" data-type="button"></div>
 			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Un peu de liberté" data-lang="fr" data-count="none">Tweeter</a>
 		</div>
+
+
+
 		
 	</div>
 	
@@ -69,6 +80,19 @@
 	<div id='lienFeedback'>
 		<a href="/feedback" class="boutonFeedback">Feedback</a>
 	</div>	
+		<div id="about" class="popup_block">
+			<div id="texte_about">
+
+				<p>Expression libre est une application en cours de développement, un projet soutenu par <a href="http://simplon.co/">Simplon</a>. Cette page est un lieu de liberté et d'anonymat total. Aucune donnée personnelle n'est conservée.</p>
+
+				<p>Vous pouvez le vérifier : le code est open source et disponible <a href="https://github.com/JoueAvecMoi/Expressionlibre">ici</a>. Ce projet est actuellement en version alpha. Pour signaler un bug, faire une remarque ou une proposition, utilisez ce formulaire de <a href="/feedback">feedback</a>.</p>
+
+				<p>Si la démarche vous intéresse, vous pouvez suivre ses évolutions en indiquant votre email ci-dessous.</p>
+
+				<%- include mailchimpForm2.ejs %>
+
+			</div>
+		</div>
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="http://code.jquery.com/jquery-1.8.0.js"></script>
