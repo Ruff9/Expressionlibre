@@ -93,16 +93,8 @@ app.get('/home', function(req, res) {
   render_page('home', res);
 });
 
-app.get('/about', function(req, res) {
-  render_page('about', res)
-});
-
 app.get('/blog', function(req, res) {
   render_page('blog/index', res)
-});
-
-app.get('/feedback', function(req, res) {
-  render_page('feedback', res)
 });
 
 app.post('/feedback', function(req, res) {

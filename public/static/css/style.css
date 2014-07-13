@@ -200,10 +200,6 @@ a.boutonAbout {
   text-align: center;
   font-family: 'Oxygen', sans-serif;
 }
-#feedback h1 {
-  color: #000;
-  margin-top: 7%;
-}
 #emailFeedback {
   width: 80%;
   margin-top: 3%;

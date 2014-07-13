@@ -37,10 +37,10 @@ Réflexion version mobile
 	A RETRAVAILLER
 
 MEP système de metrics
-	=> StatsMix
+	=> StatsMix?
 
 compteur des messages publiés
-	=> utiliser redis
+	=> utiliser redis ?
 
 gérer l'espace d'écriture
 	Julien :"C'est un mur, et l'écran n'est qu'une vue sur ce mur"
