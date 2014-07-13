@@ -4,12 +4,17 @@ TODO
 
 DEBUG
 
+Qd l'onglet reste ouvert 
+(pt etre seulement qd le champ texte est ouvert?)
+
 "Un script sur cette page est peut etre occupé ou ne répond plus.
 Script : http://code.jquery.com/jquery-1.8.0.js: 787"
 
 ou "jquery-1.8.0.js: 98"
 
 => plante qd connection lente
+
+"warn: client not handshaken client should reconnect"
 
 chargement multiple des messsages?
 	tentative socket.once => echec

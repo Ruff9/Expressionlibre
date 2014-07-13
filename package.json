@@ -1,7 +1,7 @@
 {
   "name": "Expression-Libre",
   "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
-  "description": "Expression Libre",
+  "description": "Mur modifiable en temps-réel. Streaming de l'image des curseurs des clients.",
   "version": "0.3.0",
 
   "engine": {

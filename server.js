@@ -33,12 +33,6 @@ var server = app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
-// Todo gestion metrics avec statsmix
-// var statsmix = require('metrics-statsmix');
-// var statsmixClient = new statsmix.Client();
-// var MessageCounter = 0;
-// statsmixClient.addMetric('Messages', MessageCounter, { track : true });
-
 if (process.env.REDISTOGO_URL) {
   var rtg   = require("url").parse(process.env.REDISTOGO_URL);
   var client = redis.createClient(rtg.port, rtg.hostname);
