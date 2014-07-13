@@ -44,7 +44,7 @@
 		</br>
 
 		<div class="lien_about" >
-			<a href="#?w=500" rel="about" class="boutonAbout poplight">En savoir plus</a>		
+			<a href="#" data-width="500" data-rel="about" class="boutonAbout poplight">En savoir plus</a>		
 		</div>
 
 		<div id="social">
@@ -52,9 +52,6 @@
 			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Un peu de liberté" data-lang="fr" data-count="none">Tweeter</a>
 		</div>
 
-
-
-		
 	</div>
 	
 	<div id="zone_de_jeu">
@@ -80,22 +77,23 @@
 	<div id='lienFeedback'>
 		<a href="/feedback" class="boutonFeedback">Feedback</a>
 	</div>	
-		<div id="about" class="popup_block">
-			<div id="texte_about">
 
-				<p>Expression libre est une application en cours de développement, un projet soutenu par <a href="http://simplon.co/">Simplon</a>. Cette page est un lieu de liberté et d'anonymat total. Aucune donnée personnelle n'est conservée.</p>
+	<div id="about" class="popup_block">
+		<div id="texte_about">
 
-				<p>Vous pouvez le vérifier : le code est open source et disponible <a href="https://github.com/JoueAvecMoi/Expressionlibre">ici</a>. Ce projet est actuellement en version alpha. Pour signaler un bug, faire une remarque ou une proposition, utilisez ce formulaire de <a href="/feedback">feedback</a>.</p>
+			<p>Expression libre est une application en cours de développement, un projet soutenu par <a href="http://simplon.co/">Simplon</a>. Cette page est un lieu de liberté et d'anonymat total. Aucune donnée personnelle n'est conservée.</p>
 
-				<p>Si la démarche vous intéresse, vous pouvez suivre ses évolutions en indiquant votre email ci-dessous.</p>
+			<p>Vous pouvez le vérifier : le code est open source et disponible <a href="https://github.com/JoueAvecMoi/Expressionlibre">ici</a>. Ce projet est actuellement en version alpha. Pour signaler un bug, faire une remarque ou une proposition, utilisez ce formulaire de <a href="/feedback">feedback</a>.</p>
 
-				<%- include mailchimpForm2.ejs %>
+			<p>Si la démarche vous intéresse, vous pouvez suivre ses évolutions en indiquant votre email ci-dessous.</p>
 
-			</div>
+			<%- include mailchimpForm2.ejs %>
+
 		</div>
+	</div>
 
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="http://code.jquery.com/jquery-1.8.0.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="/static/js/client.js"></script>
 
 </body>

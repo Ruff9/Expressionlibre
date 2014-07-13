@@ -124,9 +124,7 @@ p {
 }
 /*modal about */
 #fade {
-/*--Masque opaque noir de fond--*/
   display: none;
-/*--masqué par défaut--*/
   background: #000;
   position: fixed;
   left: 0;
@@ -138,7 +136,6 @@ p {
 }
 .popup_block {
   display: none;
-/*--masqué par défaut--*/
   background: #fff;
   padding: 20px;
   border: 5px solid #e6e6fa;
@@ -148,7 +145,6 @@ p {
   top: 50%;
   left: 50%;
   z-index: 99999;
-/*--Les différentes définitions de Box Shadow en CSS3--*/
   -webkit-box-shadow: 0px 0px 20px #000;
   -moz-box-shadow: 0px 0px 20px #000;
   box-shadow: 0px 0px 20px #000;
@@ -157,7 +153,6 @@ img.btn_close {
   float: right;
   margin: -15px -15px 0 0;
 }
-/* page about */
 #about {
   width: 100%;
   font-family: 'Oxygen', sans-serif;
