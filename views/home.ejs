@@ -75,7 +75,7 @@
 	</div>
 
 	<div id='lienFeedback'>
-		<a href="/feedback" class="boutonFeedback">Feedback</a>
+		<a href="#" data-width="500" data-rel="feedback" class="boutonFeedback poplight">Feedback</a>		
 	</div>	
 
 	<div id="about" class="popup_block">
@@ -90,6 +90,15 @@
 			<%- include mailchimpForm2.ejs %>
 
 		</div>
+	</div>
+
+	<div id="feedback" class="popup_block">
+		<form action="/feedback", method="POST">
+	    <p>Donnez votre avis !</p>    
+	    <p><input type="email" id="emailFeedback" name="emailFeedback" placeholder="Votre adresse mail" /></p>
+	    <p><textarea id="messageFeedback" name="messageFeedback" placeholder="Votre message"></textarea></p>
+	    <p><button type="submit" value="Send" name="submitFeedback" id="submitFeedback">Envoyer</button></p>
+ 		</form>
 	</div>
 
 	<script src="/socket.io/socket.io.js"></script>

@@ -48,12 +48,10 @@ $(function(){
     return false;
   });
   
-  
-  //Close Popups and Fade Layer
-  $('body').on('click', 'a.close, #fade', function() { //Au clic sur le body...
+  $('body').on('click', 'a.close, #fade', function() {
     $('#fade , .popup_block').fadeOut(function() {
       $('#fade, a.close').remove();  
-  }); //...ils disparaissent ensemble
+  });
     
     return false;
   });
