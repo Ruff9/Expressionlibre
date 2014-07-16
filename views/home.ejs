@@ -57,7 +57,7 @@
 	<div id="zone_de_jeu">
 	
 		<div id="compteur">
-			<p><span id="compteurVal"></span> connectés</p> 
+			<p><span id="compteurVal"></span> connecté<span id="pluriel">s</span></p> 
 		</div>
 		
 		<div id="cursors">
@@ -70,7 +70,7 @@
 		
 		<form id="saisie_texte" style="display:none;width:265px">
 			<input type="text" id="champ_saisie" maxlength="40">
-			<input type="submit" value="OK">
+			<input type="submit" value="OK" class="ok">
 		</form>
 	</div>
 
@@ -94,10 +94,10 @@
 
 	<div id="feedback" class="popup_block">
 		<form action="/feedback", method="POST">
-	    <p>Donnez votre avis !</p>    
-	    <p><input type="email" id="emailFeedback" name="emailFeedback" placeholder="Votre adresse mail" /></p>
-	    <p><textarea id="messageFeedback" name="messageFeedback" placeholder="Votre message"></textarea></p>
-	    <p><button type="submit" value="Send" name="submitFeedback" id="submitFeedback">Envoyer</button></p>
+		    <p>Donnez votre avis !</p>    
+		    <p><input type="email" id="emailFeedback" name="emailFeedback" placeholder="Votre adresse mail" /></p>
+		    <p><textarea id="messageFeedback" name="messageFeedback" placeholder="Votre message"></textarea></p>
+		    <p><input type="submit" value="Envoyer" name="submitFeedback" id="submitFeedback" class="ok"></p>
  		</form>
 	</div>
 

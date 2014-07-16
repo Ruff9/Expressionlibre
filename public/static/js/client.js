@@ -26,11 +26,10 @@ $(function(){
   // modal about 
 
   $('a.poplight').on('click', function() {
-    console.log(this)
     var popID = $(this).data('rel');
     var popWidth = $(this).data('width');
 
-    $('#' + popID).fadeIn().css({ 'width': popWidth}).prepend('<a href="#" class="close"><img src="/static/images/close-icon.png" class="btn_close" title="Close Window" alt="Close" /></a>');
+    $('#' + popID).fadeIn().css({ 'width': popWidth}).prepend('<a href="#" class="close"><img src="/static/images/close-icon.png" class="btn_close" title="Fermer la fenêtre" alt="Close" /></a>');
     
     //Récupération du margin pour centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
     var popMargTop = ($('#' + popID).height() + 80) / 2;
@@ -55,7 +54,6 @@ $(function(){
     
     return false;
   });
-
 
   $("#sidebar").click(function(e){
 
@@ -111,6 +109,11 @@ $(function(){
 
   socket.on('compteurSocket', function (data) {
     $("#compteurVal").text(data);
+    if (parseInt(data) > 1) {
+      $("#pluriel").show();
+    } else {
+      $("#pluriel").hide();
+    }
   });
 
   var AfficheMessage = function (data) {

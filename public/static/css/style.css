@@ -16,6 +16,11 @@ p {
   left: 650px;
   top: 450px;
 }
+.ok {
+  background-color: #c0c0c0;
+  border: 0;
+  height: 30px;
+}
 /* sidebar */
 #sidebar {
   position: fixed;
@@ -110,6 +115,11 @@ p {
 }
 #saisie_texte {
   position: absolute;
+}
+#champ_saisie {
+  border: 1px solid #c0c0c0;
+  padding: 5px;
+  height: 18px;
 }
 #messages .message {
   position: absolute;
