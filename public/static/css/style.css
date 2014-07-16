@@ -17,8 +17,8 @@ p {
   top: 450px;
 }
 .ok {
-  background-color: #c0c0c0;
-  border: 0;
+  background-color: #e6e6fa;
+  border: 1px solid #c0c0c0;
   height: 30px;
 }
 /* sidebar */
@@ -72,8 +72,8 @@ p {
     display: none;
   }
 }
-#boutonTwitter {
-  margin-left: 20px;
+.fb-share-button {
+  vertical-align: top;
 }
 /* zone d'expression */
 #zone_de_jeu {
@@ -94,6 +94,7 @@ p {
   margin-top: 2%;
   text-align: center;
   background-color: #e6e6fa;
+  border: 1px solid #c0c0c0;
   padding-right: 10px;
   padding-left: 10px;
   z-index: 10;
@@ -236,6 +237,7 @@ a.boutonAbout {
   border: 1px solid #c0c0c0;
   padding: 5px;
   font-family: 'Oxygen', sans-serif;
+  font-size: 1em;
 }
 @media all and (max-device-width: 480px) {
   #messageFeedback {
