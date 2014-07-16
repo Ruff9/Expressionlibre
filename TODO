@@ -32,7 +32,7 @@ tester Pusher ?
 
 Bugs css
 
-feedback
+feedback : pb placeholder
 	deux tailles de police ?
 	"Votre adresse mail" rogné à droite
 

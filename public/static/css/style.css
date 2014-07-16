@@ -18,7 +18,7 @@ p {
 }
 .ok {
   background-color: #e6e6fa;
-  border: 1px solid #c0c0c0;
+  border: 1px solid #dcdcdc;
   height: 30px;
 }
 /* sidebar */
@@ -94,7 +94,7 @@ p {
   margin-top: 2%;
   text-align: center;
   background-color: #e6e6fa;
-  border: 1px solid #c0c0c0;
+  border: 1px solid #dcdcdc;
   padding-right: 10px;
   padding-left: 10px;
   z-index: 10;
@@ -118,7 +118,7 @@ p {
   position: absolute;
 }
 #champ_saisie {
-  border: 1px solid #c0c0c0;
+  border: 1px solid #dcdcdc;
   padding: 5px;
   height: 18px;
 }
@@ -179,7 +179,8 @@ img.btn_close {
   margin: auto;
   font-family: 'Oxygen', sans-serif;
   margin-bottom: 10px;
-  background-color: #c0c0c0;
+  background-color: #fff;
+  border: 1px solid #808080;
   padding: 5px 10px 5px 10px;
 }
 a.boutonAbout {
@@ -250,6 +251,9 @@ a.boutonAbout {
   right: 2%;
   z-index: 10;
   background-color: #c0c0c0;
+  border-top: 1px solid #a9a9a9;
+  border-left: 1px solid #a9a9a9;
+  border-right: 1px solid #a9a9a9;
   padding: 5px 10px 5px 10px;
 }
 @media all and (max-device-width: 480px) {

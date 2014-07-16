@@ -117,7 +117,7 @@ app.post('/feedback', function(req, res) {
 
   smtpTrans.sendMail(mailOpts, function (error, response) {
       if (error) {
-        res.render('feedback', { msg: 'Erreur: message non envoyé', err: true, page: 'feedback' })
+        res.render('home', { msg: 'Erreur: message non envoyé', err: true, page: 'home' })
       }
       else { res.render('home'); };
     });  
