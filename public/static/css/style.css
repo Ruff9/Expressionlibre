@@ -189,6 +189,10 @@ a.boutonAbout {
   color: #000;
   padding: 0px 5px 0px 5px;
 }
+#signature {
+  text-align: right;
+  margin-top: 30px;
+}
 /*formulaire mailchimp page about*/
 #mc-embedded-subscribe-form2 {
   height: 30px;
@@ -212,6 +216,7 @@ a.boutonAbout {
 }
 #mc-embedded-subscribe2 {
   display: inline-block !important;
+  vertical-align: top;
 }
 /* modal feedback */
 #feedback {
