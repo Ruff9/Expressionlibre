@@ -4,6 +4,9 @@ TODO
 
 DEBUG
 
+Pb potentiellement réglé ? 
+	=> création de l'event 'DOMLoaded' pour limiter à une fois le nb de chargement des messages initiaux
+
 Qd l'onglet reste ouvert 
 (pt etre seulement qd le champ texte est ouvert?)
 => les messages se chargent dans un mauvais ordre
