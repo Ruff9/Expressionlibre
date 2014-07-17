@@ -60,8 +60,6 @@ design : fond
 		police (?)
 		Logo
 
-partage facebook : gérer une image d'aperçu
-
 Différencier les utilisateurs :
 	!= couleurs de curseur <= celui là
 	!= couleurs de texte
@@ -123,10 +121,3 @@ Yannick
 
 se documenter sur le polling 
 	=> remplacement pour socketIO
-
-
----------------------------------------------------
-
-Tony 2/07/14
-
-CHANGER LA GUEULE DE L'INPUT

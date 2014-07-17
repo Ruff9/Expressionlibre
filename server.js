@@ -97,7 +97,7 @@ app.get('/blog', function(req, res) {
   render_page('blog/index', res)
 });
 
-app.post('/feedback', function(req, res) {
+app.post('/', function(req, res) {
   var mailOpts, smtpTrans;
 
   smtpTrans = nodemailer.createTransport('SMTP', {
@@ -117,6 +117,7 @@ app.post('/feedback', function(req, res) {
 
   smtpTrans.sendMail(mailOpts, function (error, response) {
       if (error) {
+        console.log("erreur feedback")
         res.render('home', { msg: 'Erreur: message non envoyé', err: true, page: 'home' })
       }
       else { res.render('home'); };
