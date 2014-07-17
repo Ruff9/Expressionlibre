@@ -2,6 +2,8 @@ $(function(){
 
   var socket = io.connect();
 
+  socket.emit('DOMLoaded')
+
   var doc = $(document),
   win = $(window);
 
