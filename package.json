@@ -1,8 +1,8 @@
 {
   "name": "Expression-Libre",
   "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
-  "description": "Mur modifiable en temps-réel. Streaming de l'image des curseurs des clients.",
-  "version": "0.3.0",
+  "description": "Real-time editable wall. Clients cursor's streaming.",
+  "version": "0.4.0",
 
   "engine": {
     "node": "0.10.x"
@@ -16,8 +16,7 @@
     "redis": "0.10.1",
     "poet": "1.0.0-rc4",
     "body-parser": "1.2.0",
-    "nodemailer": "0.6.4",
-    "metrics-statsmix": "0.0.2"
+    "nodemailer": "0.6.4"
   },
 
   "devDependencies": {

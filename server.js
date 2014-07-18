@@ -162,7 +162,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('DOMLoaded', function() {
            
       // console.log("compteurConnection: " + compteur)
-      console.log("diffusion message initiaux");
+      // console.log("diffusion message initiaux");
         
       var initial = parseInt(compteur, 10) 
 
