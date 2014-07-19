@@ -78,11 +78,11 @@ render_page = function(page, response) {
 
 app.get('/', function(req, res) {
   render_page('home', res);
-});
+})
 
 app.get('/blog', function(req, res) {
   render_page('blog/index', res)
-});
+})
 
 app.post('/', function(req, res) {
   var mailOpts, smtpTrans;
