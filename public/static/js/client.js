@@ -67,6 +67,12 @@ $(function(){
 
   })
 
+  $("#warning").click(function(e){
+
+    $('#mobileWarning').remove();
+
+  })
+
   $("#zone_de_jeu").click(function(e){
 
     var sidebar = $('#sidebar');

@@ -76,20 +76,7 @@ render_page = function(page, response) {
   response.render(page)
 }
 
-function is_mobile(req) {
-  var ua = req.header('user-agent');
-  if (/mobile/i.test(ua)) return true;
-  else return false;
-};
-
-// Pas la meilleure méthode, todo : faire la meme chose en css pur 
-
 app.get('/', function(req, res) {
-  if (is_mobile(req)) render_page ('mobile_warning', res);
-  else render_page('home', res);
-});
-
-app.get('/home', function(req, res) {
   render_page('home', res);
 });
 
