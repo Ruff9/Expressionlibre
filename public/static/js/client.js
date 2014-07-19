@@ -25,15 +25,13 @@ $(function(){
   win.scrollTop($('#windowSetter').offset().top)
   win.scrollLeft($('#windowSetter').offset().left)
 
-  // modal about 
-
+  // modals 
   $('a.poplight').on('click', function() {
     var popID = $(this).data('rel');
     var popWidth = $(this).data('width');
 
     $('#' + popID).fadeIn().css({ 'width': popWidth}).prepend('<a href="#" class="close"><img src="/static/images/close-icon.png" class="btn_close" title="Fermer la fenêtre" alt="Close" /></a>');
     
-    //Récupération du margin pour centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
     var popMargTop = ($('#' + popID).height() + 80) / 2;
     var popMargLeft = ($('#' + popID).width() + 80) / 2;
     
@@ -42,7 +40,7 @@ $(function(){
       'margin-left' : -popMargLeft
     });
     
-    //Apparition du fond - 'alpha(opacity=80)' pour corriger les bugs de IE
+    //'alpha(opacity=80)' pour corriger les bugs de IE
     $('body').append('<div id="fade"></div>');
     $('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
     
@@ -52,8 +50,7 @@ $(function(){
   $('body').on('click', 'a.close, #fade', function() {
     $('#fade , .popup_block').fadeOut(function() {
       $('#fade, a.close').remove();  
-  });
-    
+    });   
     return false;
   });
 
@@ -68,9 +65,7 @@ $(function(){
   })
 
   $("#warning").click(function(e){
-
     $('#mobileWarning').remove();
-
   })
 
   $("#zone_de_jeu").click(function(e){
