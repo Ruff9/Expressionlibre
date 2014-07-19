@@ -139,7 +139,6 @@ $(function(){
   };
 
   socket.on('affiche_base_message', function (data) {
-    console.log("affiche_base_message")
     AfficheMessage(data);
   });
 

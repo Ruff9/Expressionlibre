@@ -138,12 +138,9 @@ function handler (request, response) {
 
 var connectCounter = 0;
 
-client.get('compteur', function(err, compteur) {
-     
+client.get('compteur', function(err, compteur) {   
   var compteur = parseInt(compteur, 10) || 0
   client.set('compteur', compteur);
-  // console.log("compteurinitial: " + compteur)
-
 });
 
 io.sockets.on('connection', function (socket) {
@@ -160,17 +157,12 @@ io.sockets.on('connection', function (socket) {
   client.get('compteur', function(err, compteur){
     
     socket.on('DOMLoaded', function() {
-           
-      // console.log("compteurConnection: " + compteur)
-      // console.log("diffusion message initiaux");
         
       var initial = parseInt(compteur, 10) 
 
       for(i = initial; i < (max_messages + initial); i++) {
-        var key = (i % max_messages) + 1;
-        // console.log("i: " + i + '  // key: ' + key)      
+        var key = (i % max_messages) + 1;   
         client.hgetall('message:' + key, function(error, message) {
-          // console.log("message : " + message)
           if(message) {
             socket.emit('affiche_base_message', message)
           }
@@ -199,7 +191,6 @@ io.sockets.on('connection', function (socket) {
 
       compteur += 1;
       client.set('compteur', compteur)
-      // console.log("clé message" + compteur)
 
       client.hset("message:"+compteur, "contenu", data.contenu);
       client.hset("message:"+compteur, "posX", data.posX);
