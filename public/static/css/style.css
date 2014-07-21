@@ -177,6 +177,7 @@ img.btn_close {
 .lien_about {
   width: 40%;
   margin: auto;
+  text-align: center;
   font-family: 'Oxygen', sans-serif;
   margin-bottom: 10px;
   background-color: #fff;
@@ -196,31 +197,6 @@ a.boutonAbout {
 #signature {
   text-align: right;
   margin-top: 30px;
-}
-/*formulaire mailchimp page about*/
-#mc-embedded-subscribe-form2 {
-  height: 30px;
-}
-#mc_embed_signup2 {
-  text-align: center;
-  margin-top: 30px;
-}
-#mce-EMAIL2 {
-  display: inline-block !important;
-  width: 40%;
-  border: 1px solid #c0c0c0;
-  padding: 5px;
-  height: 18px;
-  font-family: 'Oxygen', sans-serif;
-}
-@media all and (max-device-width: 480px) {
-  #mce-EMAIL2 {
-    width: 60%;
-  }
-}
-#mc-embedded-subscribe2 {
-  display: inline-block !important;
-  vertical-align: top;
 }
 /* modal feedback */
 #feedback {
