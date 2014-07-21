@@ -160,14 +160,29 @@ p {
   -moz-box-shadow: 0px 0px 20px #000;
   box-shadow: 0px 0px 20px #000;
 }
+@media all and (max-device-width: 480px) {
+  .popup_block {
+    width: 95%;
+    top: 10%;
+    left: 5%;
+    margin-right: 5%;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
 img.btn_close {
   float: right;
   margin: -15px -15px 0 0;
 }
 /*modal about*/
 #about {
-  width: 100%;
+  width: 500px;
   font-family: 'Oxygen', sans-serif;
+}
+@media all and (max-device-width: 480px) {
+  #about {
+    width: 75%;
+  }
 }
 #texte_about {
   margin: 10% auto 30px auto;
@@ -200,9 +215,14 @@ a.boutonAbout {
 }
 /* modal feedback */
 #feedback {
-  width: 100%;
+  width: 500px;
   text-align: center;
   font-family: 'Oxygen', sans-serif;
+}
+@media all and (max-device-width: 480px) {
+  #feedback {
+    width: 75%;
+  }
 }
 #emailFeedback {
   width: 80%;
