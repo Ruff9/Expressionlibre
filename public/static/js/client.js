@@ -86,7 +86,7 @@ $(function(){
 
       $("#saisie_texte").css({
         'left' : position_message[0],
-        'top' : position_message[1] - 15, 
+        'top' : position_message[1] + 15, 
         'display' : 'block'
       });
 
