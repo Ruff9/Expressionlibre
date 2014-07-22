@@ -3,7 +3,7 @@ var stylus = require('stylus');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var redis = require('redis');
-var Poet = require('poet');
+var PORToet = require('poet');
 var nodemailer = require('nodemailer');
 
 var app = express();
