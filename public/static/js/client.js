@@ -100,7 +100,7 @@ $(function(){
     socket.emit('message', {
       'contenu': encodeHTML($('#champ_saisie').val()),
       'posX': position_message[0],
-      'posY': position_message[1] - 10
+      'posY': position_message[1]
     });
 
     $(this).find('#champ_saisie').val('');
