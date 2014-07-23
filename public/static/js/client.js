@@ -85,8 +85,8 @@ $(function(){
       };
 
       $("#saisie_texte").css({
-        'left' : position_message[0] + 'px',
-        'top' : (position_message[1] - 15) + 'px', 
+        'left' : position_message[0],
+        'top' : position_message[1] - 15, 
         'display' : 'block'
       });
 
@@ -99,8 +99,8 @@ $(function(){
     e.preventDefault();
     socket.emit('message', {
       'contenu': encodeHTML($('#champ_saisie').val()),
-      'posX': position_message[0] + "px",
-      'posY': (position_message[1] - 10) + "px"
+      'posX': position_message[0],
+      'posY': position_message[1] - 10
     });
 
     $(this).find('#champ_saisie').val('');
