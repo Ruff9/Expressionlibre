@@ -1,12 +1,17 @@
-TODO
+TODO [¬º-°]¬ (°~°)
 
-Recherche utilisateurs
+Loader visuel 
+
+balie title dynamique : faire signe à ceux qui sont sur d'autres onglets
 
 Possibilité d'émettre des alertes/notifications (pas des alert)
+ 	donc back office ?
 
 -------------------------
 
 Bugs
+
+positionnement du champ de saisie (bug ponctuel ?)
 
 gestion des erreurs feedback
 
@@ -17,6 +22,8 @@ feedback : pb placeholder
 -------------------------
 
 Améliorations
+
+Protection des IP des utilisateurs ?
 
 Travail design mobile
 
@@ -42,10 +49,17 @@ Création de room thématiques
 possibilité d'exporter des jpg
 "partir dans l'art collectif" (Kenny)
 	=> html2canvas ? 
+		=> capture du DOM entier
 
 ----------------------------------------------
 
-notes retours utilisateurs
+Notes retours utilisateurs
+
+"On pourrait twitter tout ça"
+
+"on ne sait pas à qui on parle"
+
+"anonymat non garanti, recherche d'identité par IP"
 
 possibilité de classer/ranger les messages
 (utilisation pour brainstorming)
