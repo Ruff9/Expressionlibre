@@ -23,8 +23,6 @@ feedback : pb placeholder
 
 Améliorations
 
-Protection des IP des utilisateurs ?
-
 Travail design mobile
 
 MEP système de metrics
@@ -39,6 +37,8 @@ Recherche nouvelles polices
 
 Pistes
 
+Protection des IP des utilisateurs ?
+
 Différencier les utilisateurs :
 	!= couleurs de curseur <= celui là
 	!= couleurs de texte
@@ -50,6 +50,8 @@ possibilité d'exporter des jpg
 "partir dans l'art collectif" (Kenny)
 	=> html2canvas ? 
 		=> capture du DOM entier
+
+Affiner la reproduction du mouvement des curseurs
 
 ----------------------------------------------
 
