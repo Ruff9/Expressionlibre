@@ -86,7 +86,7 @@ $(function(){
 
       $("#saisie_texte").css({
         'left' : position_message[0],
-        'top' : position_message[1], 
+        'top' : position_message[1] - 15, 
         'display' : 'block'
       });
 
@@ -100,7 +100,7 @@ $(function(){
     socket.emit('message', {
       'contenu': encodeHTML($('#champ_saisie').val()),
       'posX': position_message[0],
-      'posY': position_message[1]
+      'posY': position_message[1] - 10
     });
 
     $(this).find('#champ_saisie').val('');
