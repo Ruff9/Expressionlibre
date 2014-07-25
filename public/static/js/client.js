@@ -26,12 +26,8 @@ $(function(){
   win.scrollLeft($('#windowSetter').offset().left)
 
   // ecran de chargement
-
-  socket.on('messages_loading_start', function(){
-    console.log('messages_loading_start')
-    $('#loading_screen').fadeIn()
-  }) 
-
+  $('#loading_screen').fadeIn()
+  
   socket.on('messages_loaded', function(){
     console.log('messages_loaded')
     $('#loading_screen').fadeOut()
