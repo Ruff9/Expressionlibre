@@ -16,7 +16,7 @@ $(function(){
   var nb_messages_max = 400;
   var pas_opacite = 1/nb_messages_max;
 
-  // empeche l'injection de JS
+  // empeche l'injection de code
   function encodeHTML(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   }
@@ -27,9 +27,8 @@ $(function(){
 
   // ecran de chargement
   $('#loading_screen').fadeIn()
-  
+
   socket.on('messages_loaded', function(){
-    console.log('messages_loaded')
     $('#loading_screen').fadeOut()
   })
 
