@@ -85,7 +85,9 @@ p {
   overflow: hidden;
   background: url("/static/images/texture.png") repeat;
   z-index: 1;
-/* texture principale : Halftone from Subtle Patterns */
+/* texture principale : 
+  http://www.colourlovers.com/pattern/4398952/%D0%B0%D1%8B
+  Halftone / suttle grey from Subtle Patterns */
 }
 #compteur {
   width: 110px;
@@ -272,7 +274,7 @@ a.boutonFeedback {
   text-decoration: none;
   color: #000;
 }
-/* message d'excuses supports mobiles */
+/* message d'avertissement supports mobiles */
 #mobileWarning {
   background: url("/static/images/texture_dark.png") repeat;
   position: fixed;
@@ -296,4 +298,11 @@ a.boutonFeedback {
   margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
+}
+/* ecran de chargement */
+#loading_screen p {
+  text-align: center;
+}
+#loading_screen img {
+  text-align: center;
 }

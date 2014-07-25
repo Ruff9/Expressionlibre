@@ -25,12 +25,23 @@ $(function(){
   win.scrollTop($('#windowSetter').offset().top)
   win.scrollLeft($('#windowSetter').offset().left)
 
+  // ecran de chargement
+
+  socket.on('messages_loading_start', function(){
+    console.log('messages_loading_start')
+    $('#loading_screen').fadeIn()
+  }) 
+
+  socket.on('messages_loaded', function(){
+    console.log('messages_loaded')
+    $('#loading_screen').fadeOut()
+  })
+
   // modals 
   $('a.poplight').on('click', function() {
     var popID = $(this).data('rel');
-    var popWidth = $(this).data('width');
 
-    $('#' + popID).fadeIn().css({ 'width': popWidth}).prepend('<a href="#" class="close"><img src="/static/images/close-icon.png" class="btn_close" title="Fermer la fenêtre" alt="Close" /></a>');
+    $('#' + popID).fadeIn().prepend('<a href="#" class="close"><img src="/static/images/close-icon.png" class="btn_close" title="Fermer la fenêtre" alt="Close" /></a>');
     
     var popMargTop = ($('#' + popID).height() + 80) / 2;
     var popMargLeft = ($('#' + popID).width() + 80) / 2;

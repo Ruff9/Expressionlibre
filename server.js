@@ -145,8 +145,9 @@ io.sockets.on('connection', function (socket) {
     
     socket.on('DOMLoaded', function() {
         
-      var initial = parseInt(compteur, 10) 
-
+      socket.emit('messages_loading_start')  
+      var initial = parseInt(compteur, 10)
+      
       for(i = initial; i < (max_messages + initial); i++) {
         var key = (i % max_messages) + 1;   
         client.hgetall('message:' + key, function(error, message) {
@@ -155,6 +156,7 @@ io.sockets.on('connection', function (socket) {
           }
         });          
       }
+      socket.emit('messages_loaded')
     });
   
   })
