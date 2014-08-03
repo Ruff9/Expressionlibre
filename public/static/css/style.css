@@ -165,7 +165,7 @@ p {
 @media all and (max-device-width: 480px) {
   .popup_block {
     width: 95%;
-    top: 10%;
+    top: 5%;
     left: 5%;
     margin-right: 5%;
     margin-top: 0 !important;
