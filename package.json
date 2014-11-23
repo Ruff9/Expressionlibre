@@ -2,7 +2,7 @@
   "name": "ExpressionLibre",
   "author": "Remy Maucourt <remy.maucourt@yahoo.fr>",
   "description": "Real-time editable wall. Clients cursor's streaming.",
-  "version": "0.4.0",
+  "version": "1.0.0",
 
   "engine": {
     "node": "0.10.x"
