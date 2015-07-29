@@ -13,8 +13,6 @@ var options = {
 
 describe("Server",function(){
 
-  // this.timeout(15000);
-
   it('Should count one user for one connection', function(done){
     var client = io.connect(socketURL, options);   
     client.on('compteurSocket', function(data){
@@ -86,15 +84,5 @@ describe("Server",function(){
  
     })
   })
-
-  // it('Should save messages in the right order', function(done){
-  //   true.should.be.true
-  // })
-
-  // it('Should load messages from most recent to oldest at connection', function(done){
-  //   true.should.be.true
-  // })
-
-
 
 })

@@ -3,7 +3,6 @@ var stylus = require('stylus');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var redis = require('redis');
-var Poet = require('poet');
 var nodemailer = require('nodemailer');
 
 var app = express();
@@ -57,18 +56,6 @@ io.configure(function () {
 
 var clients = io.sockets.clients();
 
-var poet = Poet(app, {
-  posts: './_posts/',
-  postsPerPage: 5,
-  metaFormat: 'json',
-  routes: {
-    '/blog/:post': 'blog/post',
-    '/blog/pagination/:page': 'blog/page'
-  }
-});
-
-poet.watch().init();
-
 // "client" est utilisé pour redis, et "clients" pour socket.IO. 
 
 render_page = function(page, response) {
@@ -78,10 +65,6 @@ render_page = function(page, response) {
 
 app.get('/', function(req, res) {
   render_page('home', res);
-})
-
-app.get('/blog', function(req, res) {
-  render_page('blog/index', res)
 })
 
 app.post('/', function(req, res) {
