@@ -1,0 +1,37 @@
+#zone_de_jeu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2600px;
+  height: 1600px;
+  overflow: hidden;
+  background: url("/images/texture.png") repeat;
+  z-index: 1;
+}
+
+  /* texture principale : 
+  http://www.colourlovers.com/pattern/4398952/%D0%B0%D1%8B
+  Halftone / suttle grey from Subtle Patterns */
+
+#saisie_texte {
+  position: absolute;
+}
+
+#champ_saisie {  
+  border: 1px solid silver;
+  padding: 5px;
+  height: 18px;
+}
+
+#messages .message {  
+  position: absolute;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1em;
+}
+
+#cursors .cursor {  
+  position: absolute;
+  width: 19px;
+  height: 24px;
+  background: url("/images/curseur.png") no-repeat;
+}

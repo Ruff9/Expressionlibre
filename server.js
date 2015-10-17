@@ -1,6 +1,6 @@
 var express = require('express');
-var stylus = require('stylus');
 var ejs = require('ejs');
+var path = require('path');
 var bodyParser = require('body-parser');
 var redis = require('redis');
 var nodemailer = require('nodemailer');
@@ -11,14 +11,7 @@ app.configure(function () {
   
   app.use(bodyParser());
 
-  app.use(stylus.middleware({
-    src: __dirname + '/resources',
-    dest: __dirname + '/public',
-    debug: true,
-    force: true
-  }));
-
-  app.use('/static', express.static(__dirname + '/public/static'));
+  app.use('/', express.static(path.join(__dirname, 'public')));
 
 });
 
@@ -177,5 +170,4 @@ io.sockets.on('connection', function (socket) {
   socket.on('disconnect', function () {
     io.sockets.emit('compteurSocket', connectCounter--);
   })
-
 })

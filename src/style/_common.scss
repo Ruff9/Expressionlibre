@@ -1,0 +1,40 @@
+body {
+  width: 2600px;
+  height: 1600px;
+  background: url("/images/texture.png") repeat;
+  margin: 0;
+}
+
+@font-face {  
+  font-family: 'Oxygen', sans-serif;
+  font-family: 'Courgette', cursive;
+}
+
+p { 
+  font-family: 'Oxygen', sans-serif;
+}
+
+#windowSetter {
+  position: absolute;
+  left: 650px;
+  top: 450px;
+}
+
+.ok {
+  background-color: #E6E6FA;
+  border: 1px solid silver;
+  height: 30px;
+}
+
+#loading_screen {
+  margin-top: -63px;
+  margin-left: -136px;
+}
+
+#loading_screen p {
+  text-align: center;
+}
+
+#loading_screen img {
+  text-align: center;
+}

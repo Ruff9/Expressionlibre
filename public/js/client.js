@@ -36,7 +36,7 @@ $(function(){
   $('a.poplight').on('click', function() {
     var popID = $(this).data('rel');
 
-    $('#' + popID).fadeIn().prepend('<a href="#" class="close"><img src="/static/images/close-icon.png" class="btn_close" title="Fermer la fenêtre" alt="Close" /></a>');
+    $('#' + popID).fadeIn().prepend('<a href="#" class="close"><img src="/images/close-icon.png" class="btn_close" title="Fermer la fenêtre" alt="Close" /></a>');
     
     var popMargTop = ($('#' + popID).height() + 80) / 2;
     var popMargLeft = ($('#' + popID).width() + 80) / 2;

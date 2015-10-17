@@ -1,0 +1,53 @@
+#sidebar {
+  position: fixed;
+  margin-top: 2%;
+  margin-left: 2%;
+  background: url("/images/texture_dark.png") repeat;
+  height: 270px;
+  float: left;
+  width: 280px;
+  padding: 0 1% 0 1%;
+  z-index: 10;
+  @media all and (max-device-width: 480px) {  
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 0;
+    height: 200px;
+  }
+}
+
+  /* texture sidebar : Twinkle Twinkle from Subtle Patterns */
+
+#sidebar br {
+  @media all and (max-device-width: 480px) {
+    display: none;
+  }
+}
+
+#sidebar p {
+  color: white;
+  text-align: center;
+}
+  
+#logo {
+  text-align: center;
+  margin-top: 15px;
+  color: white;
+  font-family: 'Courgette', cursive  ;
+  @media all and (max-device-width: 480px) {
+    font-size: 2em;
+  }
+}
+
+#social {  
+  text-align: center;
+  margin-top: 20px;
+  @media all and (max-device-width: 480px) {  
+    display: none;
+  }
+}
+
+.fb-share-button {
+  vertical-align: top;
+}

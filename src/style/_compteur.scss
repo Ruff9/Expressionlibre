@@ -1,0 +1,26 @@
+#compteur {
+  width: 110px;
+  position: fixed;
+  right: 2%;
+  margin-top: 2%;
+  text-align: center;
+  background-color: #E6E6FA;
+  border: 1px solid silver;
+  padding-right: 10px;
+  padding-left: 10px;
+  z-index: 10;
+  @media all and (max-device-width: 480px) {    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 31px;
+    margin-top: 0;
+  }
+}
+
+#compteur p {
+  @media all and (max-device-width: 480px) {
+    margin: auto;;
+    padding-top: 4px;
+  }
+}
