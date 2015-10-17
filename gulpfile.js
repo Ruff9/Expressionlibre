@@ -7,7 +7,7 @@ gulp.task('sass', function () {
   gulp.src('./src/style/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./src/style'))
-    .pipe(uglifycss())
+    // .pipe(uglifycss())
     .pipe(gulp.dest('./public/style'));
 });
 
@@ -17,7 +17,7 @@ gulp.task('sass:watch', function () {
 
 gulp.task('compressJS', function() {
   gulp.src('./src/js/*.js')
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('./public/js'));
 });
 
