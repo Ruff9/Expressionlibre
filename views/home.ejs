@@ -52,7 +52,7 @@
 		</br>
 
 		<div class="lien_about" >
-			<a href="#" data-rel="about" class="boutonAbout poplight">En savoir plus</a>		
+			<a href="#" data-rel="about" class="boutonAbout poplight">En savoir plus</a>
 		</div>
 
 		<div id="social">
@@ -61,13 +61,13 @@
 		</div>
 
 	</div>
-	
+
 	<div id="zone_de_jeu">
-	
+
 		<div id="compteur">
-			<p><span id="compteurVal"></span> connecté<span id="pluriel">s</span></p> 
+			<p><span id="compteurVal"></span> connecté<span id="pluriel">s</span></p>
 		</div>
-		
+
 		<div id="cursors">
 			<!-- les curseurs sont créés ici -->
 		</div>
@@ -75,16 +75,17 @@
 		<div id="messages">
 			<!-- les messages sont créés ici -->
 		</div>
-		
+
 		<form id="saisie_texte" style="display:none;width:265px">
 			<input type="text" id="champ_saisie" maxlength="40">
 			<input type="submit" value="OK" class="ok">
 		</form>
 	</div>
 
-	<div id='lienFeedback'>
-		<a href="#" data-rel="feedback" class="boutonFeedback poplight">Feedback</a>		
-	</div>	
+	<!-- Formulaire de contact ne fonctionne pas, à refaire un jour -->
+<!-- 	<div id='lienFeedback'>
+		<a href="#" data-rel="feedback" class="boutonFeedback poplight">Feedback</a>
+	</div>	 -->
 
 	<div id="about" class="popup_block">
 		<div id="texte_about">
@@ -93,14 +94,14 @@
 			<p>Vous êtes en train de tester une version beta. Pour aider l'application à s'améliorer, vous pouvez donner votre avis en cliquant sur feedback, en bas à droite.</p>
 
 			<p>N'hésitez pas à utiliser cette page au maximum :) Aucune raison d'être timide ici : personne ne sait que c'est vous.</p>
-			
-			<p id="signature">Rémy Maucourt</br><a href="http://www.linkedin.com/pub/r%C3%A9my-maucourt/18/48b/8b6">Linkedin</a> <a href="http://twitter.com/hi_gg">Twitter</a></br><a href="http://simplon.co/">Simplon#1</a></p>
+
+			<p id="signature">Rémy Maucourt</br><a href="http://www.inventif.fr">Site perso</a></br><a href="http://www.linkedin.com/pub/r%C3%A9my-maucourt/18/48b/8b6">Linkedin</a></br><a href="http://twitter.com/hi_gg">Twitter</a></p>
 		</div>
 	</div>
 
 	<div id="feedback" class="popup_block">
 		<form action="/", method="POST">
-		    <p>Donnez votre avis !</p>    
+		    <p>Donnez votre avis !</p>
 		    <p><input type="email" id="emailFeedback" name="emailFeedback" placeholder="Votre adresse mail" /></p>
 		    <p><textarea id="messageFeedback" name="messageFeedback" placeholder="Votre message"></textarea></p>
 		    <p><input type="submit" value="Envoyer" name="submitFeedback" id="submitFeedback" class="ok"></p>
@@ -109,7 +110,7 @@
 
 	<div id="loading_screen" class="popup_block">
 		<p>Chargement en cours</p>
-		<img src="images/loading.gif">		
+		<img src="images/loading.gif">
 	</div>
 
 	<script src="/socket.io/socket.io.js"></script>
